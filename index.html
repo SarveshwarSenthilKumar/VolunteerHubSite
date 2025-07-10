@@ -22,6 +22,8 @@
             --error: #ef4444;
             --warning: #f59e0b;
             --gradient-primary: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            --section-spacing: 8rem;
+            --content-spacing: 1.5rem;
         }
         
         * {
@@ -36,10 +38,11 @@
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
         
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
         }
@@ -61,6 +64,7 @@
             font-size: 1.25rem;
             font-weight: 700;
             color: var(--text-primary);
+            text-decoration: none;
         }
         
         .logo-icon {
@@ -76,7 +80,7 @@
         
         .nav-links {
             display: flex;
-            gap: 1.5rem;
+            gap: 2rem;
         }
         
         .nav-links a {
@@ -85,39 +89,55 @@
             font-weight: 500;
             transition: color 0.2s;
             font-size: 0.95rem;
+            position: relative;
         }
         
         .nav-links a:hover {
             color: var(--text-primary);
         }
         
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
         .nav-cta {
-            background: var(--gradient-primary);
-            color: white;
-            border: none;
+            background: transparent;
+            color: var(--accent-primary);
+            border: 1px solid var(--accent-primary);
             border-radius: 8px;
             padding: 0.6rem 1.2rem;
             font-weight: 600;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.3s ease;
             font-size: 0.95rem;
         }
         
         .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+            background: rgba(37, 99, 235, 0.1);
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.2);
         }
         
         /* Hero Section */
         .hero {
-            height: auto;
-            min-height: 100vh;
+            height: 100vh;
+            min-height: 800px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             position: relative;
             overflow: hidden;
-            padding: 6rem 0 4rem;
+            padding-top: 4rem;
         }
         
         #vanta-globe {
@@ -127,6 +147,7 @@
             width: 100%;
             height: 100%;
             z-index: 0;
+            opacity: 0.6;
         }
         
         .hero-content {
@@ -144,29 +165,33 @@
         
         .hero-tag {
             display: inline-block;
-            background: rgba(59, 130, 246, 0.2);
+            background: rgba(59, 130, 246, 0.1);
             color: var(--accent-secondary);
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 1.25rem;
             border-radius: 50px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
             margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            backdrop-filter: blur(5px);
         }
         
         .hero-title {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: 1.5rem;
             background: linear-gradient(to right, #f8fafc, #c7d2fe);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
         }
         
         .hero-subtitle {
             font-size: 1.25rem;
             color: var(--text-secondary);
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             max-width: 600px;
             line-height: 1.7;
         }
@@ -174,7 +199,7 @@
         .hero-cta-container {
             display: flex;
             gap: 1.5rem;
-            margin-top: 2rem;
+            margin-top: 1.5rem;
             flex-wrap: wrap;
             justify-content: center;
         }
@@ -188,10 +213,11 @@
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
         }
         
         .primary-cta:hover {
@@ -200,53 +226,52 @@
         }
         
         .secondary-cta {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
             color: white;
-            border: none;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 8px;
             padding: 1rem 2rem;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            backdrop-filter: blur(10px);
+            gap: 0.75rem;
+            backdrop-filter: blur(5px);
         }
         
         .secondary-cta:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
         }
         
         /* Features Section */
         .section {
-            padding: 4rem 0;
+            padding: var(--section-spacing) 0;
             position: relative;
-        }
-        
-        .features-section {
-            margin-top: 2rem;
-            padding-top: 2rem;
+            background-color: var(--bg-primary);
+            z-index: 20;
         }
         
         .section-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
         
         .section-title {
-            font-size: 2.5rem;
+            font-size: 2.75rem;
             font-weight: 800;
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
             background: linear-gradient(to right, #f8fafc, #c7d2fe);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
         }
         
         .section-subtitle {
             color: var(--text-secondary);
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             max-width: 700px;
             margin: 0 auto;
             line-height: 1.7;
@@ -261,8 +286,8 @@
         .feature-card {
             background: var(--bg-secondary);
             border-radius: 16px;
-            padding: 2rem 1.5rem;
-            transition: transform 0.3s, box-shadow 0.3s;
+            padding: 2.5rem 2rem;
+            transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
             position: relative;
             overflow: hidden;
             z-index: 1;
@@ -270,8 +295,9 @@
         }
         
         .feature-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border-color: rgba(59, 130, 246, 0.3);
         }
         
         .feature-card::before {
@@ -284,7 +310,7 @@
             background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
             z-index: -1;
             opacity: 0;
-            transition: opacity 0.3s;
+            transition: opacity 0.4s ease;
         }
         
         .feature-card:hover::before {
@@ -299,15 +325,21 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.75rem;
             color: white;
             font-size: 1.5rem;
+            transition: transform 0.4s ease;
+        }
+        
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1) rotate(5deg);
         }
         
         .feature-title {
             font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
+            color: var(--text-primary);
         }
         
         .feature-desc {
@@ -320,10 +352,10 @@
         .tech-stack {
             background: var(--bg-secondary);
             border-radius: 16px;
-            padding: 4rem 2rem;
-            margin: 4rem 0;
+            padding: 5rem 3rem;
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
         
         .tech-stack::before {
@@ -333,7 +365,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.1) 0%, transparent 50%);
+            background: radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.08) 0%, transparent 50%);
             z-index: 0;
         }
         
@@ -343,32 +375,38 @@
         }
         
         .tech-title {
-            font-size: 2rem;
+            font-size: 2.25rem;
             font-weight: 700;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             color: var(--text-primary);
             text-align: center;
+            background: linear-gradient(to right, #f8fafc, #c7d2fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
         .tech-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 1.5rem;
         }
         
         .tech-item {
             background: var(--bg-tertiary);
             border-radius: 12px;
-            padding: 1.5rem 1rem;
+            padding: 2rem 1.5rem;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1rem;
-            transition: transform 0.3s;
+            gap: 1.25rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
         
         .tech-item:hover {
-            transform: translateY(-8px);
+            transform: translateY(-5px);
+            background: rgba(30, 41, 59, 0.7);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
         
         .tech-icon {
@@ -386,11 +424,11 @@
         .cta-section {
             background: var(--gradient-primary);
             border-radius: 24px;
-            padding: 4rem 2rem;
+            padding: 5rem 2rem;
             text-align: center;
             position: relative;
             overflow: hidden;
-            margin: 4rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .cta-section::before {
@@ -416,16 +454,17 @@
         }
         
         .cta-title {
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: 800;
             margin-bottom: 1.5rem;
             color: white;
+            line-height: 1.2;
         }
         
         .cta-subtitle {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
@@ -435,14 +474,17 @@
         /* Footer */
         footer {
             background: var(--bg-secondary);
-            padding: 4rem 0 2rem 0;
+            padding: 6rem 0 3rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            z-index: 20;
         }
         
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 3rem;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
         
         .footer-logo {
@@ -452,6 +494,8 @@
             font-size: 1.25rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            text-decoration: none;
         }
         
         .footer-logo-icon {
@@ -468,7 +512,7 @@
         .footer-desc {
             color: var(--text-secondary);
             line-height: 1.7;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.75rem;
             font-size: 0.95rem;
         }
         
@@ -486,21 +530,24 @@
             align-items: center;
             justify-content: center;
             color: var(--text-secondary);
-            transition: all 0.2s;
+            transition: all 0.3s ease;
             font-size: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
         
         .social-link:hover {
             background: var(--accent-primary);
             color: white;
             transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
         }
         
         .footer-title {
             font-size: 1.1rem;
             font-weight: 600;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.75rem;
             color: var(--text-primary);
+            letter-spacing: 0.5px;
         }
         
         .footer-links {
@@ -512,20 +559,21 @@
         .footer-link {
             color: var(--text-secondary);
             text-decoration: none;
-            transition: color 0.2s;
+            transition: all 0.3s ease;
             font-size: 0.95rem;
         }
         
         .footer-link:hover {
             color: var(--accent-secondary);
+            transform: translateX(5px);
         }
         
         .footer-bottom {
             border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding-top: 2rem;
+            padding-top: 2.5rem;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 1.5rem;
             justify-content: space-between;
             color: var(--text-secondary);
             font-size: 0.9rem;
@@ -533,33 +581,41 @@
         
         .footer-bottom-links {
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
         }
         
-        /* Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        .footer-bottom-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
         
-        .floating {
-            animation: float 6s ease-in-out infinite;
+        .footer-bottom-link:hover {
+            color: var(--accent-secondary);
         }
         
         /* Responsive */
         @media (max-width: 1200px) {
+            :root {
+                --section-spacing: 6rem;
+            }
+            
             .hero-title {
-                font-size: 2.8rem;
+                font-size: 3rem;
             }
             
             .section-title {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
         }
         
         @media (max-width: 992px) {
             .nav-links {
                 display: none;
+            }
+            
+            .hero {
+                min-height: 700px;
             }
             
             .hero-title {
@@ -571,19 +627,24 @@
             }
             
             .section-title {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
             .tech-title {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             
             .cta-title {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
         }
         
         @media (max-width: 768px) {
+            :root {
+                --section-spacing: 5rem;
+                --content-spacing: 1rem;
+            }
+            
             .container {
                 padding: 0 1.5rem;
             }
@@ -593,7 +654,8 @@
             }
             
             .hero {
-                padding: 5rem 0 3rem;
+                min-height: 600px;
+                padding-top: 3rem;
             }
             
             .hero-title {
@@ -619,6 +681,10 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             
+            .tech-item {
+                padding: 1.75rem 1rem;
+            }
+            
             .footer-grid {
                 grid-template-columns: 1fr;
             }
@@ -634,12 +700,17 @@
         }
         
         @media (max-width: 576px) {
+            :root {
+                --section-spacing: 4rem;
+            }
+            
             .container {
                 padding: 0 1rem;
             }
             
             .hero {
-                padding: 4rem 0 2rem;
+                min-height: 500px;
+                padding-top: 2rem;
             }
             
             .hero-title {
@@ -648,10 +719,6 @@
             
             .hero-tag {
                 font-size: 0.8rem;
-            }
-            
-            .section {
-                padding: 3rem 0;
             }
             
             .section-title {
@@ -663,7 +730,7 @@
             }
             
             .feature-card {
-                padding: 1.5rem;
+                padding: 2rem 1.5rem;
             }
             
             .feature-icon {
@@ -678,16 +745,14 @@
             
             .tech-stack {
                 padding: 3rem 1.5rem;
-                margin: 3rem 0;
             }
             
             .cta-section {
                 padding: 3rem 1.5rem;
-                margin: 3rem 0;
             }
             
             .cta-title {
-                font-size: 1.6rem;
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -695,12 +760,12 @@
 <body>
     <div class="container">
         <nav>
-            <div class="logo">
+            <a href="#" class="logo">
                 <div class="logo-icon">
                     <i class="fas fa-hands-helping"></i>
                 </div>
                 <span>VolunteerHub</span>
-            </div>
+            </a>
             <div class="nav-links">
                 <a href="#features">Features</a>
                 <a href="#technology">Technology</a>
@@ -711,7 +776,9 @@
         </nav>
     </div>
 
-    <div class="hero" id="vanta-globe">
+    <!-- Hero Section with Vanta.js background -->
+    <section class="hero">
+        <div id="vanta-globe"></div>
         <div class="container">
             <div class="hero-content">
                 <span class="hero-tag">COMING SOON</span>
@@ -729,143 +796,152 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="container">
-        <section class="section features-section" id="features">
-            <div class="section-header">
-                <h2 class="section-title">How VolunteerHub Works</h2>
-                <p class="section-subtitle">
-                    Our platform leverages cutting-edge technology to create the most sophisticated volunteer matching system available today.
-                </p>
-            </div>
-            
-            <div class="features-grid">
-                <div class="feature-card floating" style="animation-delay: 0s;">
-                    <div class="feature-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3 class="feature-title">Intelligent Matching</h3>
-                    <p class="feature-desc">
-                        Our AI analyzes your skills, availability, location, and interests to recommend the perfect volunteer opportunities. The system learns from your preferences to improve suggestions over time.
+    <!-- Main Content Sections -->
+    <main>
+        <div class="container">
+            <!-- Features Section -->
+            <section class="section" id="features">
+                <div class="section-header">
+                    <h2 class="section-title">How VolunteerHub Works</h2>
+                    <p class="section-subtitle">
+                        Our platform leverages cutting-edge technology to create the most sophisticated volunteer matching system available today.
                     </p>
                 </div>
                 
-                <div class="feature-card floating" style="animation-delay: 0.3s;">
-                    <div class="feature-icon">
-                        <i class="fas fa-map-marked-alt"></i>
-                    </div>
-                    <h3 class="feature-title">Live Opportunity Map</h3>
-                    <p class="feature-desc">
-                        Visualize volunteer needs in your community with our interactive map. See real-time demand indicators, popular causes, and urgent opportunities in your area.
-                    </p>
-                </div>
-                
-                <div class="feature-card floating" style="animation-delay: 0.6s;">
-                    <div class="feature-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3 class="feature-title">Swipe-to-Apply</h3>
-                    <p class="feature-desc">
-                        Our intuitive mobile interface lets you browse opportunities with simple gestures. Swipe right to save, left to pass, and up to get more details - volunteering has never been easier.
-                    </p>
-                </div>
-                
-                <div class="feature-card floating" style="animation-delay: 0.9s;">
-                    <div class="feature-icon">
-                        <i class="fas fa-comments"></i>
-                    </div>
-                    <h3 class="feature-title">Natural Language Search</h3>
-                    <p class="feature-desc">
-                        Describe what you're looking for in your own words. Our NLP engine understands phrases like "weekend environmental projects near me" or "helping kids with math."
-                    </p>
-                </div>
-                
-                <div class="feature-card floating" style="animation-delay: 1.2s;">
-                    <div class="feature-icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <h3 class="feature-title">Gamified Experience</h3>
-                    <p class="feature-desc">
-                        Earn badges, complete challenges, and track your volunteer streak. Our gamification system makes giving back fun and rewarding.
-                    </p>
-                </div>
-                
-                <div class="feature-card floating" style="animation-delay: 1.5s;">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-pie"></i>
-                    </div>
-                    <h3 class="feature-title">Impact Analytics</h3>
-                    <p class="feature-desc">
-                        Track your personal volunteering metrics and see the tangible difference you're making. Organizations get detailed reports on volunteer engagement and impact.
-                    </p>
-                </div>
-            </div>
-        </section>
-        
-        <div class="tech-stack" id="technology">
-            <div class="tech-stack-content">
-                <h3 class="tech-title">Powered By Advanced Technology</h3>
-                <div class="tech-grid">
-                    <div class="tech-item">
-                        <div class="tech-icon">
-                            <i class="fas fa-brain"></i>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-robot"></i>
                         </div>
-                        <div class="tech-name">Machine Learning</div>
+                        <h3 class="feature-title">Intelligent Matching</h3>
+                        <p class="feature-desc">
+                            Our AI analyzes your skills, availability, location, and interests to recommend the perfect volunteer opportunities. The system learns from your preferences to improve suggestions over time.
+                        </p>
                     </div>
-                    <div class="tech-item">
-                        <div class="tech-icon">
-                            <i class="fas fa-language"></i>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-map-marked-alt"></i>
                         </div>
-                        <div class="tech-name">Natural Language Processing</div>
+                        <h3 class="feature-title">Live Opportunity Map</h3>
+                        <p class="feature-desc">
+                            Visualize volunteer needs in your community with our interactive map. See real-time demand indicators, popular causes, and urgent opportunities in your area.
+                        </p>
                     </div>
-                    <div class="tech-item">
-                        <div class="tech-icon">
-                            <i class="fas fa-map"></i>
-                        </div>
-                        <div class="tech-name">Geospatial AI</div>
-                    </div>
-                    <div class="tech-item">
-                        <div class="tech-icon">
-                            <i class="fas fa-cloud"></i>
-                        </div>
-                        <div class="tech-name">Cloud Computing</div>
-                    </div>
-                    <div class="tech-item">
-                        <div class="tech-icon">
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
                             <i class="fas fa-mobile-alt"></i>
                         </div>
-                        <div class="tech-name">Cross-Platform</div>
+                        <h3 class="feature-title">Swipe-to-Apply</h3>
+                        <p class="feature-desc">
+                            Our intuitive mobile interface lets you browse opportunities with simple gestures. Swipe right to save, left to pass, and up to get more details - volunteering has never been easier.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3 class="feature-title">Natural Language Search</h3>
+                        <p class="feature-desc">
+                            Describe what you're looking for in your own words. Our NLP engine understands phrases like "weekend environmental projects near me" or "helping kids with math."
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3 class="feature-title">Gamified Experience</h3>
+                        <p class="feature-desc">
+                            Earn badges, complete challenges, and track your volunteer streak. Our gamification system makes giving back fun and rewarding.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <h3 class="feature-title">Impact Analytics</h3>
+                        <p class="feature-desc">
+                            Track your personal volunteering metrics and see the tangible difference you're making. Organizations get detailed reports on volunteer engagement and impact.
+                        </p>
                     </div>
                 </div>
-            </div>
-        </div>
-        
-        <section class="section">
-            <div class="cta-section">
-                <div class="cta-content">
-                    <h2 class="cta-title">Ready to Revolutionize Volunteering?</h2>
-                    <p class="cta-subtitle">
-                        Join our exclusive waitlist to be among the first to experience VolunteerHub when we launch. Help us build the future of community engagement.
-                    </p>
-                    <button class="primary-cta">
-                        <i class="fas fa-envelope"></i> Join Waitlist Now
-                    </button>
+            </section>
+            
+            <!-- Technology Stack Section -->
+            <section class="section" id="technology">
+                <div class="tech-stack">
+                    <div class="tech-stack-content">
+                        <h3 class="tech-title">Powered By Advanced Technology</h3>
+                        <div class="tech-grid">
+                            <div class="tech-item">
+                                <div class="tech-icon">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <div class="tech-name">Machine Learning</div>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon">
+                                    <i class="fas fa-language"></i>
+                                </div>
+                                <div class="tech-name">Natural Language Processing</div>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon">
+                                    <i class="fas fa-map"></i>
+                                </div>
+                                <div class="tech-name">Geospatial AI</div>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon">
+                                    <i class="fas fa-cloud"></i>
+                                </div>
+                                <div class="tech-name">Cloud Computing</div>
+                            </div>
+                            <div class="tech-item">
+                                <div class="tech-icon">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <div class="tech-name">Cross-Platform</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </section>
-    </div>
+            </section>
+            
+            <!-- CTA Section -->
+            <section class="section">
+                <div class="cta-section">
+                    <div class="cta-content">
+                        <h2 class="cta-title">Ready to Revolutionize Volunteering?</h2>
+                        <p class="cta-subtitle">
+                            Join our exclusive waitlist to be among the first to experience VolunteerHub when we launch. Help us build the future of community engagement.
+                        </p>
+                        <button class="primary-cta">
+                            <i class="fas fa-envelope"></i> Join Waitlist Now
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
     
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <div class="footer-logo">
+                    <a href="#" class="footer-logo">
                         <div class="footer-logo-icon">
                             <i class="fas fa-hands-helping"></i>
                         </div>
                         <span>VolunteerHub</span>
-                    </div>
+                    </a>
                     <p class="footer-desc">
                         The most advanced platform for connecting volunteers with meaningful opportunities through artificial intelligence and community expertise.
                     </p>
@@ -911,8 +987,8 @@
             <div class="footer-bottom">
                 <div>© 2025 VolunteerHub. All rights reserved.</div>
                 <div class="footer-bottom-links">
-                    <a href="#" class="footer-link">Privacy Policy</a>
-                    <a href="#" class="footer-link">Terms of Service</a>
+                    <a href="#" class="footer-bottom-link">Privacy Policy</a>
+                    <a href="#" class="footer-bottom-link">Terms of Service</a>
                 </div>
             </div>
         </div>
@@ -934,21 +1010,33 @@
             size: 1.00
         });
         
-        // Add scroll animation
-        document.addEventListener('DOMContentLoaded', function() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate');
-                    }
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
                 });
-            }, {
-                threshold: 0.1
             });
-            
-            document.querySelectorAll('.feature-card').forEach(card => {
-                observer.observe(card);
+        });
+        
+        // Add scroll animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
             });
+        }, observerOptions);
+        
+        document.querySelectorAll('.feature-card, .tech-item').forEach(item => {
+            observer.observe(item);
         });
     </script>
 </body>
