@@ -1337,6 +1337,157 @@
         }
     </style>
 
+    <section class="opportunities-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Explore Opportunities</h2>
+                <p class="section-subtitle">
+                    Discover meaningful ways to make a difference in your community
+                </p>
+            </div>
+            
+            <div class="opportunities-showcase">
+                <div class="opportunities-image">
+                    <!-- Using a free, high-quality volunteer image from Unsplash -->
+                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" 
+                         alt="Volunteers working together" loading="lazy">
+                </div>
+                
+                <div class="opportunities-content">
+                    <div class="opportunity-card">
+                        <div class="opportunity-icon">
+                            <i class="fas fa-tree"></i>
+                        </div>
+                        <h3>Environmental Conservation</h3>
+                        <p>Join tree planting initiatives, beach cleanups, and sustainability projects.</p>
+                    </div>
+                    
+                    <div class="opportunity-card">
+                        <div class="opportunity-icon">
+                            <i class="fas fa-child"></i>
+                        </div>
+                        <h3>Youth Mentorship</h3>
+                        <p>Guide and inspire the next generation through education programs.</p>
+                    </div>
+                    
+                    <div class="opportunity-card">
+                        <div class="opportunity-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3>Food Distribution</h3>
+                        <p>Help fight hunger by serving meals at local shelters and food banks.</p>
+                    </div>
+                    
+                    <div class="opportunity-card">
+                        <div class="opportunity-icon">
+                            <i class="fas fa-laptop-medical"></i>
+                        </div>
+                        <h3>Tech Volunteering</h3>
+                        <p>Use your technical skills to help nonprofits with their digital needs.</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Previous sections continue (creators, footer, etc.) -->
+
+    <style>
+        /* Opportunities Section Styles */
+        .opportunities-section {
+            padding: var(--section-spacing) 0;
+            background-color: var(--bg-primary);
+            position: relative;
+            z-index: 20;
+        }
+        
+        .opportunities-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+        
+        .opportunities-image img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .opportunities-image img:hover {
+            transform: scale(1.02);
+        }
+        
+        .opportunities-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        .opportunity-card {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .opportunity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+        
+        .opportunity-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .opportunity-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        
+        .opportunity-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .opportunities-cta {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 992px) {
+            .opportunities-showcase {
+                grid-template-columns: 1fr;
+            }
+            
+            .opportunities-image {
+                order: 2;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .opportunities-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
     <!-- Creators Section -->
     <section class="creators-section">
         <div class="container">
