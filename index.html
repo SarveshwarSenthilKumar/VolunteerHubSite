@@ -1607,6 +1607,83 @@
                 nav.style.boxShadow = 'none';
             }
         });
+
+                // Demo Button Notification
+        const demoButton = document.querySelector('.secondary-cta');
+        const notification = document.createElement('div');
+        notification.className = 'demo-notification';
+        notification.innerHTML = `
+            <span>Coming Soon! We're working hard on the demo. Contact Sarveshwar at Sarveshwar313@gmail.com for a live demo.</span>
+            <span class="notification-close">&times;</span>
+        `;
+        document.body.appendChild(notification);
+
+        // Style the notification (add to your CSS)
+        const style = document.createElement('style');
+        style.textContent = `
+            .demo-notification {
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: var(--gradient-primary);
+                color: white;
+                padding: 12px 24px;
+                border-radius: 8px;
+                box-shadow: 0 4px 20px rgba(37, 99, 235, 0.3);
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                z-index: 2000;
+                opacity: 0;
+                transition: all 0.3s ease;
+                pointer-events: none;
+            }
+            
+            .demo-notification.show {
+                opacity: 1;
+                pointer-events: auto;
+                top: 30px;
+            }
+            
+            .notification-close {
+                cursor: pointer;
+                font-size: 1.2rem;
+                transition: transform 0.2s ease;
+            }
+            
+            .notification-close:hover {
+                transform: scale(1.2);
+            }
+            
+            @media (max-width: 768px) {
+                .demo-notification {
+                    width: 90%;
+                    text-align: center;
+                    padding: 10px 16px;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        demoButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Show notification
+            notification.classList.add('show');
+            
+            // Auto-hide after 3 seconds
+            const timeout = setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+            
+            // Close button functionality
+            const closeBtn = notification.querySelector('.notification-close');
+            closeBtn.addEventListener('click', () => {
+                notification.classList.remove('show');
+                clearTimeout(timeout);
+            }, { once: true });
+        });
     </script>
 </body>
 </html>
