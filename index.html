@@ -1176,68 +1176,251 @@
         </div>
     </main>
     
-    <!-- Footer -->
-    <footer>
+    <style>
+        /* Previous styles remain the same until footer section */
+
+        /* Creators Section */
+        .creators-section {
+            padding: var(--section-spacing) 0;
+            background: var(--bg-secondary);
+            position: relative;
+            z-index: 20;
+        }
+        
+        .creators-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .creator-card {
+            background: var(--bg-tertiary);
+            border-radius: 16px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .creator-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .creator-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            border: 3px solid var(--accent-primary);
+        }
+        
+        .creator-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        
+        .creator-title {
+            color: var(--accent-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .creator-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .creator-link {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .creator-link:hover {
+            background: var(--accent-primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Simplified Footer */
+        footer {
+            background: var(--bg-primary);
+            padding: 4rem 0 2rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            z-index: 20;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+        
+        .footer-logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--gradient-primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        .footer-link:hover {
+            color: var(--accent-secondary);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            width: 100%;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .creators-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+
+    <!-- Creators Section -->
+    <section class="creators-section">
         <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <a href="#" class="footer-logo">
-                        <div class="footer-logo-icon">
-                            <i class="fas fa-hands-helping"></i>
-                        </div>
-                        <span>VolunteerHub</span>
-                    </a>
-                    <p class="footer-desc">
-                        The most advanced platform for connecting volunteers with meaningful opportunities through artificial intelligence and community expertise.
+            <div class="section-header">
+                <h2 class="section-title">Meet The Creators</h2>
+                <p class="section-subtitle">
+                    The minds behind VolunteerHub's innovative platform
+                </p>
+            </div>
+            
+            <div class="creators-grid">
+                <div class="creator-card animate">
+                    <img src="https://media.licdn.com/dms/image/v2/D5603AQH-AxEj1SuCZg/profile-displayphoto-shrink_200_200/B56ZWnIS8KGQAY-/0/1742265725301?e=1757548800&v=beta&t=_WEZcwG_hMoccu7gt1jqC4VVdLyPpGlaoGnj-uy8OdM" alt="Sarv" class="creator-image">
+                    <h3 class="creator-name">Sarveshwar Senthil Kumar</h3>
+                    <p class="creator-title">Co-Founder & Lead Developer</p>
+                    <p class="feature-desc">
+                        Passionate about using technology to create social impact and connect communities.
                     </p>
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <div class="creator-links">
+                        <a href="https://www.linkedin.com/in/sarveshwarsenthilkumar/" class="creator-link" target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/SarveshwarSenthilKumar" class="creator-link" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://sarveshwarsenthilkumar.github.io" class="creator-link" target="_blank">
+                            <i class="fas fa-globe"></i>
+                        </a>
                     </div>
                 </div>
                 
-                <div>
-                    <h4 class="footer-title">Product</h4>
-                    <div class="footer-links">
-                        <a href="#features" class="footer-link">Features</a>
-                        <a href="#" class="footer-link">Pricing</a>
-                        <a href="#" class="footer-link">Case Studies</a>
-                        <a href="#" class="footer-link">Updates</a>
-                    </div>
-                </div>
-                
-                <div>
-                    <h4 class="footer-title">Company</h4>
-                    <div class="footer-links">
-                        <a href="#" class="footer-link">About Us</a>
-                        <a href="#" class="footer-link">Careers</a>
-                        <a href="#" class="footer-link">Press</a>
-                        <a href="#" class="footer-link">Contact</a>
-                    </div>
-                </div>
-                
-                <div>
-                    <h4 class="footer-title">Resources</h4>
-                    <div class="footer-links">
-                        <a href="#" class="footer-link">Blog</a>
-                        <a href="#" class="footer-link">Help Center</a>
-                        <a href="#" class="footer-link">Tutorials</a>
-                        <a href="#" class="footer-link">Community</a>
+                <div class="creator-card animate delay-1">
+                    <img src="https://media.licdn.com/dms/image/v2/D4E03AQEdCbboBqwjIA/profile-displayphoto-scale_100_100/B4EZfn6RtdG4Ac-/0/1751942503751?e=1757548800&v=beta&t=L89QjdxuHbjHFvISJJqEbXzeyONxrCUO66JKH-yrHl0" alt="Devansh" class="creator-image">
+                    <h3 class="creator-name">Devansh Goyal</h3>
+                    <p class="creator-title">Co-Founder & Technical Lead</p>
+                    <p class="feature-desc">
+                        Dedicated to building scalable solutions that empower communities through technology.
+                    </p>
+                    <div class="creator-links">
+                        <a href="https://www.linkedin.com/in/devanshg07/" class="creator-link" target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/devanshg07" class="creator-link" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
                     </div>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <div>© 2025 VolunteerHub. All rights reserved.</div>
-                <div class="footer-bottom-links">
-                    <a href="#" class="footer-bottom-link">Privacy Policy</a>
-                    <a href="#" class="footer-bottom-link">Terms of Service</a>
+        </div>
+    </section>
+    
+    <!-- Simplified Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <a href="#" class="footer-logo">
+                    <div class="footer-logo-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <span>VolunteerHub</span>
+                </a>
+                
+                <div class="footer-links">
+                    <a href="#features" class="footer-link">Features</a>
+                    <a href="#technology" class="footer-link">Technology</a>
+                    <a href="#map" class="footer-link">Live Map</a>
+                    <a href="#ai" class="footer-link">AI Tools</a>
+                    <a href="#" class="footer-link">Join Waitlist</a>
+                </div>
+                
+                <div class="footer-bottom">
+                    © 2025 VolunteerHub. All rights reserved.
                 </div>
             </div>
         </div>
     </footer>
+
+    <script>
+        // Previous JavaScript remains the same
+        
+        // Add creators section to observer
+        document.querySelectorAll('.creator-card').forEach(item => {
+            observer.observe(item);
+        });
+    </script>
 
     <script>
         // Initialize Vanta.js globe animation
