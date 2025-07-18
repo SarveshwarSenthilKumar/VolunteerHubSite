@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VolunteerHub | AI-Powered Volunteer Matching Platform</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/905/905901.png" type="image/png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary: #2563eb;
+            --secondary: #3b82f6;
+            --accent: #60a5fa;
+            --dark: #0a0f1a;
+            --darker: #111827;
+            --darkest: #1e293b;
+            --light: #f8fafc;
+            --gray: #94a3b8;
+            --gradient: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            --gradient-secondary: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+            overflow-y: hidden;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            position: relative;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            padding: 80px 10% 60px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            transition: transform 0.5s ease;
+            transform: translateX(100%);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slide.active {
+            transform: translateX(0);
+        }
+
+        .slide-header {
+            min-height: 120px;
+            margin-bottom: 20px;
+        }
+
+        .slide-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        .slide-subtitle {
+            font-size: 1.3rem;
+            color: var(--gray);
+            margin-bottom: 1rem;
+            max-width: 800px;
+        }
+
+        .slide-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+        }
+
+        .card-content {
+            color: var(--gray);
+            line-height: 1.5;
+            font-size: 0.95rem;
+            overflow: hidden;
+        }
+
+        .card-content li {
+            margin-bottom: 0.4rem;
+            padding-left: 1rem;
+        }
+
+        .card-content li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+        }
+
+        /* Custom animated icons */
+        .tech-icon {
+            width: 100%;
+            height: 200px;
+            margin: 1rem 0;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Cover slide icon */
+        .hands-icon {
+            width: 180px;
+            height: 180px;
+            position: relative;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .hands-icon .hand-left,
+        .hands-icon .hand-right {
+            position: absolute;
+            width: 60px;
+            height: 100px;
+            background: var(--primary);
+            border-radius: 50px;
+            animation: pulse 2s infinite alternate;
+        }
+
+        .hands-icon .hand-left {
+            left: 30px;
+            top: 40px;
+            transform: rotate(-20deg);
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        }
+
+        .hands-icon .hand-right {
+            right: 30px;
+            top: 40px;
+            transform: rotate(20deg);
+            background: linear-gradient(to bottom, var(--secondary), var(--primary));
+        }
+
+        .hands-icon .connection {
+            position: absolute;
+            width: 40px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 5px;
+            top: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Problem slide icons */
+        .search-icon {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            animation: shake 3s infinite;
+        }
+
+        .search-icon .magnifier {
+            width: 60px;
+            height: 60px;
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        .search-icon .handle {
+            width: 20px;
+            height: 30px;
+            background: var(--primary);
+            position: absolute;
+            top: 50px;
+            left: 60px;
+            transform: rotate(45deg);
+        }
+
+        .calendar-icon {
+            width: 80px;
+            height: 80px;
+            border: 3px solid var(--primary);
+            border-radius: 5px;
+            position: relative;
+            animation: pulse 2s infinite;
+        }
+
+        .calendar-icon::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 20px;
+            background: var(--primary);
+            top: 0;
+            left: 0;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .calendar-icon .day {
+            position: absolute;
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .disconnect-icon {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            animation: wobble 3s infinite;
+        }
+
+        .disconnect-icon .user1,
+        .disconnect-icon .user2 {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+            position: absolute;
+            top: 30px;
+        }
+
+        .disconnect-icon .user1 {
+            left: 10px;
+        }
+
+        .disconnect-icon .user2 {
+            right: 10px;
+        }
+
+        .disconnect-icon .line {
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+            position: absolute;
+            top: 50px;
+            left: 20px;
+            opacity: 0.3;
+        }
+
+        /* Solution slide icon */
+        .match-icon {
+            width: 200px;
+            height: 150px;
+            position: relative;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .match-icon .user1,
+        .match-icon .user2 {
+            width: 60px;
+            height: 60px;
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+            position: absolute;
+            top: 45px;
+        }
+
+        .match-icon .user1 {
+            left: 40px;
+            background: linear-gradient(45deg, transparent 40%, rgba(37, 99, 235, 0.2) 100%);
+        }
+
+        .match-icon .user2 {
+            right: 40px;
+            background: linear-gradient(-45deg, transparent 40%, rgba(37, 99, 235, 0.2) 100%);
+        }
+
+        .match-icon .connection {
+            width: 60px;
+            height: 3px;
+            background: var(--secondary);
+            position: absolute;
+            top: 75px;
+            left: 70px;
+            animation: pulse 2s infinite;
+        }
+
+        .match-icon .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--secondary);
+            top: 65px;
+            left: 90px;
+            transform: rotate(45deg);
+            animation: pulse 1.5s infinite;
+        }
+
+        .match-icon .heart::before,
+        .match-icon .heart::after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background: var(--secondary);
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .match-icon .heart::before {
+            top: -10px;
+            left: 0;
+        }
+
+        .match-icon .heart::after {
+            top: 0;
+            left: -10px;
+        }
+
+        /* Market opportunity icon */
+        .market-icon {
+            width: 120px;
+            height: 120px;
+            position: relative;
+        }
+
+        .market-icon .pie {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 10px solid transparent;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            animation: rotate 8s linear infinite;
+        }
+
+        .market-icon .pie:nth-child(1) {
+            border-top-color: var(--primary);
+            border-right-color: var(--primary);
+        }
+
+        .market-icon .pie:nth-child(2) {
+            border-bottom-color: var(--secondary);
+            border-left-color: var(--secondary);
+            animation-direction: reverse;
+        }
+
+        /* Business model icon */
+        .business-icon {
+            width: 120px;
+            height: 120px;
+            position: relative;
+        }
+
+        .business-icon .cube {
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            transform-style: preserve-3d;
+            animation: spin 8s linear infinite;
+        }
+
+        .business-icon .face {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border: 2px solid var(--primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            color: var(--primary);
+        }
+
+        .business-icon .front { transform: translateZ(30px); }
+        .business-icon .back { transform: rotateY(180deg) translateZ(30px); }
+        .business-icon .right { transform: rotateY(90deg) translateZ(30px); }
+        .business-icon .left { transform: rotateY(-90deg) translateZ(30px); }
+        .business-icon .top { transform: rotateX(90deg) translateZ(30px); }
+        .business-icon .bottom { transform: rotateX(-90deg) translateZ(30px); }
+
+        /* Financials icon */
+        .financial-icon {
+            width: 120px;
+            height: 120px;
+            position: relative;
+        }
+
+        .financial-icon .graph {
+            position: absolute;
+            width: 100px;
+            height: 80px;
+            bottom: 0;
+            left: 10px;
+            border-left: 2px solid var(--primary);
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .financial-icon .bar {
+            position: absolute;
+            bottom: 0;
+            width: 15px;
+            background: linear-gradient(to top, var(--primary), var(--secondary));
+            animation: grow 2s ease-out forwards;
+        }
+
+        .financial-icon .bar:nth-child(1) { height: 30px; left: 10px; animation-delay: 0.2s; }
+        .financial-icon .bar:nth-child(2) { height: 50px; left: 30px; animation-delay: 0.4s; }
+        .financial-icon .bar:nth-child(3) { height: 70px; left: 50px; animation-delay: 0.6s; }
+        .financial-icon .bar:nth-child(4) { height: 90px; left: 70px; animation-delay: 0.8s; }
+
+        /* Team icon */
+        .team-icon {
+            width: 120px;
+            height: 120px;
+            position: relative;
+        }
+
+        .team-icon .person1,
+        .team-icon .person2 {
+            width: 40px;
+            height: 80px;
+            position: absolute;
+            bottom: 0;
+        }
+
+        .team-icon .person1 {
+            left: 20px;
+        }
+
+        .team-icon .person2 {
+            right: 20px;
+        }
+
+        .team-icon .head {
+            width: 30px;
+            height: 30px;
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 5px;
+        }
+
+        .team-icon .body {
+            width: 20px;
+            height: 40px;
+            border: 3px solid var(--primary);
+            border-top: none;
+            border-radius: 0 0 10px 10px;
+            position: absolute;
+            top: 30px;
+            left: 10px;
+        }
+
+        .team-icon .connection {
+            width: 40px;
+            height: 3px;
+            background: var(--secondary);
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            animation: pulse 2s infinite;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.05); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: rotate(0deg); }
+            10%, 30%, 50%, 70%, 90% { transform: rotate(-5deg); }
+            20%, 40%, 60%, 80% { transform: rotate(5deg); }
+        }
+
+        @keyframes wobble {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes spin {
+            0% { transform: rotateX(0) rotateY(0); }
+            100% { transform: rotateX(360deg) rotateY(360deg); }
+        }
+
+        @keyframes grow {
+            0% { height: 0; }
+            100% { height: var(--h); }
+        }
+
+        /* Navigation elements */
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            height: 40px;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--gradient);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .slide-nav {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .nav-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active {
+            background: var(--primary);
+            transform: scale(1.3);
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Buttons and links */
+        .cta-button {
+            display: inline-block;
+            background: var(--gradient);
+            color: var(--light);
+            padding: 0.7rem 1.8rem;
+            border-radius: 30px;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+        }
+
+        .contact-info a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--primary);
+        }
+
+        .budget-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 0.8rem;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
+
+        .home-link {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--light);
+            text-decoration: none;
+            z-index: 100;
+            background: rgba(37, 99, 235, 0.7);
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .home-link:hover {
+            background: rgba(37, 99, 235, 0.9);
+            transform: translateX(-50%) translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
+
+        .highlight {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Stats grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+
+        .left {
+            left: 0;
+            text-align: right;
+        }
+
+        .right {
+            left: 50%;
+            text-align: left;
+        }
+
+        .left::after {
+            right: -10px;
+        }
+
+        .right::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .timeline-date {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .slide {
+                padding: 70px 5% 50px;
+            }
+            
+            .slide-title {
+                font-size: 2rem;
+            }
+            
+            .slide-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .tech-icon {
+                height: 150px;
+            }
+            
+            .contact-info {
+                gap: 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item::after {
+                left: 21px;
+            }
+
+            .left, .right {
+                left: 0;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+  <div class="slide-container">
+    <!-- Cover Slide -->
+    <div class="slide active">
+      <div class="logo">
+        <div class="logo-icon">
+            <i class="fas fa-hands-helping"></i>
+        </div>
+        <span class="logo-text">VolunteerHub</span>
+      </div>
+      <div class="slide-header">
+        <h1 class="slide-title">Revolutionizing Volunteer Engagement with AI</h1>
+        <p class="slide-subtitle">The intelligent platform that matches skills with needs to maximize social impact</p>
+      </div>
+      <div class="slide-content">
+        <div class="tech-icon">
+          <div class="hands-icon">
+            <div class="hand-left"></div>
+            <div class="hand-right"></div>
+            <div class="connection"></div>
+          </div>
+        </div>
+        <button class="cta-button" onclick="location.href='#contact'">Invest in Social Impact</button>
+      </div>
+      <div class="footer">Confidential - For Investor Review Only</div>
+    </div>
+
+    <!-- Problem Slide -->
+    <div class="slide">
+      <div class="logo">
+        <div class="logo-icon">
+            <i class="fas fa-hands-helping"></i>
+        </div>
+        <span class="logo-text">VolunteerHub</span>
+      </div>
+      <div class="slide-header">
+        <h1 class="slide-title">The Volunteer Engagement Problem</h1>
+        <p class="slide-subtitle">Current solutions fail to connect volunteers with meaningful opportunities efficiently</p>
+      </div>
+      <div class="slide-content">
+        <div class="content-grid">
+          <div class="card">
+            <h3 class="card-title">Inefficient Matching</h3>
+            <div class="tech-icon">
+              <div class="search-icon">
+                <div class="magnifier"></div>
+                <div class="handle"></div>
+              </div>
+            </div>
+            <ul class="card-content">
+              <li>70% of volunteers report difficulty finding relevant opportunities</li>
+              <li>Organizations struggle to find skilled volunteers</li>
+              <li>Manual matching processes are time-consuming</li>
+            </ul>
+          </div>
+          
+          <div class="card">
+            <h3 class="card-title">Low Engagement</h3>
+            <div class="tech-icon">
+              <div class="calendar-icon">
+                <div class="day">23</div>
+              </div>
+            </div>
+            <ul class="card-content">
+              <li>45% of volunteers don't return after first experience</li>
+              <li>Lack of personalization leads to disengagement</li>
+              <li>No effective way to track and recognize contributions</li>
+            </ul>
+          </div>
+          
+          <div class="card">
+            <h3 class="card-title">Disconnected Ecosystem</h3>
+            <div class="tech-icon">
+              <div class="disconnect-icon">
+                <div class="user1"></div>
+                <div class="user2"></div>
+                <div class="line"></div>
+              </div>
+            </div>
+            <ul class="card-content">
+              <li>No centralized platform for all stakeholders</li>
+              <li>Nonprofits operate in silos with duplicate efforts</li>
+              <li>Volunteers can't easily transfer skills/experience</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer">2</div>
+    </div>
+
+    <!-- Solution Slide -->
+    <div class="slide">
+      <div class="logo">
+        <div class="logo-icon">
+            <i class="fas fa-hands-helping"></i>
+        </div>
+        <span class="logo-text">VolunteerHub</span>
+      </div>
+      <div class="slide-header">
+        <h1 class="slide-title">The VolunteerHub Solution</h1>
+        <p class="slide-subtitle">AI-powered platform that creates perfect matches between volunteers and organizations</p>
+      </div>
+      <div class="slide-content">
+        <div class="tech-icon">
+          <div class="match-icon">
+            <div class="user1"></div>
+            <div class="user2"></div>
+            <div class="connection"></div>
+            <div class="heart"></div>
+          </div>
+        </div>
+        <div class="content-grid">
+          <div class="card">
+            <h3 class="card-title">AI Matching Engine</h3>
+            <ul class="card-content">
+              <li><span class="highlight">GPT-3.5 powered analysis</span> of skills and needs</li>
+              <li><span class="highlight">Natural language processing</span> for intuitive search</li>
+              <li><span class="highlight">Behavioral matching</span> based on personality and preferences</li>
+            </ul>
+          </div>
+          
+          <div class="card">
+            <h3 class="card-title">Engagement Features</h3>
+            <ul class="card-content">
+              <li>Gamification with badges and achievements</li>
+              <li>Personalized impact tracking</li>
+              <li>Community building tools</li>
+              <li>Skill development pathways</li>
+            </ul>
+          </div>
+          
+          <div class="card">
+            <h3 class="card-title">Unified Platform</h3>
+            <ul class="card-content">
+              <li><span class="highlight">Centralized hub</span> for all stakeholders</li>
+              <li><span class="highlight">Real-time opportunity map</span> with geospatial visualization</li>
+              <li><span class="highlight">Seamless integration</span> with existing systems</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer">3</div>
+    </div>
+
+    <!-- Market Opportunity Slide -->
+    <div class="slide">
+      <div class="logo">
+        <div class="logo-icon">
+            <i class="fas fa-hands-helping"></i>
+        </div>
+        <span class="logo-text">VolunteerHub</span>
+      </div>
+      <div class="slide-header">
+        <h1 class="slide-title">Market Opportunity</h1>
+        <p class="slide-subtitle">Addressing a massive, growing market with multiple revenue streams</p>
+      </div>
+      <div class="slide-content">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">$2.6B</div>
+                <div class="stat-label">Volunteer Management Software Market (2025)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">63M</div>
+                <div class="stat-label">Annual Volunteers in US Alone</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">1.5M</div>
+                <div class="stat-label">Nonprofits in US Needing Solutions</div>
+            </div>
+        </div>
+        <div class="content-grid">
+          <div class="card">
+            <h3 class="card-title">Target Segments</h3>
+            <div class="tech-icon">
+              <div class="market-icon">
+                <div class="pie"></div>
+                <div class="pie"></div>
+              </div>
+            </div>
+            <ul class="card-content">
+              <li><span class="highlight">Nonprofits & NGOs</span> - All sizes from local to international</li>
+              <li><span class="highlight">Corporate CSR Programs</span> - Employee volunteering</li>
+              <li><span class="highlight">Educational Institutions</span> - Service learning programs</li>
+            </ul>
+          </div>
+          
+          <div class="card">
+            <h3 class="card-title">Revenue Model</h3>
+            <div class="tech-icon">
+              <div class="business-icon">
+                <div class="cube">
+                  <div class="face front">SaaS</div>
+                  <div class="face back">B2B</div>
+                  <div class="face right">B2C</div>
+                  <div class="face left">API</div>
+                  <div class="face top">Data</div>
+                  <div class="face bottom">Ads</div>
+                </div>
+              </div>
+            </div>
+            <ul class="card-content">
+              <li><span class="highlight">Subscription tiers</span> for organizations</li>
+              <li><span class="highlight">Premium features</span> for power volunteers</li>
+              <li><span class="highlight">Enterprise licensing</span> for corporations</li>
+              <li><span class="highlight">Data insights</span> for foundations</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer">4</div>
+    </div>
+
+    <!-- Technology Slide -->
+    <div class="slide">
+      <div class="logo">
+        <div class="logo-icon">
+            <i class="fas fa-hands-helping"></i>
+        </div>
+        <span class="logo-text">VolunteerHub</span>
+      </div>
+      <div class="slide-header">
+        <h1 class="slide-title">Technology Stack</h1>
+        <p class="slide-subtitle">Cutting-edge technologies powering our intelligent matching platform</p>
+      </div>
+      <div class="slide-content">
+        <div class="content-grid">
+          <div class="card">
+            <h3 class="card-title">AI/ML Core</h3>
+            <ul class="card-content">
+              <li><span class="highlight">OpenAI GPT-3.5-turbo</span> for NLP and matching</li>
+              <li><span class="highlight">Custom recommendation algorithms</span> trained on volunteer data</li>
+              <li><span class="highlight">Behavioral prediction models</span> to reduce attrition</li>
+            </ul>
+          </div>
+          
+          <div class="card">
+            <h3 class="card-title">Platform Architecture</h3>
+            <ul class="card-content">
+              <li><span class="highlight">React/Next.js</span> frontend with interactive maps</li>
+              <li><span class="highlight">Node.js</span> backend with microservices</li>
+              <li><span class="highlight">MongoDB</span> for flexible data models</li>
+              <li><span class="highlight">AWS</span> cloud infrastructure</li>
+            </ul>
+          </div>
+          
+          <div class="card">
+            <h3 class="card-title">Differentiators</h3>
+            <ul class="card-content">
+              <li><span class="highlight">Patent-pending matching algorithm</span></li>
+              <li><span class="highlight">Real-time geospatial visualization</span></li>
+              <li><span class="highlight">Open API for ecosystem integration</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer">5</div>
+    </div>
+
+    <!-- Traction Slide -->
+    <div class="slide">
+      <div class="logo">
+        <div class="logo-icon">
+            <i class="fas fa-hands-helping"></i>
+        </div>
+        <span class="logo-text">VolunteerHub</span>
+      </div>
+      <div class="slide-header">
+        <h1 class="slide-title">Traction & Milestones</h1>
+        <p class="slide-subtitle">Strong early validation of our platform and approach</p>
+      </div>
+      <div class="slide-content">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">250+</div>
+                <div class="stat-label">Organizations in Pipeline</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">15K</div>
+                <div class="stat-label">Waitlist Signups</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">92%</div>
+                <div class="stat-label">Match Satisfaction in Beta</div>
+            </div>
+        </div>
+        
+        <div class="timeline">
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="timeline-date">Q1 2024</div>
+                    <p>Concept validation with 50 nonprofits</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-date">Q2 2024</div>
+                    <p>Closed $500K pre-seed round</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="timeline-date">Q3 2024</div>
+                    <p>Launched private beta with 100 organizations</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-date">Q4 2024</div>
+                    <p>Partnerships with 3 major volunteer networks</p>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="footer">6</div>
+    </div>
+
+    <!-- Business Model Slide -->
+    <div class="slide">
+      <div class="logo">
+        <div class="logo-icon">
+            <i class="fas fa-hands-helping"></i>
+        </div>
+        <span class="logo-text">VolunteerHub</span>
+      </div>
+      <div class="slide-header">
+        <h1 class="slide-title">Business Model</h1>
+        <p class="slide-subtitle">Sustainable revenue with multiple growth vectors</p>
+      </div>
+      <div class="slide-content">
+        <div class="content-grid">
+          <div class="card">
+            <h3 class="card-title">Pricing Tiers</h3>
+            <div class="tech-icon">
+              <div class="financial-icon">
+                <div class="graph">
+                  <div class="bar" style="--h: 40px;"></div>
+                  <div class="bar" style="--h: 60px;"></div>
+                  <div class="bar" style="--h: 80px;"></div>
+                  <div class="bar" style="--h: 100px;"></div>
+                </div>
+              </div>
+            </div>
+            <ul class="card-content">
+              <li><span class="highlight">Basic</span> - $99/month for small nonprofits</li>
+              <li><span class="highlight">Professional</span> - $299/month with advanced features</li>
+              <li><span class="highlight">Enterprise</span> - Custom pricing for large organizations</li>
+              <li><span class="highlight">Corporate</span> - $10/employee/month for CSR programs</li>
+            </ul>
+          </div>
+          
+          <div class="card">
+            <h3 class="card-title">Growth Strategy</h3>
+            <div class="tech-icon">
+              <div class="market-icon">
+                <div class="pie"></div>
+                <div class="pie"></div>
+              </div>
+            </div>
+            <ul class="card-content">
+              <li><span class="highlight">Land-and-expand</span> within nonprofit networks</li>
+              <li><span class="highlight">Strategic partnerships</span> with volunteer councils</li>
+              <li><span class="highlight">Viral growth</span> through volunteer sharing</li>
+              <li><span class="highlight">API integrations</span> with existing platforms</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer">7</div>
+    </div>
+
+    <!-- Financial Projections Slide -->
+    <div class="slide">
+      <div class="logo">
+        <div class="logo-icon">
+            <i class="fas fa-hands-helping"></i>
+        </div>
+        <span class="logo-text">VolunteerHub</span>
+      </div>
+      <div class="slide-header">
+        <h1 class="slide-title">Financial Projections</h1>
+        <p class="slide-subtitle">Path to profitability with capital efficiency</p>
+      </div>
+      <div class="slide-content">
+        <div class="content-grid">
+          <div class="card">
+            <h3 class="card-title">Key Metrics</h3>
+            <div class="tech-icon">
+              <div class="financial-icon">
+                <div class="graph">
+                  <div class="bar" style="--h: 30px;"></div>
+                  <div class="bar" style="--h: 60px;"></div>
+                  <div class="bar" style="--h: 90px;"></div>
+                  <div class="bar" style="--h: 120px;"></div>
+                </div>
+              </div>
+            </div>
+            <ul class="card-content">
+              <li><span class="highlight">Year 1</span> - $1.2M ARR (1,000 orgs)</li>
+              <li><span class="highlight">Year 2</span> - $5M ARR (4,000 orgs)</li>
+              <li><span class="highlight">Year 3</span> - $15M ARR (12,000 orgs)</li>
+              <li>80% gross margins</li>
+              <li>12 month payback period</li>
+            </ul>
+            <a href="#" class="budget-link">View Detailed Financial Model →</a>
+          </div>
+          
+          <div class="card">
+            <h3 class="card-title">Use of Funds</h3>
+            <div class="tech-icon">
+              <div class="business-icon">
+                <div class="cube">
+                  <div class="face front">Eng</div>
+                  <div class="face back">Sales</div>
+                  <div class="face right">AI</div>
+                  <div class="face left">Ops</div>
+                  <div class="face top">G&A</div>
+                  <div class="face bottom">Growth</div>
+                </div>
+              </div>
+            </div>
+            <ul class="card-content">
+              <li>40% Engineering & Product</li>
+              <li>30% Sales & Marketing</li>
+              <li>20% AI Research</li>
+              <li>10% Operations</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer">8</div>
+    </div>
+
+    <!-- Team Slide -->
+    <div class="slide">
+      <div class="logo">
+        <div class="logo-icon">
+            <i class="fas fa-hands-helping"></i>
+        </div>
+        <span class="logo-text">VolunteerHub</span>
+      </div>
+      <div class="slide-header">
+        <h1 class="slide-title">The Team</h1>
+        <p class="slide-subtitle">Passionate experts with complementary skills</p>
+      </div>
+      <div class="slide-content">
+        <div class="tech-icon">
+          <div class="team-icon">
+            <div class="person1">
+              <div class="head"></div>
+              <div class="body"></div>
+            </div>
+            <div class="person2">
+              <div class="head"></div>
+              <div class="body"></div>
+            </div>
+            <div class="connection"></div>
+          </div>
+        </div>
+        <div class="content-grid">
+          <div class="card">
+            <h3 class="card-title">Sarveshwar Senthil Kumar</h3>
+            <ul class="card-content">
+              <li><span class="highlight">Co-Founder & Lead Developer</span></li>
+              <li>Former tech lead at AI startup</li>
+              <li>Open source contributor</li>
+              <li>Passionate about social impact tech</li>
+            </ul>
+          </div>
+          
+          <div class="card">
+            <h3 class="card-title">Devansh Goyal</h3>
+            <ul class="card-content">
+              <li><span class="highlight">Co-Founder & Technical Lead</span></li>
+              <li>Full-stack development expert</li>
+              <li>Scalable systems architect</li>
+              <li>Community building experience</li>
+            </ul>
+          </div>
+          
+          <div class="card">
+            <h3 class="card-title">Advisors</h3>
+            <ul class="card-content">
+              <li><span class="highlight">Nonprofit Executive</span> - 20 years experience</li>
+              <li><span class="highlight">AI Researcher</span> - NLP specialization</li>
+              <li><span class="highlight">SaaS Founder</span> - Successful exit</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer">9</div>
+    </div>
+
+    <!-- Competition Slide -->
+    <div class="slide">
+      <div class="logo">
+        <div class="logo-icon">
+            <i class="fas fa-hands-helping"></i>
+        </div>
+        <span class="logo-text">VolunteerHub</span>
+      </div>
+      <div class="slide-header">
+        <h1 class="slide-title">Competitive Landscape</h1>
+        <p class="slide-subtitle">Unique positioning in a fragmented market</p>
+      </div>
+      <div class="slide-content">
+        <div class="content-grid">
+          <div class="card">
+            <h3 class="card-title">Traditional Solutions</h3>
+            <ul class="card-content">
+              <li><span class="highlight">VolunteerMatch</span> - Basic matching, no AI</li>
+              <li><span class="highlight">SignUpGenius</span> - Simple scheduling tool</li>
+              <li><span class="highlight">Excel/Google Sheets</span> - Manual processes</li>
+            </ul>
+          </div>
+          
+          <div class="card">
+            <h3 class="card-title">Our Advantages</h3>
+            <ul class="card-content">
+              <li><span class="highlight">AI-powered matching</span> - Superior fit</li>
+              <li><span class="highlight">Comprehensive platform</span> - End-to-end solution</li>
+              <li><span class="highlight">Engagement focus</span> - Higher retention</li>
+              <li><span class="highlight">Data-driven insights</span> - Measurable impact</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer">10</div>
+    </div>
+
+    <!-- Vision Slide -->
+    <div class="slide">
+      <div class="logo">
+        <div class="logo-icon">
+            <i class="fas fa-hands-helping"></i>
+        </div>
+        <span class="logo-text">VolunteerHub</span>
+      </div>
+      <div class="slide-header">
+        <h1 class="slide-title">Our Vision</h1>
+        <p class="slide-subtitle">Creating a world where everyone can easily contribute their skills to causes they care about</p>
+      </div>
+      <div class="slide-content">
+        <div class="content-grid">
+          <div class="card">
+            <h3 class="card-title">Short-Term Goals</h3>
+            <ul class="card-content">
+              <li>Launch public beta in Q1 2025</li>
+              <li>Onboard 1,000 paying organizations</li>
+              <li>Reach 100,000 active volunteers</li>
+              <li>Establish key partnerships</li>
+            </ul>
+          </div>
+          
+          <div class="card">
+            <h3 class="card-title">Long-Term Vision</h3>
+            <ul class="card-content">
+              <li>Become the LinkedIn for volunteering</li>
+              <li>Global platform for social impact</li>
+              <li>AI that predicts community needs</li>
+              <li>Standard for measuring volunteer impact</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer">11</div>
+    </div>
+
+    <!-- Investment Opportunity Slide -->
+    <div class="slide" id="contact">
+      <div class="logo">
+        <div class="logo-icon">
+            <i class="fas fa-hands-helping"></i>
+        </div>
+        <span class="logo-text">VolunteerHub</span>
+      </div>
+      <div class="slide-header">
+        <h1 class="slide-title">Investment Opportunity</h1>
+        <p class="slide-subtitle">Join us in building the future of volunteer engagement</p>
+      </div>
+      <div class="slide-content">
+        <div class="content-grid">
+          <div class="card">
+            <h3 class="card-title">Why Invest</h3>
+            <div class="tech-icon">
+              <div class="market-icon">
+                <div class="pie"></div>
+                <div class="pie"></div>
+              </div>
+            </div>
+            <ul class="card-content">
+              <li>Massive <span class="highlight">$2.6B market</span> with no clear leader</li>
+              <li>Proven <span class="highlight">team with relevant expertise</span></li>
+              <li>Strong <span class="highlight">early traction</span> and validation</li>
+              <li>Clear <span class="highlight">path to profitability</span></li>
+            </ul>
+          </div>
+          
+          <div class="card">
+            <h3 class="card-title">Funding Round</h3>
+            <div class="tech-icon">
+              <div class="financial-icon">
+                <div class="graph">
+                  <div class="bar" style="--h: 50px;"></div>
+                  <div class="bar" style="--h: 100px;"></div>
+                  <div class="bar" style="--h: 150px;"></div>
+                </div>
+              </div>
+            </div>
+            <ul class="card-content">
+              <li><span class="highlight">$2M Seed Round</span></li>
+              <li>18 month runway</li>
+              <li>Product development & initial growth</li>
+              <li>Valuation: $10M pre-money</li>
+            </ul>
+          </div>
+        </div>
+        
+        <button class="cta-button" onclick="window.location.href='mailto:sarveshwar313@gmail.com'">Schedule a Meeting</button>
+        
+        <div class="contact-info">
+          <a href="https://www.linkedin.com/in/sarveshwarsenthilkumar/" target="_blank">LinkedIn</a>
+          <a href="https://github.com/SarveshwarSenthilKumar" target="_blank">GitHub</a>
+          <a href="https://sarveshwarsenthilkumar.github.io" target="_blank">Personal Website</a>
+          <a href="tel:+14374504378">+1 (437) 450-4378</a>
+          <a href="mailto:sarveshwar313@gmail.com">Email</a>
+        </div>
+      </div>
+      <a href="index.html" class="home-link">
+        <i class="fas fa-arrow-left"></i> Return to Main Site
+      </a>
+      <div class="footer">12</div>
+    </div>
+  </div>
+
+  <!-- Navigation Dots -->
+  <div class="slide-nav">
+    <div class="nav-dot active" data-slide="0"></div>
+    <div class="nav-dot" data-slide="1"></div>
+    <div class="nav-dot" data-slide="2"></div>
+    <div class="nav-dot" data-slide="3"></div>
+    <div class="nav-dot" data-slide="4"></div>
+    <div class="nav-dot" data-slide="5"></div>
+    <div class="nav-dot" data-slide="6"></div>
+    <div class="nav-dot" data-slide="7"></div>
+    <div class="nav-dot" data-slide="8"></div>
+    <div class="nav-dot" data-slide="9"></div>
+    <div class="nav-dot" data-slide="10"></div>
+    <div class="nav-dot" data-slide="11"></div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const slides = document.querySelectorAll('.slide');
+      const dots = document.querySelectorAll('.nav-dot');
+      let currentSlide = 0;
+      let isAnimating = false;
+      
+      // Show initial slide
+      showSlide(currentSlide);
+      
+      // Keyboard navigation
+      document.addEventListener('keydown', function(e) {
+        if (isAnimating) return;
+        
+        switch(e.key) {
+          case 'ArrowRight':
+          case 'ArrowDown':
+          case 'PageDown':
+          case ' ':
+            nextSlide();
+            break;
+          case 'ArrowLeft':
+          case 'ArrowUp':
+          case 'PageUp':
+            prevSlide();
+            break;
+          case 'Home':
+            showSlide(0);
+            break;
+          case 'End':
+            showSlide(slides.length - 1);
+            break;
+        }
+      });
+      
+      // Dot navigation
+      dots.forEach(dot => {
+        dot.addEventListener('click', function() {
+          if (isAnimating) return;
+          const slideIndex = parseInt(this.getAttribute('data-slide'));
+          showSlide(slideIndex);
+        });
+      });
+      
+      // Touch/swipe support
+      let touchStartX = 0;
+      let touchEndX = 0;
+      
+      document.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].screenX;
+      }, false);
+      
+      document.addEventListener('touchend', function(e) {
+        if (isAnimating) return;
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      }, false);
+      
+      function handleSwipe() {
+        if (touchEndX < touchStartX - 50) {
+          nextSlide();
+        }
+        if (touchEndX > touchStartX + 50) {
+          prevSlide();
+        }
+      }
+      
+      function showSlide(n) {
+        isAnimating = true;
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        
+        currentSlide = (n + slides.length) % slides.length;
+        slides[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active');
+        
+        // Ensure we're scrolled to top
+        slides[currentSlide].scrollTop = 0;
+        
+        // Reset animation lock after transition
+        setTimeout(() => {
+          isAnimating = false;
+        }, 500);
+      }
+      
+      function nextSlide() {
+        showSlide(currentSlide + 1);
+      }
+      
+      function prevSlide() {
+        showSlide(currentSlide - 1);
+      }
+    });
+  </script>
+
+</body>
+</html>
