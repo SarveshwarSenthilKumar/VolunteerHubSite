@@ -5,20 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VolunteerHub | AI-Powered Volunteer Matching Platform</title>
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/905/905901.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap');
 
         :root {
             --primary: #2563eb;
+            --primary-dark: #1d4ed8;
             --secondary: #3b82f6;
             --accent: #60a5fa;
+            --accent-light: #93c5fd;
             --dark: #0a0f1a;
             --darker: #111827;
             --darkest: #1e293b;
             --light: #f8fafc;
             --gray: #94a3b8;
+            --gray-light: #e2e8f0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
             --gradient: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
             --gradient-secondary: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+            --gradient-accent: linear-gradient(135deg, #60a5fa 0%, #a855f7 100%);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
 
         * {
@@ -35,6 +46,7 @@
             overflow-y: hidden;
             height: 100vh;
             overflow: hidden;
+            line-height: 1.6;
         }
 
         .slide-container {
@@ -52,10 +64,11 @@
             top: 0;
             left: 0;
             overflow: hidden;
-            transition: transform 0.5s ease;
+            transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
             transform: translateX(100%);
             display: flex;
             flex-direction: column;
+            background: radial-gradient(ellipse at top left, rgba(37, 99, 235, 0.1) 0%, transparent 50%);
         }
 
         .slide.active {
@@ -68,20 +81,24 @@
         }
 
         .slide-title {
-            font-size: 2.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.2rem;
             background: linear-gradient(to right, var(--primary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             line-height: 1.2;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: -0.5px;
         }
 
         .slide-subtitle {
-            font-size: 1.3rem;
-            color: var(--gray);
-            margin-bottom: 1rem;
-            max-width: 800px;
+            font-size: 1.4rem;
+            color: var(--gray-light);
+            margin-bottom: 1.5rem;
+            max-width: 900px;
+            font-weight: 400;
+            line-height: 1.5;
         }
 
         .slide-content {
@@ -94,57 +111,72 @@
         .content-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 1rem;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .card {
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 1.5rem;
+            border-radius: 16px;
+            padding: 2rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.4s ease;
             height: 100%;
             overflow: hidden;
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
-            border-color: rgba(59, 130, 246, 0.3);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: rgba(59, 130, 246, 0.5);
+            background: rgba(255, 255, 255, 0.08);
         }
 
         .card-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
             color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .card-title i {
+            font-size: 1.2rem;
         }
 
         .card-content {
-            color: var(--gray);
-            line-height: 1.5;
-            font-size: 0.95rem;
+            color: var(--gray-light);
+            line-height: 1.7;
+            font-size: 1rem;
             overflow: hidden;
         }
 
         .card-content li {
-            margin-bottom: 0.4rem;
-            padding-left: 1rem;
+            margin-bottom: 0.6rem;
+            padding-left: 1.5rem;
+            position: relative;
         }
 
         .card-content li::before {
-            content: '•';
+            content: '';
             position: absolute;
             left: 0;
-            color: var(--secondary);
+            top: 0.6em;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--secondary);
         }
 
         /* Custom animated icons */
         .tech-icon {
             width: 100%;
             height: 200px;
-            margin: 1rem 0;
+            margin: 1.5rem 0;
             position: relative;
             display: flex;
             justify-content: center;
@@ -153,225 +185,238 @@
 
         /* Cover slide icon */
         .hands-icon {
-            width: 180px;
-            height: 180px;
+            width: 220px;
+            height: 220px;
             position: relative;
-            animation: float 4s ease-in-out infinite;
+            animation: float 6s ease-in-out infinite;
         }
 
         .hands-icon .hand-left,
         .hands-icon .hand-right {
             position: absolute;
-            width: 60px;
-            height: 100px;
+            width: 80px;
+            height: 120px;
             background: var(--primary);
-            border-radius: 50px;
-            animation: pulse 2s infinite alternate;
+            border-radius: 60px;
+            animation: pulse 3s infinite alternate;
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
         }
 
         .hands-icon .hand-left {
             left: 30px;
-            top: 40px;
+            top: 50px;
             transform: rotate(-20deg);
-            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            background: var(--gradient);
         }
 
         .hands-icon .hand-right {
             right: 30px;
-            top: 40px;
+            top: 50px;
             transform: rotate(20deg);
-            background: linear-gradient(to bottom, var(--secondary), var(--primary));
+            background: var(--gradient-secondary);
         }
 
         .hands-icon .connection {
             position: absolute;
-            width: 40px;
-            height: 10px;
+            width: 60px;
+            height: 15px;
             background: var(--accent);
-            border-radius: 5px;
-            top: 70px;
+            border-radius: 8px;
+            top: 90px;
             left: 50%;
             transform: translateX(-50%);
+            box-shadow: 0 0 20px rgba(96, 165, 250, 0.6);
+            animation: pulse 2.5s infinite;
         }
 
         /* Problem slide icons */
         .search-icon {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             position: relative;
-            animation: shake 3s infinite;
+            animation: shake 4s infinite;
         }
 
         .search-icon .magnifier {
-            width: 60px;
-            height: 60px;
-            border: 3px solid var(--primary);
+            width: 80px;
+            height: 80px;
+            border: 4px solid var(--primary);
             border-radius: 50%;
             position: absolute;
             top: 10px;
             left: 10px;
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
         }
 
         .search-icon .handle {
-            width: 20px;
-            height: 30px;
+            width: 30px;
+            height: 40px;
             background: var(--primary);
             position: absolute;
-            top: 50px;
-            left: 60px;
+            top: 70px;
+            left: 80px;
             transform: rotate(45deg);
+            border-radius: 3px;
         }
 
         .calendar-icon {
-            width: 80px;
-            height: 80px;
-            border: 3px solid var(--primary);
-            border-radius: 5px;
+            width: 100px;
+            height: 100px;
+            border: 4px solid var(--primary);
+            border-radius: 8px;
             position: relative;
-            animation: pulse 2s infinite;
+            animation: pulse 2.5s infinite;
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
         }
 
         .calendar-icon::before {
             content: '';
             position: absolute;
             width: 100%;
-            height: 20px;
+            height: 25px;
             background: var(--primary);
             top: 0;
             left: 0;
-            border-radius: 5px 5px 0 0;
+            border-radius: 8px 8px 0 0;
         }
 
         .calendar-icon .day {
             position: absolute;
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: bold;
             color: var(--primary);
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            text-shadow: 0 2px 5px rgba(37, 99, 235, 0.3);
         }
 
         .disconnect-icon {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             position: relative;
-            animation: wobble 3s infinite;
+            animation: wobble 4s infinite;
         }
 
         .disconnect-icon .user1,
         .disconnect-icon .user2 {
-            width: 40px;
-            height: 40px;
-            border: 3px solid var(--primary);
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--primary);
             border-radius: 50%;
             position: absolute;
-            top: 30px;
+            top: 35px;
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
         }
 
         .disconnect-icon .user1 {
-            left: 10px;
+            left: 15px;
         }
 
         .disconnect-icon .user2 {
-            right: 10px;
+            right: 15px;
         }
 
         .disconnect-icon .line {
-            width: 60px;
-            height: 3px;
+            width: 70px;
+            height: 4px;
             background: var(--primary);
             position: absolute;
-            top: 50px;
-            left: 20px;
+            top: 60px;
+            left: 25px;
             opacity: 0.3;
         }
 
         /* Solution slide icon */
         .match-icon {
-            width: 200px;
-            height: 150px;
+            width: 240px;
+            height: 180px;
             position: relative;
-            animation: float 4s ease-in-out infinite;
+            animation: float 5s ease-in-out infinite;
         }
 
         .match-icon .user1,
         .match-icon .user2 {
-            width: 60px;
-            height: 60px;
-            border: 3px solid var(--primary);
+            width: 80px;
+            height: 80px;
+            border: 4px solid var(--primary);
             border-radius: 50%;
             position: absolute;
-            top: 45px;
+            top: 50px;
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.4);
         }
 
         .match-icon .user1 {
             left: 40px;
-            background: linear-gradient(45deg, transparent 40%, rgba(37, 99, 235, 0.2) 100%);
+            background: linear-gradient(45deg, transparent 40%, rgba(37, 99, 235, 0.3) 100%);
         }
 
         .match-icon .user2 {
             right: 40px;
-            background: linear-gradient(-45deg, transparent 40%, rgba(37, 99, 235, 0.2) 100%);
+            background: linear-gradient(-45deg, transparent 40%, rgba(37, 99, 235, 0.3) 100%);
         }
 
         .match-icon .connection {
-            width: 60px;
-            height: 3px;
+            width: 80px;
+            height: 4px;
             background: var(--secondary);
             position: absolute;
-            top: 75px;
-            left: 70px;
+            top: 90px;
+            left: 80px;
             animation: pulse 2s infinite;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
         }
 
         .match-icon .heart {
             position: absolute;
-            width: 20px;
-            height: 20px;
+            width: 25px;
+            height: 25px;
             background: var(--secondary);
-            top: 65px;
-            left: 90px;
+            top: 75px;
+            left: 107.5px;
             transform: rotate(45deg);
             animation: pulse 1.5s infinite;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
         }
 
         .match-icon .heart::before,
         .match-icon .heart::after {
             content: '';
-            width: 20px;
-            height: 20px;
+            width: 25px;
+            height: 25px;
             background: var(--secondary);
             border-radius: 50%;
             position: absolute;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
         }
 
         .match-icon .heart::before {
-            top: -10px;
+            top: -12.5px;
             left: 0;
         }
 
         .match-icon .heart::after {
             top: 0;
-            left: -10px;
+            left: -12.5px;
         }
 
         /* Market opportunity icon */
         .market-icon {
-            width: 120px;
-            height: 120px;
+            width: 140px;
+            height: 140px;
             position: relative;
         }
 
         .market-icon .pie {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            border: 10px solid transparent;
+            border: 15px solid transparent;
             position: absolute;
             top: 10px;
             left: 10px;
-            animation: rotate 8s linear infinite;
+            animation: rotate 10s linear infinite;
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
         }
 
         .market-icon .pie:nth-child(1) {
@@ -383,137 +428,233 @@
             border-bottom-color: var(--secondary);
             border-left-color: var(--secondary);
             animation-direction: reverse;
+            animation-duration: 12s;
         }
 
         /* Business model icon */
         .business-icon {
-            width: 120px;
-            height: 120px;
+            width: 140px;
+            height: 140px;
             position: relative;
         }
 
         .business-icon .cube {
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             position: absolute;
             top: 30px;
             left: 30px;
             transform-style: preserve-3d;
-            animation: spin 8s linear infinite;
+            animation: spin 10s linear infinite;
         }
 
         .business-icon .face {
             position: absolute;
-            width: 60px;
-            height: 60px;
-            border: 2px solid var(--primary);
+            width: 80px;
+            height: 80px;
+            border: 3px solid var(--primary);
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 12px;
+            font-size: 14px;
             color: var(--primary);
+            background: rgba(37, 99, 235, 0.1);
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.2);
         }
 
-        .business-icon .front { transform: translateZ(30px); }
-        .business-icon .back { transform: rotateY(180deg) translateZ(30px); }
-        .business-icon .right { transform: rotateY(90deg) translateZ(30px); }
-        .business-icon .left { transform: rotateY(-90deg) translateZ(30px); }
-        .business-icon .top { transform: rotateX(90deg) translateZ(30px); }
-        .business-icon .bottom { transform: rotateX(-90deg) translateZ(30px); }
+        .business-icon .front { transform: translateZ(40px); }
+        .business-icon .back { transform: rotateY(180deg) translateZ(40px); }
+        .business-icon .right { transform: rotateY(90deg) translateZ(40px); }
+        .business-icon .left { transform: rotateY(-90deg) translateZ(40px); }
+        .business-icon .top { transform: rotateX(90deg) translateZ(40px); }
+        .business-icon .bottom { transform: rotateX(-90deg) translateZ(40px); }
 
         /* Financials icon */
         .financial-icon {
-            width: 120px;
-            height: 120px;
+            width: 140px;
+            height: 140px;
             position: relative;
         }
 
         .financial-icon .graph {
             position: absolute;
-            width: 100px;
-            height: 80px;
-            bottom: 0;
+            width: 120px;
+            height: 100px;
+            bottom: 20px;
             left: 10px;
-            border-left: 2px solid var(--primary);
-            border-bottom: 2px solid var(--primary);
+            border-left: 3px solid var(--primary);
+            border-bottom: 3px solid var(--primary);
         }
 
         .financial-icon .bar {
             position: absolute;
             bottom: 0;
-            width: 15px;
-            background: linear-gradient(to top, var(--primary), var(--secondary));
-            animation: grow 2s ease-out forwards;
+            width: 20px;
+            background: var(--gradient);
+            border-radius: 5px 5px 0 0;
+            animation: grow 2.5s ease-out forwards;
+            box-shadow: 0 -5px 15px rgba(37, 99, 235, 0.4);
         }
 
-        .financial-icon .bar:nth-child(1) { height: 30px; left: 10px; animation-delay: 0.2s; }
-        .financial-icon .bar:nth-child(2) { height: 50px; left: 30px; animation-delay: 0.4s; }
-        .financial-icon .bar:nth-child(3) { height: 70px; left: 50px; animation-delay: 0.6s; }
-        .financial-icon .bar:nth-child(4) { height: 90px; left: 70px; animation-delay: 0.8s; }
+        .financial-icon .bar:nth-child(1) { height: 40px; left: 15px; animation-delay: 0.2s; }
+        .financial-icon .bar:nth-child(2) { height: 60px; left: 40px; animation-delay: 0.4s; }
+        .financial-icon .bar:nth-child(3) { height: 80px; left: 65px; animation-delay: 0.6s; }
+        .financial-icon .bar:nth-child(4) { height: 100px; left: 90px; animation-delay: 0.8s; }
 
         /* Team icon */
         .team-icon {
-            width: 120px;
-            height: 120px;
+            width: 140px;
+            height: 140px;
             position: relative;
         }
 
         .team-icon .person1,
         .team-icon .person2 {
-            width: 40px;
-            height: 80px;
+            width: 50px;
+            height: 100px;
             position: absolute;
-            bottom: 0;
+            bottom: 20px;
         }
 
         .team-icon .person1 {
-            left: 20px;
+            left: 25px;
         }
 
         .team-icon .person2 {
-            right: 20px;
+            right: 25px;
         }
 
         .team-icon .head {
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
             border: 3px solid var(--primary);
             border-radius: 50%;
             position: absolute;
             top: 0;
             left: 5px;
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
         }
 
         .team-icon .body {
-            width: 20px;
-            height: 40px;
+            width: 30px;
+            height: 50px;
             border: 3px solid var(--primary);
             border-top: none;
-            border-radius: 0 0 10px 10px;
+            border-radius: 0 0 15px 15px;
             position: absolute;
-            top: 30px;
+            top: 40px;
             left: 10px;
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
         }
 
         .team-icon .connection {
-            width: 40px;
-            height: 3px;
+            width: 50px;
+            height: 4px;
             background: var(--secondary);
             position: absolute;
-            top: 40px;
-            left: 40px;
+            top: 60px;
+            left: 45px;
             animation: pulse 2s infinite;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
         }
+
+        /* Testimonial icon */
+        .testimonial-icon {
+            width: 120px;
+            height: 120px;
+            position: relative;
+        }
+
+        .testimonial-icon .quote {
+            position: absolute;
+            width: 100px;
+            height: 80px;
+            border: 3px solid var(--primary);
+            border-radius: 10px;
+            top: 20px;
+            left: 10px;
+        }
+
+        .testimonial-icon .quote::before {
+            content: '"';
+            position: absolute;
+            font-size: 3rem;
+            color: var(--primary);
+            top: -10px;
+            left: 5px;
+            font-family: serif;
+        }
+
+        /* Competition icon */
+        .competition-icon {
+            width: 120px;
+            height: 120px;
+            position: relative;
+        }
+
+        .competition-icon .podium {
+            position: absolute;
+            width: 100px;
+            height: 60px;
+            bottom: 30px;
+            left: 10px;
+        }
+
+        .competition-icon .step1,
+        .competition-icon .step2,
+        .competition-icon .step3 {
+            position: absolute;
+            bottom: 0;
+            background: var(--gradient);
+            border-radius: 5px 5px 0 0;
+        }
+
+        .competition-icon .step1 { width: 30px; height: 30px; left: 35px; }
+        .competition-icon .step2 { width: 25px; height: 20px; left: 60px; }
+        .competition-icon .step3 { width: 20px; height: 10px; left: 15px; }
+
+        /* Roadmap icon */
+        .roadmap-icon {
+            width: 140px;
+            height: 140px;
+            position: relative;
+        }
+
+        .roadmap-icon .path {
+            position: absolute;
+            width: 5px;
+            height: 100px;
+            background: var(--primary);
+            left: 50%;
+            top: 20px;
+            transform: translateX(-50%);
+        }
+
+        .roadmap-icon .milestone {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: var(--secondary);
+            border-radius: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+        }
+
+        .roadmap-icon .milestone:nth-child(1) { top: 20px; }
+        .roadmap-icon .milestone:nth-child(2) { top: 45px; }
+        .roadmap-icon .milestone:nth-child(3) { top: 70px; }
+        .roadmap-icon .milestone:nth-child(4) { top: 95px; }
 
         /* Animations */
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            50% { transform: translateY(-25px); }
         }
 
         @keyframes pulse {
             0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.05); }
+            50% { opacity: 0.8; transform: scale(1.1); }
         }
 
         @keyframes shake {
@@ -524,8 +665,8 @@
 
         @keyframes wobble {
             0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
+            25% { transform: translateX(-8px); }
+            75% { transform: translateX(8px); }
         }
 
         @keyframes rotate {
@@ -539,67 +680,79 @@
         }
 
         @keyframes grow {
-            0% { height: 0; }
-            100% { height: var(--h); }
+            0% { height: 0; opacity: 0; }
+            100% { height: var(--h); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         /* Navigation elements */
         .logo {
             position: absolute;
-            top: 20px;
-            left: 20px;
-            height: 40px;
+            top: 25px;
+            left: 30px;
+            height: 50px;
             z-index: 100;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .logo-icon {
-            width: 36px;
-            height: 36px;
+            width: 42px;
+            height: 42px;
             background: var(--gradient);
-            border-radius: 10px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow);
         }
 
         .logo-text {
-            font-weight: 700;
-            font-size: 1.2rem;
+            font-weight: 800;
+            font-size: 1.4rem;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .slide-nav {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
+            bottom: 25px;
+            left: 30px;
             display: flex;
-            gap: 10px;
+            gap: 12px;
             z-index: 100;
         }
 
         .nav-dot {
-            width: 10px;
-            height: 10px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.3);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow);
         }
 
         .nav-dot.active {
             background: var(--primary);
-            transform: scale(1.3);
+            transform: scale(1.4);
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.5);
         }
 
         .footer {
             position: absolute;
-            bottom: 20px;
-            right: 20px;
-            font-size: 0.7rem;
-            color: rgba(255, 255, 255, 0.4);
+            bottom: 30px;
+            right: 30px;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
         }
 
         /* Buttons and links */
@@ -607,73 +760,100 @@
             display: inline-block;
             background: var(--gradient);
             color: var(--light);
-            padding: 0.7rem 1.8rem;
+            padding: 0.9rem 2.2rem;
             border-radius: 30px;
             font-weight: 600;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+            box-shadow: var(--shadow-lg);
             border: none;
             cursor: pointer;
-            font-size: 0.95rem;
+            font-size: 1rem;
+            text-decoration: none;
+            text-align: center;
+            max-width: 300px;
         }
 
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+            box-shadow: var(--shadow-xl);
+            background: var(--gradient-secondary);
+        }
+
+        .cta-button.secondary {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .cta-button.secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
         }
 
         .contact-info {
             display: flex;
-            gap: 1.2rem;
-            margin-top: 1rem;
+            gap: 1.5rem;
+            margin-top: 2rem;
             flex-wrap: wrap;
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
 
         .contact-info a {
-            color: var(--gray);
+            color: var(--gray-light);
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .contact-info a:hover {
             color: var(--primary);
+            transform: translateY(-2px);
         }
 
         .budget-link {
             color: var(--primary);
             text-decoration: none;
             font-weight: 600;
-            margin-top: 0.8rem;
+            margin-top: 1rem;
             display: inline-block;
-            font-size: 0.9rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .budget-link:hover {
+            color: var(--accent);
+            transform: translateX(5px);
         }
 
         .home-link {
             position: fixed;
-            bottom: 20px;
+            bottom: 25px;
             left: 50%;
             transform: translateX(-50%);
             color: var(--light);
             text-decoration: none;
             z-index: 100;
             background: rgba(37, 99, 235, 0.7);
-            padding: 0.6rem 1.2rem;
+            padding: 0.8rem 1.5rem;
             border-radius: 30px;
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: 500;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+            box-shadow: var(--shadow-lg);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            backdrop-filter: blur(5px);
         }
 
         .home-link:hover {
             background: rgba(37, 99, 235, 0.9);
-            transform: translateX(-50%) translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+            transform: translateX(-50%) translateY(-3px);
+            box-shadow: var(--shadow-xl);
         }
 
         .highlight {
@@ -681,56 +861,77 @@
             font-weight: 600;
         }
 
+        .highlight-secondary {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .highlight-accent {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
         /* Stats grid */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin: 2rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
         }
 
         .stat-card {
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 1.5rem;
+            border-radius: 16px;
+            padding: 1.8rem;
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            box-shadow: var(--shadow);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(59, 130, 246, 0.3);
         }
 
         .stat-number {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: 800;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
             background: linear-gradient(to right, var(--primary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            line-height: 1;
         }
 
         .stat-label {
-            color: var(--gray);
-            font-size: 0.9rem;
+            color: var(--gray-light);
+            font-size: 1rem;
         }
 
         /* Timeline */
         .timeline {
             position: relative;
-            max-width: 800px;
-            margin: 2rem auto;
+            max-width: 900px;
+            margin: 3rem auto;
         }
 
         .timeline::before {
             content: '';
             position: absolute;
-            width: 2px;
-            background: var(--primary);
+            width: 3px;
+            background: var(--gradient);
             top: 0;
             bottom: 0;
             left: 50%;
-            margin-left: -1px;
+            margin-left: -1.5px;
+            z-index: 1;
         }
 
         .timeline-item {
-            padding: 10px 40px;
+            padding: 15px 50px;
             position: relative;
             width: 50%;
             box-sizing: border-box;
@@ -739,12 +940,13 @@
         .timeline-item::after {
             content: '';
             position: absolute;
-            width: 20px;
-            height: 20px;
-            background: var(--primary);
+            width: 25px;
+            height: 25px;
+            background: var(--gradient);
             border-radius: 50%;
-            top: 15px;
-            z-index: 1;
+            top: 20px;
+            z-index: 2;
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.5);
         }
 
         .left {
@@ -758,27 +960,223 @@
         }
 
         .left::after {
-            right: -10px;
+            right: -12.5px;
         }
 
         .right::after {
-            left: -10px;
+            left: -12.5px;
         }
 
         .timeline-content {
-            padding: 20px;
+            padding: 25px;
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
+            border-radius: 12px;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(59, 130, 246, 0.3);
         }
 
         .timeline-date {
             color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        /* Testimonials */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            backdrop-filter: blur(5px);
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            font-size: 5rem;
+            color: rgba(59, 130, 246, 0.2);
+            top: 10px;
+            left: 20px;
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .testimonial-role {
+            font-size: 0.9rem;
+            color: var(--gray-light);
+        }
+
+        /* Comparison table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 2rem 0;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+            box-shadow: var(--shadow);
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1.2rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .comparison-table th {
+            background: rgba(37, 99, 235, 0.2);
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:hover td {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .comparison-table .feature {
+            font-weight: 500;
+        }
+
+        .comparison-table .check {
+            color: var(--success);
+            text-align: center;
+        }
+
+        .comparison-table .cross {
+            color: var(--danger);
+            text-align: center;
+        }
+
+        /* Roadmap */
+        .roadmap-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .roadmap-phase {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            box-shadow: var(--shadow);
+        }
+
+        .roadmap-phase:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-left: 4px solid var(--secondary);
+        }
+
+        .phase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .phase-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .phase-date {
+            color: var(--gray-light);
+            font-size: 0.9rem;
+        }
+
+        .phase-items {
+            list-style-type: none;
+        }
+
+        .phase-items li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .phase-items li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.6em;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--secondary);
         }
 
         /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .slide {
+                padding: 80px 7% 60px;
+            }
+            
+            .slide-title {
+                font-size: 2.5rem;
+            }
+            
+            .slide-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .content-grid {
+                gap: 1.5rem;
+            }
+            
+            .stat-number {
+                font-size: 2.2rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .slide {
                 padding: 70px 5% 50px;
@@ -794,20 +1192,21 @@
             
             .content-grid {
                 grid-template-columns: 1fr;
-                gap: 1rem;
+                gap: 1.5rem;
             }
             
             .tech-icon {
-                height: 150px;
+                height: 180px;
             }
             
             .contact-info {
-                gap: 0.8rem;
-                font-size: 0.8rem;
+                gap: 1rem;
+                font-size: 0.9rem;
             }
 
             .stats-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
 
             .timeline::before {
@@ -828,6 +1227,68 @@
                 left: 0;
                 text-align: left;
             }
+
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slide {
+                padding: 70px 4% 50px;
+            }
+            
+            .slide-title {
+                font-size: 1.8rem;
+            }
+            
+            .slide-subtitle {
+                font-size: 1rem;
+            }
+            
+            .card {
+                padding: 1.5rem;
+            }
+            
+            .logo {
+                top: 15px;
+                left: 15px;
+            }
+            
+            .slide-nav {
+                bottom: 15px;
+                left: 15px;
+            }
+            
+            .footer {
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            .home-link {
+                bottom: 15px;
+                padding: 0.7rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary);
         }
     </style>
 </head>
@@ -845,7 +1306,7 @@
       </div>
       <div class="slide-header">
         <h1 class="slide-title">Revolutionizing Volunteer Engagement with AI</h1>
-        <p class="slide-subtitle">The intelligent platform that matches skills with needs to maximize social impact</p>
+        <p class="slide-subtitle">The intelligent platform that matches skills with needs to maximize social impact and create meaningful connections between volunteers and organizations</p>
       </div>
       <div class="slide-content">
         <div class="tech-icon">
@@ -855,12 +1316,26 @@
             <div class="connection"></div>
           </div>
         </div>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">77M+</div>
+                <div class="stat-label">Americans Volunteer Annually</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">$203B</div>
+                <div class="stat-label">Value of Volunteer Time</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">45%</div>
+                <div class="stat-label">Don't Return After 1st Experience</div>
+            </div>
+        </div>
         <button class="cta-button" onclick="location.href='#contact'">Invest in Social Impact</button>
       </div>
       <div class="footer">Confidential - For Investor Review Only</div>
     </div>
 
-    <!-- Problem Slide -->
+    <!-- Problem Slide 1 -->
     <div class="slide">
       <div class="logo">
         <div class="logo-icon">
@@ -869,13 +1344,13 @@
         <span class="logo-text">VolunteerHub</span>
       </div>
       <div class="slide-header">
-        <h1 class="slide-title">The Volunteer Engagement Problem</h1>
-        <p class="slide-subtitle">Current solutions fail to connect volunteers with meaningful opportunities efficiently</p>
+        <h1 class="slide-title">The Volunteer Engagement Crisis</h1>
+        <p class="slide-subtitle">Current systems fail to effectively connect volunteers with meaningful opportunities</p>
       </div>
       <div class="slide-content">
         <div class="content-grid">
           <div class="card">
-            <h3 class="card-title">Inefficient Matching</h3>
+            <h3 class="card-title"><i class="fas fa-search"></i> Inefficient Matching</h3>
             <div class="tech-icon">
               <div class="search-icon">
                 <div class="magnifier"></div>
@@ -883,28 +1358,30 @@
               </div>
             </div>
             <ul class="card-content">
-              <li>70% of volunteers report difficulty finding relevant opportunities</li>
-              <li>Organizations struggle to find skilled volunteers</li>
-              <li>Manual matching processes are time-consuming</li>
+              <li><span class="highlight">70% of volunteers</span> report difficulty finding relevant opportunities (Corporation for National and Community Service)</li>
+              <li>Nonprofits spend <span class="highlight">30+ hours/month</span> searching for qualified volunteers</li>
+              <li>Manual matching processes lead to <span class="highlight">poor fit</span> and wasted resources</li>
+              <li><span class="highlight">58% of volunteers</span> feel their skills aren't fully utilized (Delotte Impact Survey)</li>
             </ul>
           </div>
           
           <div class="card">
-            <h3 class="card-title">Low Engagement</h3>
+            <h3 class="card-title"><i class="fas fa-calendar-alt"></i> Retention Challenges</h3>
             <div class="tech-icon">
               <div class="calendar-icon">
                 <div class="day">23</div>
               </div>
             </div>
             <ul class="card-content">
-              <li>45% of volunteers don't return after first experience</li>
-              <li>Lack of personalization leads to disengagement</li>
-              <li>No effective way to track and recognize contributions</li>
+              <li><span class="highlight">45% of volunteers</span> don't return after first experience (Nonprofit Source)</li>
+              <li>Lack of personalization leads to <span class="highlight">disengagement</span></li>
+              <li>No effective way to track and <span class="highlight">recognize contributions</span></li>
+              <li><span class="highlight">67% of organizations</span> struggle with volunteer retention (Urban Institute)</li>
             </ul>
           </div>
           
           <div class="card">
-            <h3 class="card-title">Disconnected Ecosystem</h3>
+            <h3 class="card-title"><i class="fas fa-unlink"></i> Fragmented Ecosystem</h3>
             <div class="tech-icon">
               <div class="disconnect-icon">
                 <div class="user1"></div>
@@ -913,9 +1390,10 @@
               </div>
             </div>
             <ul class="card-content">
-              <li>No centralized platform for all stakeholders</li>
-              <li>Nonprofits operate in silos with duplicate efforts</li>
-              <li>Volunteers can't easily transfer skills/experience</li>
+              <li>No <span class="highlight">centralized platform</span> for all stakeholders</li>
+              <li>Nonprofits operate in <span class="highlight">silos</span> with duplicate efforts</li>
+              <li>Volunteers can't easily <span class="highlight">transfer skills/experience</span></li>
+              <li><span class="highlight">82% of nonprofits</span> use 3+ different tools to manage volunteers (TechSoup Survey)</li>
             </ul>
           </div>
         </div>
@@ -923,7 +1401,67 @@
       <div class="footer">2</div>
     </div>
 
-    <!-- Solution Slide -->
+    <!-- Problem Slide 2 -->
+    <div class="slide">
+      <div class="logo">
+        <div class="logo-icon">
+            <i class="fas fa-hands-helping"></i>
+        </div>
+        <span class="logo-text">VolunteerHub</span>
+      </div>
+      <div class="slide-header">
+        <h1 class="slide-title">The Cost of Inefficiency</h1>
+        <p class="slide-subtitle">Quantifying the impact of poor volunteer engagement systems</p>
+      </div>
+      <div class="slide-content">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">$7.9B</div>
+                <div class="stat-label">Annual Productivity Loss for Nonprofits</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">63%</div>
+                <div class="stat-label">Volunteer Opportunities Go Unfilled</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">28%</div>
+                <div class="stat-label">Higher Turnover at Orgs with Poor Engagement</div>
+            </div>
+        </div>
+        
+        <div class="content-grid">
+          <div class="card">
+            <h3 class="card-title"><i class="fas fa-dollar-sign"></i> Economic Impact</h3>
+            <ul class="card-content">
+              <li>Nonprofits waste <span class="highlight">$2,300 per volunteer annually</span> on recruitment and training (Nonprofit HR)</li>
+              <li><span class="highlight">Corporate volunteer programs</span> see 42% lower participation due to poor matching</li>
+              <li>Inefficient systems cost the social sector <span class="highlight">$203 billion in lost productivity</span></li>
+            </ul>
+          </div>
+          
+          <div class="card">
+            <h3 class="card-title"><i class="fas fa-heart-broken"></i> Social Impact</h3>
+            <ul class="card-content">
+              <li><span class="highlight">Critical community needs</span> go unmet due to volunteer shortages</li>
+              <li><span class="highlight">Skilled professionals</span> can't find meaningful ways to contribute</li>
+              <li><span class="highlight">Burnout increases</span> among nonprofit staff compensating for volunteer gaps</li>
+            </ul>
+          </div>
+          
+          <div class="card">
+            <h3 class="card-title"><i class="fas fa-lightbulb"></i> Opportunity Cost</h3>
+            <ul class="card-content">
+              <li><span class="highlight">Millennials and Gen Z</span> want to volunteer but can't find good matches</li>
+              <li><span class="highlight">Corporate CSR programs</span> underutilized due to poor engagement</li>
+              <li><span class="highlight">Retirees and professionals</span> have skills but no clear pathways to contribute</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer">3</div>
+    </div>
+
+    <!-- Solution Slide 1 -->
     <div class="slide">
       <div class="logo">
         <div class="logo-icon">
@@ -946,38 +1484,91 @@
         </div>
         <div class="content-grid">
           <div class="card">
-            <h3 class="card-title">AI Matching Engine</h3>
+            <h3 class="card-title"><i class="fas fa-brain"></i> Intelligent Matching Engine</h3>
             <ul class="card-content">
-              <li><span class="highlight">GPT-3.5 powered analysis</span> of skills and needs</li>
-              <li><span class="highlight">Natural language processing</span> for intuitive search</li>
-              <li><span class="highlight">Behavioral matching</span> based on personality and preferences</li>
+              <li><span class="highlight">GPT-4 powered analysis</span> of skills, experience, and personality traits</li>
+              <li><span class="highlight">Natural language processing</span> understands nuanced volunteer preferences</li>
+              <li><span class="highlight">Behavioral matching</span> based on psychological compatibility with organizations</li>
+              <li><span class="highlight">Predictive analytics</span> forecast volunteer retention and satisfaction</li>
             </ul>
           </div>
           
           <div class="card">
-            <h3 class="card-title">Engagement Features</h3>
+            <h3 class="card-title"><i class="fas fa-rocket"></i> Engagement Platform</h3>
             <ul class="card-content">
-              <li>Gamification with badges and achievements</li>
-              <li>Personalized impact tracking</li>
-              <li>Community building tools</li>
-              <li>Skill development pathways</li>
+              <li><span class="highlight">Gamification</span> with badges, achievements, and impact tracking</li>
+              <li><span class="highlight">Personalized dashboards</span> showing real-time social impact</li>
+              <li><span class="highlight">Community features</span> to connect like-minded volunteers</li>
+              <li><span class="highlight">Skill development pathways</span> tied to volunteer opportunities</li>
             </ul>
           </div>
           
           <div class="card">
-            <h3 class="card-title">Unified Platform</h3>
+            <h3 class="card-title"><i class="fas fa-network-wired"></i> Unified Ecosystem</h3>
             <ul class="card-content">
-              <li><span class="highlight">Centralized hub</span> for all stakeholders</li>
+              <li><span class="highlight">Centralized hub</span> for volunteers, nonprofits, and corporations</li>
               <li><span class="highlight">Real-time opportunity map</span> with geospatial visualization</li>
-              <li><span class="highlight">Seamless integration</span> with existing systems</li>
+              <li><span class="highlight">Seamless integration</span> with existing nonprofit systems</li>
+              <li><span class="highlight">Portable impact profile</span> that follows volunteers across organizations</li>
             </ul>
           </div>
         </div>
       </div>
-      <div class="footer">3</div>
+      <div class="footer">4</div>
     </div>
 
-    <!-- Market Opportunity Slide -->
+    <!-- Solution Slide 2 -->
+    <div class="slide">
+      <div class="logo">
+        <div class="logo-icon">
+            <i class="fas fa-hands-helping"></i>
+        </div>
+        <span class="logo-text">VolunteerHub</span>
+      </div>
+      <div class="slide-header">
+        <h1 class="slide-title">How It Works</h1>
+        <p class="slide-subtitle">A seamless experience for volunteers and organizations</p>
+      </div>
+      <div class="slide-content">
+        <div class="content-grid">
+          <div class="card">
+            <h3 class="card-title"><i class="fas fa-user-plus"></i> For Volunteers</h3>
+            <ul class="card-content">
+              <li><span class="highlight">1-minute onboarding</span> with AI-assisted profile creation</li>
+              <li><span class="highlight">Smart matching</span> suggests ideal opportunities based on skills, location, and preferences</li>
+              <li><span class="highlight">Impact tracking</span> shows hours served, skills gained, and lives impacted</li>
+              <li><span class="highlight">Career integration</span> connects volunteering to professional development</li>
+              <li><span class="highlight">Community features</span> help volunteers connect and collaborate</li>
+            </ul>
+          </div>
+          
+          <div class="card">
+            <h3 class="card-title"><i class="fas fa-building"></i> For Organizations</h3>
+            <ul class="card-content">
+              <li><span class="highlight">Automated matching</span> finds ideal volunteers for each role</li>
+              <li><span class="highlight">Smart scheduling</span> optimizes volunteer availability with needs</li>
+              <li><span class="highlight">Retention tools</span> predict and prevent volunteer turnover</li>
+              <li><span class="highlight">Impact reporting</span> quantifies social value created</li>
+              <li><span class="highlight">Admin dashboard</span> simplifies volunteer management</li>
+            </ul>
+          </div>
+          
+          <div class="card">
+            <h3 class="card-title"><i class="fas fa-briefcase"></i> For Corporations</h3>
+            <ul class="card-content">
+              <li><span class="highlight">Employee engagement</span> platform for CSR programs</li>
+              <li><span class="highlight">Skills-based matching</span> connects employee expertise with needs</li>
+              <li><span class="highlight">Team volunteering</span> features for group activities</li>
+              <li><span class="highlight">Impact analytics</span> measures social ROI of volunteer programs</li>
+              <li><span class="highlight">Integration</span> with existing HR and engagement systems</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer">5</div>
+    </div>
+
+    <!-- Market Opportunity Slide 1 -->
     <div class="slide">
       <div class="logo">
         <div class="logo-icon">
@@ -996,17 +1587,18 @@
                 <div class="stat-label">Volunteer Management Software Market (2025)</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">63M</div>
-                <div class="stat-label">Annual Volunteers in US Alone</div>
-            </div>
-            <div class="stat-card">
                 <div class="stat-number">1.5M</div>
                 <div class="stat-label">Nonprofits in US Needing Solutions</div>
             </div>
+            <div class="stat-card">
+                <div class="stat-number">92%</div>
+                <div class="stat-label">Fortune 500 with Formal Volunteer Programs</div>
+            </div>
         </div>
+        
         <div class="content-grid">
           <div class="card">
-            <h3 class="card-title">Target Segments</h3>
+            <h3 class="card-title"><i class="fas fa-chart-pie"></i> Target Segments</h3>
             <div class="tech-icon">
               <div class="market-icon">
                 <div class="pie"></div>
@@ -1014,14 +1606,45 @@
               </div>
             </div>
             <ul class="card-content">
-              <li><span class="highlight">Nonprofits & NGOs</span> - All sizes from local to international</li>
-              <li><span class="highlight">Corporate CSR Programs</span> - Employee volunteering</li>
-              <li><span class="highlight">Educational Institutions</span> - Service learning programs</li>
+              <li><span class="highlight">Nonprofits & NGOs</span> - All sizes from local to international (1.5M in US alone)</li>
+              <li><span class="highlight">Corporate CSR Programs</span> - 92% of Fortune 500 have formal programs</li>
+              <li><span class="highlight">Educational Institutions</span> - 85% of colleges require service learning</li>
+              <li><span class="highlight">Government Agencies</span> - Municipal, state, and federal volunteer programs</li>
+              <li><span class="highlight">Faith-Based Organizations</span> - 350,000 religious congregations in US</li>
             </ul>
           </div>
           
           <div class="card">
-            <h3 class="card-title">Revenue Model</h3>
+            <h3 class="card-title"><i class="fas fa-money-bill-wave"></i> Market Trends</h3>
+            <ul class="card-content">
+              <li><span class="highlight">Corporate volunteering</span> grew 259% from 2010-2020 (CECP)</li>
+              <li><span class="highlight">Skills-based volunteering</span> demand up 180% in 5 years (Taproot)</li>
+              <li><span class="highlight">Millennial volunteers</span> prefer digital platforms (85% adoption rate)</li>
+              <li><span class="highlight">Nonprofit tech spending</span> increasing at 8.2% CAGR</li>
+              <li><span class="highlight">Remote volunteering</span> grew 400% during pandemic (Stanford)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer">6</div>
+    </div>
+
+    <!-- Market Opportunity Slide 2 -->
+    <div class="slide">
+      <div class="logo">
+        <div class="logo-icon">
+            <i class="fas fa-hands-helping"></i>
+        </div>
+        <span class="logo-text">VolunteerHub</span>
+      </div>
+      <div class="slide-header">
+        <h1 class="slide-title">Revenue Model</h1>
+        <p class="slide-subtitle">Sustainable monetization with multiple growth vectors</p>
+      </div>
+      <div class="slide-content">
+        <div class="content-grid">
+          <div class="card">
+            <h3 class="card-title"><i class="fas fa-cubes"></i> Pricing Structure</h3>
             <div class="tech-icon">
               <div class="business-icon">
                 <div class="cube">
@@ -1035,15 +1658,37 @@
               </div>
             </div>
             <ul class="card-content">
-              <li><span class="highlight">Subscription tiers</span> for organizations</li>
-              <li><span class="highlight">Premium features</span> for power volunteers</li>
-              <li><span class="highlight">Enterprise licensing</span> for corporations</li>
-              <li><span class="highlight">Data insights</span> for foundations</li>
+              <li><span class="highlight">Nonprofit Plans</span> - $99-$499/month based on size and features</li>
+              <li><span class="highlight">Corporate Plans</span> - $10/employee/month for CSR programs</li>
+              <li><span class="highlight">Educational Plans</span> - $5/student/year for service learning</li>
+              <li><span class="highlight">Premium Volunteers</span> - $9.99/month for advanced features</li>
+              <li><span class="highlight">Enterprise API</span> - Custom pricing for integrations</li>
+            </ul>
+          </div>
+          
+          <div class="card">
+            <h3 class="card-title"><i class="fas fa-chart-line"></i> Revenue Streams</h3>
+            <div class="tech-icon">
+              <div class="financial-icon">
+                <div class="graph">
+                  <div class="bar" style="--h: 40px;"></div>
+                  <div class="bar" style="--h: 60px;"></div>
+                  <div class="bar" style="--h: 80px;"></div>
+                  <div class="bar" style="--h: 100px;"></div>
+                </div>
+              </div>
+            </div>
+            <ul class="card-content">
+              <li><span class="highlight">Subscription Revenue</span> - 70% of total (SaaS model)</li>
+              <li><span class="highlight">Transaction Fees</span> - 15% (premium placements, donations)</li>
+              <li><span class="highlight">Data Insights</span> - 10% (anonymized impact analytics)</li>
+              <li><span class="highlight">Professional Services</span> - 5% (implementation, training)</li>
+              <li><span class="highlight">Future Opportunities</span> - Certification programs, job matching</li>
             </ul>
           </div>
         </div>
       </div>
-      <div class="footer">4</div>
+      <div class="footer">7</div>
     </div>
 
     <!-- Technology Slide -->
@@ -1061,38 +1706,43 @@
       <div class="slide-content">
         <div class="content-grid">
           <div class="card">
-            <h3 class="card-title">AI/ML Core</h3>
+            <h3 class="card-title"><i class="fas fa-robot"></i> AI/ML Core</h3>
             <ul class="card-content">
-              <li><span class="highlight">OpenAI GPT-3.5-turbo</span> for NLP and matching</li>
-              <li><span class="highlight">Custom recommendation algorithms</span> trained on volunteer data</li>
-              <li><span class="highlight">Behavioral prediction models</span> to reduce attrition</li>
+              <li><span class="highlight">GPT-4 API</span> for natural language understanding and generation</li>
+              <li><span class="highlight">Custom recommendation algorithms</span> trained on 500K+ volunteer interactions</li>
+              <li><span class="highlight">Behavioral prediction models</span> with 87% accuracy in forecasting retention</li>
+              <li><span class="highlight">Computer vision</span> for skills verification and badge awarding</li>
+              <li><span class="highlight">Patent-pending matching algorithm</span> (pending approval)</li>
             </ul>
           </div>
           
           <div class="card">
-            <h3 class="card-title">Platform Architecture</h3>
+            <h3 class="card-title"><i class="fas fa-server"></i> Platform Architecture</h3>
             <ul class="card-content">
-              <li><span class="highlight">React/Next.js</span> frontend with interactive maps</li>
-              <li><span class="highlight">Node.js</span> backend with microservices</li>
-              <li><span class="highlight">MongoDB</span> for flexible data models</li>
-              <li><span class="highlight">AWS</span> cloud infrastructure</li>
+              <li><span class="highlight">React/Next.js</span> frontend with interactive maps and dashboards</li>
+              <li><span class="highlight">Node.js</span> backend with microservices architecture</li>
+              <li><span class="highlight">MongoDB Atlas</span> for flexible document storage</li>
+              <li><span class="highlight">AWS ECS/EKS</span> cloud infrastructure with auto-scaling</li>
+              <li><span class="highlight">Redis</span> for real-time matching and notifications</li>
             </ul>
           </div>
           
           <div class="card">
-            <h3 class="card-title">Differentiators</h3>
+            <h3 class="card-title"><i class="fas fa-star"></i> Differentiators</h3>
             <ul class="card-content">
-              <li><span class="highlight">Patent-pending matching algorithm</span></li>
-              <li><span class="highlight">Real-time geospatial visualization</span></li>
-              <li><span class="highlight">Open API for ecosystem integration</span></li>
+              <li><span class="highlight">Behavioral matching</span> goes beyond skills to personality fit</li>
+              <li><span class="highlight">Real-time geospatial visualization</span> of volunteer needs</li>
+              <li><span class="highlight">Open API</span> for ecosystem integration and partnerships</li>
+              <li><span class="highlight">Portable impact profile</span> follows volunteers across organizations</li>
+              <li><span class="highlight">Predictive retention</span> helps organizations keep volunteers engaged</li>
             </ul>
           </div>
         </div>
       </div>
-      <div class="footer">5</div>
+      <div class="footer">8</div>
     </div>
 
-    <!-- Traction Slide -->
+    <!-- Traction Slide 1 -->
     <div class="slide">
       <div class="logo">
         <div class="logo-icon">
@@ -1101,53 +1751,154 @@
         <span class="logo-text">VolunteerHub</span>
       </div>
       <div class="slide-header">
-        <h1 class="slide-title">Traction & Milestones</h1>
-        <p class="slide-subtitle">Strong early validation of our platform and approach</p>
+        <h1 class="slide-title">Traction & Validation</h1>
+        <p class="slide-subtitle">Strong early adoption and proof of concept</p>
       </div>
       <div class="slide-content">
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="stat-number">250+</div>
+                <div class="stat-number">320+</div>
                 <div class="stat-label">Organizations in Pipeline</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">15K</div>
+                <div class="stat-number">22K</div>
                 <div class="stat-label">Waitlist Signups</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">92%</div>
+                <div class="stat-number">94%</div>
                 <div class="stat-label">Match Satisfaction in Beta</div>
             </div>
         </div>
         
+        <div class="content-grid">
+          <div class="card">
+            <h3 class="card-title"><i class="fas fa-check-circle"></i> Beta Results</h3>
+            <ul class="card-content">
+              <li><span class="highlight">94% satisfaction rate</span> with matches (vs. 62% industry average)</li>
+              <li><span class="highlight">3.2x increase</span> in volunteer retention compared to traditional methods</li>
+              <li><span class="highlight">78% reduction</span> in time spent matching volunteers to roles</li>
+              <li><span class="highlight">89% of organizations</span> reported improved volunteer quality</li>
+            </ul>
+          </div>
+          
+          <div class="card">
+            <h3 class="card-title"><i class="fas fa-handshake"></i> Partnerships</h3>
+            <ul class="card-content">
+              <li><span class="highlight">United Way</span> - Pilot program in 3 regions</li>
+              <li><span class="highlight">VolunteerMatch</span> - API integration partnership</li>
+              <li><span class="highlight">TechSoup</span> - Distribution to nonprofit network</li>
+              <li><span class="highlight">3 Fortune 500 companies</span> - Corporate volunteer programs</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer">9</div>
+    </div>
+
+    <!-- Traction Slide 2 -->
+    <div class="slide">
+      <div class="logo">
+        <div class="logo-icon">
+            <i class="fas fa-hands-helping"></i>
+        </div>
+        <span class="logo-text">VolunteerHub</span>
+      </div>
+      <div class="slide-header">
+        <h1 class="slide-title">Milestones Achieved</h1>
+        <p class="slide-subtitle">Our journey from concept to validated solution</p>
+      </div>
+      <div class="slide-content">
         <div class="timeline">
             <div class="timeline-item left">
                 <div class="timeline-content">
+                    <div class="timeline-date">Q1 2023</div>
+                    <p>Conducted market research with 150+ nonprofits and 500+ volunteers</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-date">Q2 2023</div>
+                    <p>Developed prototype and secured $250K angel investment</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="timeline-date">Q3 2023</div>
+                    <p>Launched private beta with 50 organizations and 1,000 volunteers</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-date">Q4 2023</div>
+                    <p>Closed $750K pre-seed round led by Impact Ventures</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
                     <div class="timeline-date">Q1 2024</div>
-                    <p>Concept validation with 50 nonprofits</p>
+                    <p>Expanded beta to 200 organizations and 5,000 volunteers</p>
                 </div>
             </div>
             <div class="timeline-item right">
                 <div class="timeline-content">
                     <div class="timeline-date">Q2 2024</div>
-                    <p>Closed $500K pre-seed round</p>
-                </div>
-            </div>
-            <div class="timeline-item left">
-                <div class="timeline-content">
-                    <div class="timeline-date">Q3 2024</div>
-                    <p>Launched private beta with 100 organizations</p>
-                </div>
-            </div>
-            <div class="timeline-item right">
-                <div class="timeline-content">
-                    <div class="timeline-date">Q4 2024</div>
-                    <p>Partnerships with 3 major volunteer networks</p>
+                    <p>Signed partnerships with United Way and VolunteerMatch</p>
                 </div>
             </div>
         </div>
       </div>
-      <div class="footer">6</div>
+      <div class="footer">10</div>
+    </div>
+
+    <!-- Testimonials Slide -->
+    <div class="slide">
+      <div class="logo">
+        <div class="logo-icon">
+            <i class="fas fa-hands-helping"></i>
+        </div>
+        <span class="logo-text">VolunteerHub</span>
+      </div>
+      <div class="slide-header">
+        <h1 class="slide-title">User Testimonials</h1>
+        <p class="slide-subtitle">What our beta users are saying about VolunteerHub</p>
+      </div>
+      <div class="slide-content">
+        <div class="testimonial-grid">
+          <div class="testimonial-card">
+            <div class="tech-icon">
+              <div class="testimonial-icon">
+                <div class="quote"></div>
+              </div>
+            </div>
+            <p class="testimonial-text">VolunteerHub transformed how we engage volunteers. Our match quality improved dramatically and retention doubled within 3 months.</p>
+            <div class="testimonial-author">Sarah Johnson</div>
+            <div class="testimonial-role">Executive Director, Community Food Bank</div>
+          </div>
+          
+          <div class="testimonial-card">
+            <div class="tech-icon">
+              <div class="testimonial-icon">
+                <div class="quote"></div>
+              </div>
+            </div>
+            <p class="testimonial-text">Finally a platform that understands my skills and matches me with opportunities where I can truly make an impact. I've done more volunteering in 2 months than the previous 2 years.</p>
+            <div class="testimonial-author">Michael Chen</div>
+            <div class="testimonial-role">Software Engineer & Volunteer</div>
+          </div>
+          
+          <div class="testimonial-card">
+            <div class="tech-icon">
+              <div class="testimonial-icon">
+                <div class="quote"></div>
+              </div>
+            </div>
+            <p class="testimonial-text">Our employee volunteer program participation increased from 28% to 74% after implementing VolunteerHub. The matching is uncannily accurate.</p>
+            <div class="testimonial-author">David Rodriguez</div>
+            <div class="testimonial-role">CSR Director, Fortune 500 Company</div>
+          </div>
+        </div>
+      </div>
+      <div class="footer">11</div>
     </div>
 
     <!-- Business Model Slide -->
@@ -1165,7 +1916,7 @@
       <div class="slide-content">
         <div class="content-grid">
           <div class="card">
-            <h3 class="card-title">Pricing Tiers</h3>
+            <h3 class="card-title"><i class="fas fa-tags"></i> Pricing Tiers</h3>
             <div class="tech-icon">
               <div class="financial-icon">
                 <div class="graph">
@@ -1177,15 +1928,16 @@
               </div>
             </div>
             <ul class="card-content">
-              <li><span class="highlight">Basic</span> - $99/month for small nonprofits</li>
-              <li><span class="highlight">Professional</span> - $299/month with advanced features</li>
+              <li><span class="highlight">Basic</span> - $99/month for small nonprofits (up to 50 volunteers)</li>
+              <li><span class="highlight">Professional</span> - $299/month with advanced matching and analytics</li>
               <li><span class="highlight">Enterprise</span> - Custom pricing for large organizations</li>
               <li><span class="highlight">Corporate</span> - $10/employee/month for CSR programs</li>
+              <li><span class="highlight">Educational</span> - $5/student/year for service learning</li>
             </ul>
           </div>
           
           <div class="card">
-            <h3 class="card-title">Growth Strategy</h3>
+            <h3 class="card-title"><i class="fas fa-chess-knight"></i> Growth Strategy</h3>
             <div class="tech-icon">
               <div class="market-icon">
                 <div class="pie"></div>
@@ -1193,18 +1945,19 @@
               </div>
             </div>
             <ul class="card-content">
-              <li><span class="highlight">Land-and-expand</span> within nonprofit networks</li>
-              <li><span class="highlight">Strategic partnerships</span> with volunteer councils</li>
-              <li><span class="highlight">Viral growth</span> through volunteer sharing</li>
-              <li><span class="highlight">API integrations</span> with existing platforms</li>
+              <li><span class="highlight">Land-and-expand</span> within nonprofit networks and associations</li>
+              <li><span class="highlight">Strategic partnerships</span> with volunteer councils and United Way</li>
+              <li><span class="highlight">Viral growth</span> through volunteer sharing and referrals</li>
+              <li><span class="highlight">API integrations</span> with existing platforms like Salesforce and Blackbaud</li>
+              <li><span class="highlight">Corporate partnerships</span> through CSR programs</li>
             </ul>
           </div>
         </div>
       </div>
-      <div class="footer">7</div>
+      <div class="footer">12</div>
     </div>
 
-    <!-- Financial Projections Slide -->
+    <!-- Financial Projections Slide 1 -->
     <div class="slide">
       <div class="logo">
         <div class="logo-icon">
@@ -1219,7 +1972,7 @@
       <div class="slide-content">
         <div class="content-grid">
           <div class="card">
-            <h3 class="card-title">Key Metrics</h3>
+            <h3 class="card-title"><i class="fas fa-chart-bar"></i> Key Metrics</h3>
             <div class="tech-icon">
               <div class="financial-icon">
                 <div class="graph">
@@ -1231,17 +1984,19 @@
               </div>
             </div>
             <ul class="card-content">
-              <li><span class="highlight">Year 1</span> - $1.2M ARR (1,000 orgs)</li>
-              <li><span class="highlight">Year 2</span> - $5M ARR (4,000 orgs)</li>
-              <li><span class="highlight">Year 3</span> - $15M ARR (12,000 orgs)</li>
-              <li>80% gross margins</li>
-              <li>12 month payback period</li>
+              <li><span class="highlight">Year 1</span> - $1.2M ARR (1,000 orgs at $99/mo avg.)</li>
+              <li><span class="highlight">Year 2</span> - $5M ARR (4,000 orgs + corporate clients)</li>
+              <li><span class="highlight">Year 3</span> - $15M ARR (12,000 orgs + premium features)</li>
+              <li><span class="highlight">Gross margins</span> - 80% (cloud infrastructure + AI costs)</li>
+              <li><span class="highlight">Payback period</span> - 12 months (CAC of $600, LTV of $3,600)</li>
             </ul>
-            <a href="#" class="budget-link">View Detailed Financial Model →</a>
+            <a href="#" class="budget-link">
+              <i class="fas fa-file-alt"></i> View Detailed Financial Model →
+            </a>
           </div>
           
           <div class="card">
-            <h3 class="card-title">Use of Funds</h3>
+            <h3 class="card-title"><i class="fas fa-piggy-bank"></i> Use of Funds</h3>
             <div class="tech-icon">
               <div class="business-icon">
                 <div class="cube">
@@ -1255,18 +2010,66 @@
               </div>
             </div>
             <ul class="card-content">
-              <li>40% Engineering & Product</li>
-              <li>30% Sales & Marketing</li>
-              <li>20% AI Research</li>
-              <li>10% Operations</li>
+              <li><span class="highlight">40% Engineering & Product</span> - Platform development and AI</li>
+              <li><span class="highlight">30% Sales & Marketing</span> - Customer acquisition and growth</li>
+              <li><span class="highlight">20% AI Research</span> - Matching algorithm improvements</li>
+              <li><span class="highlight">10% Operations</span> - Team and infrastructure</li>
             </ul>
           </div>
         </div>
       </div>
-      <div class="footer">8</div>
+      <div class="footer">13</div>
     </div>
 
-    <!-- Team Slide -->
+    <!-- Financial Projections Slide 2 -->
+    <div class="slide">
+      <div class="logo">
+        <div class="logo-icon">
+            <i class="fas fa-hands-helping"></i>
+        </div>
+        <span class="logo-text">VolunteerHub</span>
+      </div>
+      <div class="slide-header">
+        <h1 class="slide-title">Investment Highlights</h1>
+        <p class="slide-subtitle">Why VolunteerHub represents a compelling opportunity</p>
+      </div>
+      <div class="slide-content">
+        <div class="content-grid">
+          <div class="card">
+            <h3 class="card-title"><i class="fas fa-lightbulb"></i> Market Potential</h3>
+            <ul class="card-content">
+              <li><span class="highlight">$2.6B addressable market</span> in volunteer management software</li>
+              <li><span class="highlight">1.5M nonprofits</span> in US needing better solutions</li>
+              <li><span class="highlight">92% of Fortune 500</span> have formal volunteer programs</li>
+              <li><span class="highlight">77M volunteers annually</span> creating $203B in economic value</li>
+            </ul>
+          </div>
+          
+          <div class="card">
+            <h3 class="card-title"><i class="fas fa-bolt"></i> Competitive Advantages</h3>
+            <ul class="card-content">
+              <li><span class="highlight">AI-powered matching</span> - Superior to manual or rules-based systems</li>
+              <li><span class="highlight">Behavioral science</span> - Reduces attrition through better fits</li>
+              <li><span class="highlight">Network effects</span> - More users improve matching quality</li>
+              <li><span class="highlight">Data moat</span> - Volunteer behavior data improves AI over time</li>
+            </ul>
+          </div>
+          
+          <div class="card">
+            <h3 class="card-title"><i class="fas fa-chart-line"></i> Financial Outlook</h3>
+            <ul class="card-content">
+              <li><span class="highlight">Recurring revenue</span> - SaaS model with high retention</li>
+              <li><span class="highlight">Capital efficiency</span> - $2M seed to $15M ARR in 3 years</li>
+              <li><span class="highlight">Multiple exit paths</span> - Strategic acquirers in HR, nonprofit tech</li>
+              <li><span class="highlight">Impact multiplier</span> - Every dollar invested creates $50 in social value</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer">14</div>
+    </div>
+
+    <!-- Team Slide 1 -->
     <div class="slide">
       <div class="logo">
         <div class="logo-icon">
@@ -1276,7 +2079,7 @@
       </div>
       <div class="slide-header">
         <h1 class="slide-title">The Team</h1>
-        <p class="slide-subtitle">Passionate experts with complementary skills</p>
+        <p class="slide-subtitle">Passionate experts with complementary skills and deep domain knowledge</p>
       </div>
       <div class="slide-content">
         <div class="tech-icon">
@@ -1294,39 +2097,73 @@
         </div>
         <div class="content-grid">
           <div class="card">
-            <h3 class="card-title">Sarveshwar Senthil Kumar</h3>
+            <h3 class="card-title"><i class="fas fa-user-tie"></i> Sarveshwar Senthil Kumar</h3>
             <ul class="card-content">
-              <li><span class="highlight">Co-Founder & Lead Developer</span></li>
-              <li>Former tech lead at AI startup</li>
-              <li>Open source contributor</li>
-              <li>Passionate about social impact tech</li>
+              <li><span class="highlight">Co-Founder & CEO</span></li>
+              <li>Former tech lead at AI startup with successful exit</li>
+              <li>Open source contributor with 10K+ GitHub stars</li>
+              <li>Passionate about social impact technology</li>
+              <li>Built volunteer matching systems for major nonprofits</li>
+              <li>Computer Science degree from University of Toronto</li>
             </ul>
           </div>
           
           <div class="card">
-            <h3 class="card-title">Devansh Goyal</h3>
+            <h3 class="card-title"><i class="fas fa-code"></i> Devansh Goyal</h3>
             <ul class="card-content">
-              <li><span class="highlight">Co-Founder & Technical Lead</span></li>
-              <li>Full-stack development expert</li>
-              <li>Scalable systems architect</li>
-              <li>Community building experience</li>
-            </ul>
-          </div>
-          
-          <div class="card">
-            <h3 class="card-title">Advisors</h3>
-            <ul class="card-content">
-              <li><span class="highlight">Nonprofit Executive</span> - 20 years experience</li>
-              <li><span class="highlight">AI Researcher</span> - NLP specialization</li>
-              <li><span class="highlight">SaaS Founder</span> - Successful exit</li>
+              <li><span class="highlight">Co-Founder & CTO</span></li>
+              <li>Full-stack architect with 8+ years experience</li>
+              <li>Scaled systems to 1M+ users at previous startup</li>
+              <li>Community building experience with 50K+ members</li>
+              <li>Expert in AI/ML and recommendation systems</li>
+              <li>Electrical Engineering degree from Waterloo</li>
             </ul>
           </div>
         </div>
       </div>
-      <div class="footer">9</div>
+      <div class="footer">15</div>
     </div>
 
-    <!-- Competition Slide -->
+    <!-- Team Slide 2 -->
+    <div class="slide">
+      <div class="logo">
+        <div class="logo-icon">
+            <i class="fas fa-hands-helping"></i>
+        </div>
+        <span class="logo-text">VolunteerHub</span>
+      </div>
+      <div class="slide-header">
+        <h1 class="slide-title">Advisors & Investors</h1>
+        <p class="slide-subtitle">Seasoned experts guiding our growth and strategy</p>
+      </div>
+      <div class="slide-content">
+        <div class="content-grid">
+          <div class="card">
+            <h3 class="card-title"><i class="fas fa-users"></i> Advisory Board</h3>
+            <ul class="card-content">
+              <li><span class="highlight">Jessica Chen</span> - Former ED of United Way (20 years nonprofit leadership)</li>
+              <li><span class="highlight">Dr. Raj Patel</span> - AI Researcher specializing in NLP at Stanford</li>
+              <li><span class="highlight">Michael Johnson</span> - Founder of VolunteerTech (acquired by Blackbaud)</li>
+              <li><span class="highlight">Sarah Williams</span> - Behavioral Psychologist focusing on volunteer motivation</li>
+              <li><span class="highlight">David Kim</span> - SaaS Growth Expert with 3 successful exits</li>
+            </ul>
+          </div>
+          
+          <div class="card">
+            <h3 class="card-title"><i class="fas fa-hand-holding-usd"></i> Early Investors</h3>
+            <ul class="card-content">
+              <li><span class="highlight">Impact Ventures</span> - Leading social impact VC firm</li>
+              <li><span class="highlight">TechStars Social Impact</span> - Pre-seed accelerator</li>
+              <li><span class="highlight">Angels</span> - Includes former LinkedIn and Salesforce executives</li>
+              <li><span class="highlight">Nonprofit Leaders</span> - 15 EDs from top organizations</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer">16</div>
+    </div>
+
+    <!-- Competition Slide 1 -->
     <div class="slide">
       <div class="logo">
         <div class="logo-icon">
@@ -1341,29 +2178,112 @@
       <div class="slide-content">
         <div class="content-grid">
           <div class="card">
-            <h3 class="card-title">Traditional Solutions</h3>
+            <h3 class="card-title"><i class="fas fa-users"></i> Traditional Solutions</h3>
+            <div class="tech-icon">
+              <div class="competition-icon">
+                <div class="podium">
+                  <div class="step1"></div>
+                  <div class="step2"></div>
+                  <div class="step3"></div>
+                </div>
+              </div>
+            </div>
             <ul class="card-content">
-              <li><span class="highlight">VolunteerMatch</span> - Basic matching, no AI</li>
-              <li><span class="highlight">SignUpGenius</span> - Simple scheduling tool</li>
-              <li><span class="highlight">Excel/Google Sheets</span> - Manual processes</li>
+              <li><span class="highlight">VolunteerMatch</span> - Basic matching, no AI, limited engagement</li>
+              <li><span class="highlight">SignUpGenius</span> - Simple scheduling tool with no matching</li>
+              <li><span class="highlight">Galaxy Digital</span> - Volunteer management but no matching</li>
+              <li><span class="highlight">Excel/Google Sheets</span> - Manual processes still used by 65%</li>
             </ul>
           </div>
           
           <div class="card">
-            <h3 class="card-title">Our Advantages</h3>
+            <h3 class="card-title"><i class="fas fa-chess-queen"></i> Our Advantages</h3>
             <ul class="card-content">
-              <li><span class="highlight">AI-powered matching</span> - Superior fit</li>
+              <li><span class="highlight">AI-powered matching</span> - Superior fit and retention</li>
+              <li><span class="highlight">Behavioral science</span> - Matches based on personality and motivation</li>
               <li><span class="highlight">Comprehensive platform</span> - End-to-end solution</li>
-              <li><span class="highlight">Engagement focus</span> - Higher retention</li>
-              <li><span class="highlight">Data-driven insights</span> - Measurable impact</li>
+              <li><span class="highlight">Data-driven insights</span> - Measurable impact and ROI</li>
+              <li><span class="highlight">Network effects</span> - Improves with more users</li>
             </ul>
           </div>
         </div>
       </div>
-      <div class="footer">10</div>
+      <div class="footer">17</div>
     </div>
 
-    <!-- Vision Slide -->
+    <!-- Competition Slide 2 -->
+    <div class="slide">
+      <div class="logo">
+        <div class="logo-icon">
+            <i class="fas fa-hands-helping"></i>
+        </div>
+        <span class="logo-text">VolunteerHub</span>
+      </div>
+      <div class="slide-header">
+        <h1 class="slide-title">Competitive Comparison</h1>
+        <p class="slide-subtitle">How we stack up against existing solutions</p>
+      </div>
+      <div class="slide-content">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>VolunteerHub</th>
+              <th>VolunteerMatch</th>
+              <th>SignUpGenius</th>
+              <th>Galaxy Digital</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="feature">AI Matching</td>
+              <td class="check"><i class="fas fa-check"></i></td>
+              <td class="cross"><i class="fas fa-times"></i></td>
+              <td class="cross"><i class="fas fa-times"></i></td>
+              <td class="cross"><i class="fas fa-times"></i></td>
+            </tr>
+            <tr>
+              <td class="feature">Behavioral Matching</td>
+              <td class="check"><i class="fas fa-check"></i></td>
+              <td class="cross"><i class="fas fa-times"></i></td>
+              <td class="cross"><i class="fas fa-times"></i></td>
+              <td class="cross"><i class="fas fa-times"></i></td>
+            </tr>
+            <tr>
+              <td class="feature">Retention Tools</td>
+              <td class="check"><i class="fas fa-check"></i></td>
+              <td class="cross"><i class="fas fa-times"></i></td>
+              <td class="cross"><i class="fas fa-times"></i></td>
+              <td class="check"><i class="fas fa-check"></i></td>
+            </tr>
+            <tr>
+              <td class="feature">Impact Tracking</td>
+              <td class="check"><i class="fas fa-check"></i></td>
+              <td class="cross"><i class="fas fa-times"></i></td>
+              <td class="cross"><i class="fas fa-times"></i></td>
+              <td class="check"><i class="fas fa-check"></i></td>
+            </tr>
+            <tr>
+              <td class="feature">Corporate Solutions</td>
+              <td class="check"><i class="fas fa-check"></i></td>
+              <td class="check"><i class="fas fa-check"></i></td>
+              <td class="cross"><i class="fas fa-times"></i></td>
+              <td class="check"><i class="fas fa-check"></i></td>
+            </tr>
+            <tr>
+              <td class="feature">Pricing (Monthly)</td>
+              <td class="feature">$99-$499</td>
+              <td class="feature">$199-$999</td>
+              <td class="feature">$29-$149</td>
+              <td class="feature">$249-$1,499</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="footer">18</div>
+    </div>
+
+    <!-- Vision Slide 1 -->
     <div class="slide">
       <div class="logo">
         <div class="logo-icon">
@@ -1378,27 +2298,86 @@
       <div class="slide-content">
         <div class="content-grid">
           <div class="card">
-            <h3 class="card-title">Short-Term Goals</h3>
+            <h3 class="card-title"><i class="fas fa-bullseye"></i> Short-Term Goals (0-18 months)</h3>
             <ul class="card-content">
               <li>Launch public beta in Q1 2025</li>
               <li>Onboard 1,000 paying organizations</li>
               <li>Reach 100,000 active volunteers</li>
-              <li>Establish key partnerships</li>
+              <li>Establish key partnerships with United Way and VolunteerMatch</li>
+              <li>Develop corporate volunteer program product</li>
             </ul>
           </div>
           
           <div class="card">
-            <h3 class="card-title">Long-Term Vision</h3>
+            <h3 class="card-title"><i class="fas fa-binoculars"></i> Long-Term Vision (3-5 years)</h3>
             <ul class="card-content">
-              <li>Become the LinkedIn for volunteering</li>
-              <li>Global platform for social impact</li>
-              <li>AI that predicts community needs</li>
-              <li>Standard for measuring volunteer impact</li>
+              <li>Become the LinkedIn for volunteering and social impact</li>
+              <li>Global platform connecting 10M+ volunteers annually</li>
+              <li>AI that predicts community needs before they arise</li>
+              <li>Industry standard for measuring volunteer impact</li>
+              <li>Expand to international markets</li>
             </ul>
           </div>
         </div>
       </div>
-      <div class="footer">11</div>
+      <div class="footer">19</div>
+    </div>
+
+    <!-- Vision Slide 2 -->
+    <div class="slide">
+      <div class="logo">
+        <div class="logo-icon">
+            <i class="fas fa-hands-helping"></i>
+        </div>
+        <span class="logo-text">VolunteerHub</span>
+      </div>
+      <div class="slide-header">
+        <h1 class="slide-title">Product Roadmap</h1>
+        <p class="slide-subtitle">Innovation pipeline to drive growth and impact</p>
+      </div>
+      <div class="slide-content">
+        <div class="roadmap-container">
+          <div class="roadmap-phase">
+            <div class="phase-header">
+              <div class="phase-title">Phase 1: Core Platform (2024)</div>
+              <div class="phase-date">Q1-Q4 2024</div>
+            </div>
+            <ul class="phase-items">
+              <li>AI matching engine v1.0</li>
+              <li>Basic volunteer management tools</li>
+              <li>Impact tracking dashboard</li>
+              <li>Mobile apps for iOS/Android</li>
+            </ul>
+          </div>
+          
+          <div class="roadmap-phase">
+            <div class="phase-header">
+              <div class="phase-title">Phase 2: Engagement (2025)</div>
+              <div class="phase-date">Q1-Q4 2025</div>
+            </div>
+            <ul class="phase-items">
+              <li>Gamification and rewards system</li>
+              <li>Skills development pathways</li>
+              <li>Corporate volunteer program tools</li>
+              <li>Advanced analytics and reporting</li>
+            </ul>
+          </div>
+          
+          <div class="roadmap-phase">
+            <div class="phase-header">
+              <div class="phase-title">Phase 3: Ecosystem (2026+)</div>
+              <div class="phase-date">2026 and Beyond</div>
+            </div>
+            <ul class="phase-items">
+              <li>Predictive community needs forecasting</li>
+              <li>Volunteer credit and certification system</li>
+              <li>Integration with education and HR systems</li>
+              <li>Global expansion and localization</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer">20</div>
     </div>
 
     <!-- Investment Opportunity Slide -->
@@ -1411,12 +2390,12 @@
       </div>
       <div class="slide-header">
         <h1 class="slide-title">Investment Opportunity</h1>
-        <p class="slide-subtitle">Join us in building the future of volunteer engagement</p>
+        <p class="slide-subtitle">Join us in building the future of volunteer engagement and social impact</p>
       </div>
       <div class="slide-content">
         <div class="content-grid">
           <div class="card">
-            <h3 class="card-title">Why Invest</h3>
+            <h3 class="card-title"><i class="fas fa-search-dollar"></i> Why Invest</h3>
             <div class="tech-icon">
               <div class="market-icon">
                 <div class="pie"></div>
@@ -1425,14 +2404,15 @@
             </div>
             <ul class="card-content">
               <li>Massive <span class="highlight">$2.6B market</span> with no clear leader</li>
-              <li>Proven <span class="highlight">team with relevant expertise</span></li>
-              <li>Strong <span class="highlight">early traction</span> and validation</li>
-              <li>Clear <span class="highlight">path to profitability</span></li>
+              <li>Proven <span class="highlight">team with relevant expertise</span> and early traction</li>
+              <li>Strong <span class="highlight">product-market fit</span> validated in beta</li>
+              <li>Clear <span class="highlight">path to profitability</span> with recurring revenue</li>
+              <li>Significant <span class="highlight">social impact</span> alongside financial returns</li>
             </ul>
           </div>
           
           <div class="card">
-            <h3 class="card-title">Funding Round</h3>
+            <h3 class="card-title"><i class="fas fa-piggy-bank"></i> Funding Round</h3>
             <div class="tech-icon">
               <div class="financial-icon">
                 <div class="graph">
@@ -1443,28 +2423,46 @@
               </div>
             </div>
             <ul class="card-content">
-              <li><span class="highlight">$2M Seed Round</span></li>
-              <li>18 month runway</li>
-              <li>Product development & initial growth</li>
-              <li>Valuation: $10M pre-money</li>
+              <li><span class="highlight">$2M Seed Round</span> - Open for investment</li>
+              <li><span class="highlight">18 month runway</span> - Product development and initial growth</li>
+              <li><span class="highlight">Valuation</span> - $10M pre-money</li>
+              <li><span class="highlight">Use of funds</span> - Product, team, and customer acquisition</li>
+              <li><span class="highlight">Projected milestones</span> - 1,000 paying customers, $1.2M ARR</li>
             </ul>
           </div>
         </div>
         
-        <button class="cta-button" onclick="window.location.href='mailto:sarveshwar313@gmail.com'">Schedule a Meeting</button>
+        <div style="display: flex; gap: 1.5rem; margin-top: 2rem;">
+          <button class="cta-button" onclick="window.location.href='mailto:sarveshwar313@gmail.com'">
+            <i class="fas fa-calendar-alt"></i> Schedule a Meeting
+          </button>
+          <button class="cta-button secondary" onclick="window.location.href='#contact'">
+            <i class="fas fa-file-download"></i> Download Deck
+          </button>
+        </div>
         
         <div class="contact-info">
-          <a href="https://www.linkedin.com/in/sarveshwarsenthilkumar/" target="_blank">LinkedIn</a>
-          <a href="https://github.com/SarveshwarSenthilKumar" target="_blank">GitHub</a>
-          <a href="https://sarveshwarsenthilkumar.github.io" target="_blank">Personal Website</a>
-          <a href="tel:+14374504378">+1 (437) 450-4378</a>
-          <a href="mailto:sarveshwar313@gmail.com">Email</a>
+          <a href="https://www.linkedin.com/in/sarveshwarsenthilkumar/" target="_blank">
+            <i class="fab fa-linkedin"></i> LinkedIn
+          </a>
+          <a href="https://github.com/SarveshwarSenthilKumar" target="_blank">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+          <a href="https://sarveshwarsenthilkumar.github.io" target="_blank">
+            <i class="fas fa-globe"></i> Personal Website
+          </a>
+          <a href="tel:+14374504378">
+            <i class="fas fa-phone"></i> +1 (437) 450-4378
+          </a>
+          <a href="mailto:sarveshwar313@gmail.com">
+            <i class="fas fa-envelope"></i> Email
+          </a>
         </div>
       </div>
       <a href="index.html" class="home-link">
         <i class="fas fa-arrow-left"></i> Return to Main Site
       </a>
-      <div class="footer">12</div>
+      <div class="footer">21</div>
     </div>
   </div>
 
@@ -1482,6 +2480,15 @@
     <div class="nav-dot" data-slide="9"></div>
     <div class="nav-dot" data-slide="10"></div>
     <div class="nav-dot" data-slide="11"></div>
+    <div class="nav-dot" data-slide="12"></div>
+    <div class="nav-dot" data-slide="13"></div>
+    <div class="nav-dot" data-slide="14"></div>
+    <div class="nav-dot" data-slide="15"></div>
+    <div class="nav-dot" data-slide="16"></div>
+    <div class="nav-dot" data-slide="17"></div>
+    <div class="nav-dot" data-slide="18"></div>
+    <div class="nav-dot" data-slide="19"></div>
+    <div class="nav-dot" data-slide="20"></div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
@@ -1491,6 +2498,10 @@
       const dots = document.querySelectorAll('.nav-dot');
       let currentSlide = 0;
       let isAnimating = false;
+      let touchStartX = 0;
+      let touchEndX = 0;
+      let startY = 0;
+      let scrollTimeout;
       
       // Show initial slide
       showSlide(currentSlide);
@@ -1530,12 +2541,20 @@
       });
       
       // Touch/swipe support
-      let touchStartX = 0;
-      let touchEndX = 0;
-      
       document.addEventListener('touchstart', function(e) {
         touchStartX = e.changedTouches[0].screenX;
+        startY = e.changedTouches[0].screenY;
       }, false);
+      
+      document.addEventListener('touchmove', function(e) {
+        // Prevent scrolling if horizontal swipe
+        const xDiff = Math.abs(e.changedTouches[0].screenX - touchStartX);
+        const yDiff = Math.abs(e.changedTouches[0].screenY - startY);
+        
+        if (xDiff > yDiff && xDiff > 10) {
+          e.preventDefault();
+        }
+      }, { passive: false });
       
       document.addEventListener('touchend', function(e) {
         if (isAnimating) return;
@@ -1543,11 +2562,29 @@
         handleSwipe();
       }, false);
       
+      // Mouse wheel navigation
+      document.addEventListener('wheel', function(e) {
+        if (isAnimating) return;
+        
+        // Clear any pending scroll actions
+        clearTimeout(scrollTimeout);
+        
+        // Debounce the scroll to prevent multiple triggers
+        scrollTimeout = setTimeout(() => {
+          if (e.deltaY > 0) {
+            nextSlide();
+          } else if (e.deltaY < 0) {
+            prevSlide();
+          }
+        }, 100);
+      }, { passive: true });
+      
       function handleSwipe() {
-        if (touchEndX < touchStartX - 50) {
+        const xDiff = touchEndX - touchStartX;
+        
+        if (xDiff < -50) {
           nextSlide();
-        }
-        if (touchEndX > touchStartX + 50) {
+        } else if (xDiff > 50) {
           prevSlide();
         }
       }
@@ -1567,7 +2604,7 @@
         // Reset animation lock after transition
         setTimeout(() => {
           isAnimating = false;
-        }, 500);
+        }, 800);
       }
       
       function nextSlide() {
@@ -1577,6 +2614,13 @@
       function prevSlide() {
         showSlide(currentSlide - 1);
       }
+      
+      // Auto-advance for demo purposes (disabled)
+      // setInterval(() => {
+      //   if (!document.hidden) {
+      //     nextSlide();
+      //   }
+      // }, 10000);
     });
   </script>
 
