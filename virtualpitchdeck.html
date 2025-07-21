@@ -43,16 +43,13 @@
             background-color: var(--dark);
             color: var(--light);
             overflow-x: hidden;
-            overflow-y: hidden;
-            height: 100vh;
-            overflow: hidden;
             line-height: 1.6;
         }
 
         .slide-container {
             position: relative;
-            height: 100vh;
             width: 100vw;
+            height: 100vh;
             overflow: hidden;
         }
 
@@ -63,7 +60,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            overflow: hidden;
+            overflow-y: auto;
             transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
             transform: translateX(100%);
             display: flex;
@@ -76,14 +73,14 @@
         }
 
         .slide-header {
-            min-height: 120px;
+            min-height: auto;
             margin-bottom: 20px;
         }
 
         .slide-title {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 800;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
             background: linear-gradient(to right, var(--primary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -93,7 +90,7 @@
         }
 
         .slide-subtitle {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             color: var(--gray-light);
             margin-bottom: 1.5rem;
             max-width: 900px;
@@ -105,20 +102,21 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            overflow: hidden;
+            overflow-y: auto;
+            padding-bottom: 20px;
         }
 
         .content-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: 1.5rem;
             margin-bottom: 1.5rem;
         }
 
         .card {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 16px;
-            padding: 2rem;
+            padding: 1.5rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.4s ease;
             height: 100%;
@@ -128,7 +126,7 @@
         }
 
         .card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-5px);
             box-shadow: var(--shadow-xl);
             border-color: rgba(59, 130, 246, 0.5);
             background: rgba(255, 255, 255, 0.08);
@@ -175,8 +173,8 @@
         /* Custom animated icons */
         .tech-icon {
             width: 100%;
-            height: 200px;
-            margin: 1.5rem 0;
+            height: 150px;
+            margin: 1rem 0;
             position: relative;
             display: flex;
             justify-content: center;
@@ -185,8 +183,8 @@
 
         /* Cover slide icon */
         .hands-icon {
-            width: 220px;
-            height: 220px;
+            width: 180px;
+            height: 180px;
             position: relative;
             animation: float 6s ease-in-out infinite;
         }
@@ -194,8 +192,8 @@
         .hands-icon .hand-left,
         .hands-icon .hand-right {
             position: absolute;
-            width: 80px;
-            height: 120px;
+            width: 60px;
+            height: 90px;
             background: var(--primary);
             border-radius: 60px;
             animation: pulse 3s infinite alternate;
@@ -203,77 +201,77 @@
         }
 
         .hands-icon .hand-left {
-            left: 30px;
-            top: 50px;
+            left: 25px;
+            top: 40px;
             transform: rotate(-20deg);
             background: var(--gradient);
         }
 
         .hands-icon .hand-right {
-            right: 30px;
-            top: 50px;
+            right: 25px;
+            top: 40px;
             transform: rotate(20deg);
             background: var(--gradient-secondary);
         }
 
         .hands-icon .connection {
             position: absolute;
-            width: 60px;
-            height: 15px;
+            width: 50px;
+            height: 12px;
             background: var(--accent);
             border-radius: 8px;
-            top: 90px;
+            top: 70px;
             left: 50%;
             transform: translateX(-50%);
-            box-shadow: 0 0 20px rgba(96, 165, 250, 0.6);
+            box-shadow: 0 0 15px rgba(96, 165, 250, 0.6);
             animation: pulse 2.5s infinite;
         }
 
         /* Problem slide icons */
         .search-icon {
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             position: relative;
             animation: shake 4s infinite;
         }
 
         .search-icon .magnifier {
-            width: 80px;
-            height: 80px;
-            border: 4px solid var(--primary);
+            width: 60px;
+            height: 60px;
+            border: 3px solid var(--primary);
             border-radius: 50%;
             position: absolute;
             top: 10px;
             left: 10px;
-            box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
         }
 
         .search-icon .handle {
-            width: 30px;
-            height: 40px;
+            width: 25px;
+            height: 30px;
             background: var(--primary);
             position: absolute;
-            top: 70px;
-            left: 80px;
+            top: 55px;
+            left: 60px;
             transform: rotate(45deg);
             border-radius: 3px;
         }
 
         .calendar-icon {
-            width: 100px;
-            height: 100px;
-            border: 4px solid var(--primary);
+            width: 80px;
+            height: 80px;
+            border: 3px solid var(--primary);
             border-radius: 8px;
             position: relative;
             animation: pulse 2.5s infinite;
-            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 5px 10px rgba(37, 99, 235, 0.3);
         }
 
         .calendar-icon::before {
             content: '';
             position: absolute;
             width: 100%;
-            height: 25px;
+            height: 20px;
             background: var(--primary);
             top: 0;
             left: 0;
@@ -282,7 +280,7 @@
 
         .calendar-icon .day {
             position: absolute;
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: bold;
             color: var(--primary);
             top: 50%;
@@ -292,131 +290,131 @@
         }
 
         .disconnect-icon {
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             position: relative;
             animation: wobble 4s infinite;
         }
 
         .disconnect-icon .user1,
         .disconnect-icon .user2 {
-            width: 50px;
-            height: 50px;
-            border: 4px solid var(--primary);
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--primary);
             border-radius: 50%;
             position: absolute;
-            top: 35px;
-            box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
+            top: 30px;
+            box-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
         }
 
         .disconnect-icon .user1 {
-            left: 15px;
+            left: 10px;
         }
 
         .disconnect-icon .user2 {
-            right: 15px;
+            right: 10px;
         }
 
         .disconnect-icon .line {
-            width: 70px;
-            height: 4px;
+            width: 60px;
+            height: 3px;
             background: var(--primary);
             position: absolute;
-            top: 60px;
-            left: 25px;
+            top: 50px;
+            left: 20px;
             opacity: 0.3;
         }
 
         /* Solution slide icon */
         .match-icon {
-            width: 240px;
-            height: 180px;
+            width: 200px;
+            height: 150px;
             position: relative;
             animation: float 5s ease-in-out infinite;
         }
 
         .match-icon .user1,
         .match-icon .user2 {
-            width: 80px;
-            height: 80px;
-            border: 4px solid var(--primary);
+            width: 60px;
+            height: 60px;
+            border: 3px solid var(--primary);
             border-radius: 50%;
             position: absolute;
-            top: 50px;
-            box-shadow: 0 0 20px rgba(37, 99, 235, 0.4);
+            top: 40px;
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.4);
         }
 
         .match-icon .user1 {
-            left: 40px;
+            left: 30px;
             background: linear-gradient(45deg, transparent 40%, rgba(37, 99, 235, 0.3) 100%);
         }
 
         .match-icon .user2 {
-            right: 40px;
+            right: 30px;
             background: linear-gradient(-45deg, transparent 40%, rgba(37, 99, 235, 0.3) 100%);
         }
 
         .match-icon .connection {
-            width: 80px;
-            height: 4px;
+            width: 60px;
+            height: 3px;
             background: var(--secondary);
             position: absolute;
-            top: 90px;
-            left: 80px;
+            top: 70px;
+            left: 60px;
             animation: pulse 2s infinite;
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
         }
 
         .match-icon .heart {
             position: absolute;
-            width: 25px;
-            height: 25px;
+            width: 20px;
+            height: 20px;
             background: var(--secondary);
-            top: 75px;
-            left: 107.5px;
+            top: 60px;
+            left: 90px;
             transform: rotate(45deg);
             animation: pulse 1.5s infinite;
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
         }
 
         .match-icon .heart::before,
         .match-icon .heart::after {
             content: '';
-            width: 25px;
-            height: 25px;
+            width: 20px;
+            height: 20px;
             background: var(--secondary);
             border-radius: 50%;
             position: absolute;
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
         }
 
         .match-icon .heart::before {
-            top: -12.5px;
+            top: -10px;
             left: 0;
         }
 
         .match-icon .heart::after {
             top: 0;
-            left: -12.5px;
+            left: -10px;
         }
 
         /* Market opportunity icon */
         .market-icon {
-            width: 140px;
-            height: 140px;
+            width: 120px;
+            height: 120px;
             position: relative;
         }
 
         .market-icon .pie {
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
-            border: 15px solid transparent;
+            border: 12px solid transparent;
             position: absolute;
             top: 10px;
             left: 10px;
             animation: rotate 10s linear infinite;
-            box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
         }
 
         .market-icon .pie:nth-child(1) {
@@ -433,14 +431,14 @@
 
         /* Business model icon */
         .business-icon {
-            width: 140px;
-            height: 140px;
+            width: 120px;
+            height: 120px;
             position: relative;
         }
 
         .business-icon .cube {
-            width: 80px;
-            height: 80px;
+            width: 60px;
+            height: 60px;
             position: absolute;
             top: 30px;
             left: 30px;
@@ -450,126 +448,126 @@
 
         .business-icon .face {
             position: absolute;
-            width: 80px;
-            height: 80px;
-            border: 3px solid var(--primary);
+            width: 60px;
+            height: 60px;
+            border: 2px solid var(--primary);
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 14px;
+            font-size: 12px;
             color: var(--primary);
             background: rgba(37, 99, 235, 0.1);
-            box-shadow: 0 0 15px rgba(37, 99, 235, 0.2);
+            box-shadow: 0 0 10px rgba(37, 99, 235, 0.2);
         }
 
-        .business-icon .front { transform: translateZ(40px); }
-        .business-icon .back { transform: rotateY(180deg) translateZ(40px); }
-        .business-icon .right { transform: rotateY(90deg) translateZ(40px); }
-        .business-icon .left { transform: rotateY(-90deg) translateZ(40px); }
-        .business-icon .top { transform: rotateX(90deg) translateZ(40px); }
-        .business-icon .bottom { transform: rotateX(-90deg) translateZ(40px); }
+        .business-icon .front { transform: translateZ(30px); }
+        .business-icon .back { transform: rotateY(180deg) translateZ(30px); }
+        .business-icon .right { transform: rotateY(90deg) translateZ(30px); }
+        .business-icon .left { transform: rotateY(-90deg) translateZ(30px); }
+        .business-icon .top { transform: rotateX(90deg) translateZ(30px); }
+        .business-icon .bottom { transform: rotateX(-90deg) translateZ(30px); }
 
         /* Financials icon */
         .financial-icon {
-            width: 140px;
-            height: 140px;
-            position: relative;
-        }
-
-        .financial-icon .graph {
-            position: absolute;
-            width: 120px;
-            height: 100px;
-            bottom: 20px;
-            left: 10px;
-            border-left: 3px solid var(--primary);
-            border-bottom: 3px solid var(--primary);
-        }
-
-        .financial-icon .bar {
-            position: absolute;
-            bottom: 0;
-            width: 20px;
-            background: var(--gradient);
-            border-radius: 5px 5px 0 0;
-            animation: grow 2.5s ease-out forwards;
-            box-shadow: 0 -5px 15px rgba(37, 99, 235, 0.4);
-        }
-
-        .financial-icon .bar:nth-child(1) { height: 40px; left: 15px; animation-delay: 0.2s; }
-        .financial-icon .bar:nth-child(2) { height: 60px; left: 40px; animation-delay: 0.4s; }
-        .financial-icon .bar:nth-child(3) { height: 80px; left: 65px; animation-delay: 0.6s; }
-        .financial-icon .bar:nth-child(4) { height: 100px; left: 90px; animation-delay: 0.8s; }
-
-        /* Team icon */
-        .team-icon {
-            width: 140px;
-            height: 140px;
-            position: relative;
-        }
-
-        .team-icon .person1,
-        .team-icon .person2 {
-            width: 50px;
-            height: 100px;
-            position: absolute;
-            bottom: 20px;
-        }
-
-        .team-icon .person1 {
-            left: 25px;
-        }
-
-        .team-icon .person2 {
-            right: 25px;
-        }
-
-        .team-icon .head {
-            width: 40px;
-            height: 40px;
-            border: 3px solid var(--primary);
-            border-radius: 50%;
-            position: absolute;
-            top: 0;
-            left: 5px;
-            box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
-        }
-
-        .team-icon .body {
-            width: 30px;
-            height: 50px;
-            border: 3px solid var(--primary);
-            border-top: none;
-            border-radius: 0 0 15px 15px;
-            position: absolute;
-            top: 40px;
-            left: 10px;
-            box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
-        }
-
-        .team-icon .connection {
-            width: 50px;
-            height: 4px;
-            background: var(--secondary);
-            position: absolute;
-            top: 60px;
-            left: 45px;
-            animation: pulse 2s infinite;
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
-        }
-
-        /* Competition icon */
-        .competition-icon {
             width: 120px;
             height: 120px;
             position: relative;
         }
 
-        .competition-icon .podium {
+        .financial-icon .graph {
             position: absolute;
             width: 100px;
-            height: 60px;
-            bottom: 30px;
+            height: 80px;
+            bottom: 20px;
+            left: 10px;
+            border-left: 2px solid var(--primary);
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .financial-icon .bar {
+            position: absolute;
+            bottom: 0;
+            width: 15px;
+            background: var(--gradient);
+            border-radius: 5px 5px 0 0;
+            animation: grow 2.5s ease-out forwards;
+            box-shadow: 0 -5px 10px rgba(37, 99, 235, 0.4);
+        }
+
+        .financial-icon .bar:nth-child(1) { height: 30px; left: 15px; animation-delay: 0.2s; }
+        .financial-icon .bar:nth-child(2) { height: 50px; left: 35px; animation-delay: 0.4s; }
+        .financial-icon .bar:nth-child(3) { height: 70px; left: 55px; animation-delay: 0.6s; }
+        .financial-icon .bar:nth-child(4) { height: 80px; left: 75px; animation-delay: 0.8s; }
+
+        /* Team icon */
+        .team-icon {
+            width: 120px;
+            height: 120px;
+            position: relative;
+        }
+
+        .team-icon .person1,
+        .team-icon .person2 {
+            width: 40px;
+            height: 80px;
+            position: absolute;
+            bottom: 20px;
+        }
+
+        .team-icon .person1 {
+            left: 20px;
+        }
+
+        .team-icon .person2 {
+            right: 20px;
+        }
+
+        .team-icon .head {
+            width: 30px;
+            height: 30px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 5px;
+            box-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
+        }
+
+        .team-icon .body {
+            width: 25px;
+            height: 40px;
+            border: 2px solid var(--primary);
+            border-top: none;
+            border-radius: 0 0 12px 12px;
+            position: absolute;
+            top: 30px;
+            left: 8px;
+            box-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
+        }
+
+        .team-icon .connection {
+            width: 40px;
+            height: 3px;
+            background: var(--secondary);
+            position: absolute;
+            top: 50px;
+            left: 40px;
+            animation: pulse 2s infinite;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+
+        /* Competition icon */
+        .competition-icon {
+            width: 100px;
+            height: 100px;
+            position: relative;
+        }
+
+        .competition-icon .podium {
+            position: absolute;
+            width: 80px;
+            height: 50px;
+            bottom: 25px;
             left: 10px;
         }
 
@@ -582,21 +580,21 @@
             border-radius: 5px 5px 0 0;
         }
 
-        .competition-icon .step1 { width: 30px; height: 30px; left: 35px; }
-        .competition-icon .step2 { width: 25px; height: 20px; left: 60px; }
-        .competition-icon .step3 { width: 20px; height: 10px; left: 15px; }
+        .competition-icon .step1 { width: 25px; height: 25px; left: 30px; }
+        .competition-icon .step2 { width: 20px; height: 15px; left: 50px; }
+        .competition-icon .step3 { width: 15px; height: 8px; left: 10px; }
 
         /* Roadmap icon */
         .roadmap-icon {
-            width: 140px;
-            height: 140px;
+            width: 120px;
+            height: 120px;
             position: relative;
         }
 
         .roadmap-icon .path {
             position: absolute;
-            width: 5px;
-            height: 100px;
+            width: 4px;
+            height: 80px;
             background: var(--primary);
             left: 50%;
             top: 20px;
@@ -605,41 +603,41 @@
 
         .roadmap-icon .milestone {
             position: absolute;
-            width: 15px;
-            height: 15px;
+            width: 12px;
+            height: 12px;
             background: var(--secondary);
             border-radius: 50%;
             left: 50%;
             transform: translateX(-50%);
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
         }
 
         .roadmap-icon .milestone:nth-child(1) { top: 20px; }
-        .roadmap-icon .milestone:nth-child(2) { top: 45px; }
-        .roadmap-icon .milestone:nth-child(3) { top: 70px; }
-        .roadmap-icon .milestone:nth-child(4) { top: 95px; }
+        .roadmap-icon .milestone:nth-child(2) { top: 40px; }
+        .roadmap-icon .milestone:nth-child(3) { top: 60px; }
+        .roadmap-icon .milestone:nth-child(4) { top: 80px; }
 
         /* Animations */
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-25px); }
+            50% { transform: translateY(-15px); }
         }
 
         @keyframes pulse {
             0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
         }
 
         @keyframes shake {
             0%, 100% { transform: rotate(0deg); }
-            10%, 30%, 50%, 70%, 90% { transform: rotate(-5deg); }
-            20%, 40%, 60%, 80% { transform: rotate(5deg); }
+            10%, 30%, 50%, 70%, 90% { transform: rotate(-3deg); }
+            20%, 40%, 60%, 80% { transform: rotate(3deg); }
         }
 
         @keyframes wobble {
             0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-8px); }
-            75% { transform: translateX(8px); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
         }
 
         @keyframes rotate {
@@ -665,31 +663,31 @@
         /* Navigation elements */
         .logo {
             position: absolute;
-            top: 25px;
-            left: 30px;
-            height: 50px;
+            top: 20px;
+            left: 20px;
+            height: 40px;
             z-index: 100;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         .logo-icon {
-            width: 42px;
-            height: 42px;
+            width: 36px;
+            height: 36px;
             background: var(--gradient);
-            border-radius: 12px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.2rem;
+            font-size: 1rem;
             box-shadow: var(--shadow);
         }
 
         .logo-text {
             font-weight: 800;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             background: linear-gradient(to right, var(--primary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -697,16 +695,16 @@
 
         .slide-nav {
             position: fixed;
-            bottom: 25px;
-            left: 30px;
+            bottom: 20px;
+            left: 20px;
             display: flex;
-            gap: 12px;
+            gap: 10px;
             z-index: 100;
         }
 
         .nav-dot {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.3);
             cursor: pointer;
@@ -716,15 +714,15 @@
 
         .nav-dot.active {
             background: var(--primary);
-            transform: scale(1.4);
-            box-shadow: 0 0 15px rgba(37, 99, 235, 0.5);
+            transform: scale(1.3);
+            box-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
         }
 
         .footer {
             position: absolute;
-            bottom: 30px;
-            right: 30px;
-            font-size: 0.8rem;
+            bottom: 20px;
+            right: 20px;
+            font-size: 0.7rem;
             color: rgba(255, 255, 255, 0.5);
         }
 
@@ -733,18 +731,18 @@
             display: inline-block;
             background: var(--gradient);
             color: var(--light);
-            padding: 0.9rem 2.2rem;
+            padding: 0.8rem 1.8rem;
             border-radius: 30px;
             font-weight: 600;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
             transition: all 0.3s ease;
             box-shadow: var(--shadow-lg);
             border: none;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 0.9rem;
             text-decoration: none;
             text-align: center;
-            max-width: 300px;
+            max-width: 250px;
         }
 
         .cta-button:hover {
@@ -764,10 +762,10 @@
 
         .contact-info {
             display: flex;
-            gap: 1.5rem;
-            margin-top: 2rem;
+            gap: 1rem;
+            margin-top: 1.5rem;
             flex-wrap: wrap;
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
 
         .contact-info a {
@@ -790,7 +788,7 @@
             font-weight: 600;
             margin-top: 1rem;
             display: inline-block;
-            font-size: 1rem;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
@@ -804,22 +802,22 @@
 
         .home-link {
             position: fixed;
-            bottom: 25px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             color: var(--light);
             text-decoration: none;
             z-index: 100;
             background: rgba(37, 99, 235, 0.7);
-            padding: 0.8rem 1.5rem;
+            padding: 0.7rem 1.2rem;
             border-radius: 30px;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 500;
             transition: all 0.3s ease;
             box-shadow: var(--shadow-lg);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             backdrop-filter: blur(5px);
         }
 
@@ -847,15 +845,15 @@
         /* Stats grid */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
         }
 
         .stat-card {
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 1.8rem;
+            border-radius: 12px;
+            padding: 1.2rem;
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
@@ -864,15 +862,15 @@
         }
 
         .stat-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
             box-shadow: var(--shadow-lg);
             border-color: rgba(59, 130, 246, 0.3);
         }
 
         .stat-number {
-            font-size: 2.8rem;
+            font-size: 2rem;
             font-weight: 800;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.5rem;
             background: linear-gradient(to right, var(--primary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -881,30 +879,30 @@
 
         .stat-label {
             color: var(--gray-light);
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
 
         /* Timeline */
         .timeline {
             position: relative;
-            max-width: 900px;
-            margin: 3rem auto;
+            max-width: 100%;
+            margin: 2rem auto;
         }
 
         .timeline::before {
             content: '';
             position: absolute;
-            width: 3px;
+            width: 2px;
             background: var(--gradient);
             top: 0;
             bottom: 0;
             left: 50%;
-            margin-left: -1.5px;
+            margin-left: -1px;
             z-index: 1;
         }
 
         .timeline-item {
-            padding: 15px 50px;
+            padding: 12px 40px;
             position: relative;
             width: 50%;
             box-sizing: border-box;
@@ -913,13 +911,13 @@
         .timeline-item::after {
             content: '';
             position: absolute;
-            width: 25px;
-            height: 25px;
+            width: 20px;
+            height: 20px;
             background: var(--gradient);
             border-radius: 50%;
-            top: 20px;
+            top: 15px;
             z-index: 2;
-            box-shadow: 0 0 15px rgba(37, 99, 235, 0.5);
+            box-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
         }
 
         .left {
@@ -933,17 +931,17 @@
         }
 
         .left::after {
-            right: -12.5px;
+            right: -10px;
         }
 
         .right::after {
-            left: -12.5px;
+            left: -10px;
         }
 
         .timeline-content {
-            padding: 25px;
+            padding: 20px;
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
+            border-radius: 10px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(5px);
             transition: all 0.3s ease;
@@ -951,7 +949,7 @@
         }
 
         .timeline-content:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
             box-shadow: var(--shadow-lg);
             border-color: rgba(59, 130, 246, 0.3);
         }
@@ -959,22 +957,22 @@
         .timeline-date {
             color: var(--primary);
             font-weight: 700;
-            margin-bottom: 0.8rem;
-            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
         }
 
         /* Roadmap */
         .roadmap-container {
             display: flex;
             flex-direction: column;
-            gap: 2rem;
-            margin: 2rem 0;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
         }
 
         .roadmap-phase {
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 1.5rem;
+            border-radius: 10px;
+            padding: 1.2rem;
             border-left: 4px solid var(--primary);
             transition: all 0.3s ease;
             backdrop-filter: blur(5px);
@@ -982,7 +980,7 @@
         }
 
         .roadmap-phase:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
             box-shadow: var(--shadow-lg);
             border-left: 4px solid var(--secondary);
         }
@@ -991,18 +989,18 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
         }
 
         .phase-title {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: var(--primary);
         }
 
         .phase-date {
             color: var(--gray-light);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
 
         .phase-items {
@@ -1010,52 +1008,71 @@
         }
 
         .phase-items li {
-            margin-bottom: 0.8rem;
-            padding-left: 1.5rem;
+            margin-bottom: 0.6rem;
+            padding-left: 1.2rem;
             position: relative;
+            font-size: 0.9rem;
         }
 
         .phase-items li::before {
             content: '';
             position: absolute;
             left: 0;
-            top: 0.6em;
-            width: 8px;
-            height: 8px;
+            top: 0.5em;
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
             background: var(--secondary);
+        }
+
+        /* Traction Slide */
+        .traction-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .traction-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            box-shadow: var(--shadow);
+        }
+
+        .traction-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .traction-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .traction-content {
+            color: var(--gray-light);
+            line-height: 1.7;
+            font-size: 0.9rem;
         }
 
         /* Responsive adjustments */
         @media (max-width: 1024px) {
             .slide {
-                padding: 80px 7% 60px;
+                padding: 70px 7% 50px;
             }
             
             .slide-title {
-                font-size: 2.5rem;
-            }
-            
-            .slide-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .content-grid {
-                gap: 1.5rem;
-            }
-            
-            .stat-number {
                 font-size: 2.2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .slide {
-                padding: 70px 5% 50px;
-            }
-            
-            .slide-title {
-                font-size: 2rem;
             }
             
             .slide-subtitle {
@@ -1063,47 +1080,21 @@
             }
             
             .content-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
+                gap: 1.2rem;
             }
             
-            .tech-icon {
-                height: 180px;
+            .card {
+                padding: 1.2rem;
             }
             
-            .contact-info {
-                gap: 1rem;
-                font-size: 0.9rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .timeline::before {
-                left: 31px;
-            }
-
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-            }
-
-            .timeline-item::after {
-                left: 21px;
-            }
-
-            .left, .right {
-                left: 0;
-                text-align: left;
+            .stat-number {
+                font-size: 1.8rem;
             }
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 768px) {
             .slide {
-                padding: 70px 4% 50px;
+                padding: 70px 5% 50px;
             }
             
             .slide-title {
@@ -1114,8 +1105,72 @@
                 font-size: 1rem;
             }
             
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            
+            .tech-icon {
+                height: 120px;
+            }
+            
+            .contact-info {
+                gap: 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .timeline::before {
+                left: 25px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 60px;
+                padding-right: 20px;
+            }
+
+            .timeline-item::after {
+                left: 15px;
+            }
+
+            .left, .right {
+                left: 0;
+                text-align: left;
+            }
+            
+            .roadmap-phase {
+                padding: 1rem;
+            }
+            
+            .phase-title {
+                font-size: 1rem;
+            }
+            
+            .phase-items li {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slide {
+                padding: 60px 4% 40px;
+            }
+            
+            .slide-title {
+                font-size: 1.6rem;
+            }
+            
+            .slide-subtitle {
+                font-size: 0.9rem;
+            }
+            
             .card {
-                padding: 1.5rem;
+                padding: 1rem;
             }
             
             .logo {
@@ -1135,15 +1190,33 @@
             
             .home-link {
                 bottom: 15px;
-                padding: 0.7rem 1.2rem;
-                font-size: 0.9rem;
+                padding: 0.6rem 1rem;
+                font-size: 0.8rem;
+            }
+            
+            .cta-button {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.8rem;
+                max-width: 100%;
+            }
+            
+            .stat-number {
+                font-size: 1.5rem;
+            }
+            
+            .stat-label {
+                font-size: 0.8rem;
+            }
+            
+            .timeline-item {
+                padding-left: 50px;
             }
         }
 
         /* Custom scrollbar */
         ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
+            width: 6px;
+            height: 6px;
         }
 
         ::-webkit-scrollbar-track {
@@ -1152,7 +1225,7 @@
 
         ::-webkit-scrollbar-thumb {
             background: var(--primary);
-            border-radius: 4px;
+            border-radius: 3px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
@@ -1229,7 +1302,7 @@
               <li><span class="highlight">70% of volunteers</span> report difficulty finding relevant opportunities (Corporation for National and Community Service)</li>
               <li>Nonprofits spend <span class="highlight">30+ hours/month</span> searching for qualified volunteers</li>
               <li>Manual matching processes lead to <span class="highlight">poor fit</span> and wasted resources</li>
-              <li><span class="highlight">58% of volunteers</span> feel their skills aren't fully utilized (Delotte Impact Survey)</li>
+              <li><span class="highlight">58% of volunteers</span> feel their skills aren't fully utilized (Deloitte Impact Survey)</li>
             </ul>
           </div>
           
@@ -1603,6 +1676,60 @@
       <div class="footer">8</div>
     </div>
 
+    <!-- Traction Slide -->
+    <div class="slide">
+      <div class="logo">
+        <div class="logo-icon">
+            <i class="fas fa-hands-helping"></i>
+        </div>
+        <span class="logo-text">VolunteerHub</span>
+      </div>
+      <div class="slide-header">
+        <h1 class="slide-title">Traction & Milestones</h1>
+        <p class="slide-subtitle">Our progress and validation in the market</p>
+      </div>
+      <div class="slide-content">
+        <div class="traction-grid">
+          <div class="traction-card">
+            <h3 class="traction-title"><i class="fas fa-check-circle"></i> Product Development</h3>
+            <div class="traction-content">
+              <ul>
+                <li>Completed MVP with core matching functionality</li>
+                <li>Successfully tested with 3 nonprofit partners</li>
+                <li>85% match accuracy in beta testing</li>
+                <li>92% volunteer satisfaction in pilot program</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="traction-card">
+            <h3 class="traction-title"><i class="fas fa-users"></i> Partnerships</h3>
+            <div class="traction-content">
+              <ul>
+                <li>Memorandum of Understanding with United Way Toronto</li>
+                <li>Pilot program with 5 local nonprofits</li>
+                <li>In discussions with 3 corporate CSR programs</li>
+                <li>University partnerships for student volunteering</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="traction-card">
+            <h3 class="traction-title"><i class="fas fa-award"></i> Recognition</h3>
+            <div class="traction-content">
+              <ul>
+                <li>Winner of Toronto Tech for Good Hackathon 2023</li>
+                <li>Featured in Nonprofit Tech News</li>
+                <li>Invited speaker at Social Impact Summit</li>
+                <li>Selected for Techstars Social Impact Accelerator</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer">9</div>
+    </div>
+
     <!-- Team Slide 1 -->
     <div class="slide">
       <div class="logo">
@@ -1654,8 +1781,20 @@
             </ul>
           </div>
         </div>
+        
+        <div class="content-grid" style="margin-top: 1.5rem;">
+          <div class="card">
+            <h3 class="card-title"><i class="fas fa-users"></i> Advisory Board</h3>
+            <ul class="card-content">
+              <li><span class="highlight">Dr. Amanda Chen</span> - Nonprofit Management Professor, Harvard</li>
+              <li><span class="highlight">James Wilson</span> - Former VP of Product at VolunteerMatch</li>
+              <li><span class="highlight">Lisa Rodriguez</span> - Director of CSR at Fortune 500 Company</li>
+              <li><span class="highlight">Mark Taylor</span> - Behavioral Psychologist, Stanford</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="footer">9</div>
+      <div class="footer">10</div>
     </div>
 
     <!-- Competition Slide 1 -->
@@ -1703,7 +1842,57 @@
           </div>
         </div>
       </div>
-      <div class="footer">10</div>
+      <div class="footer">11</div>
+    </div>
+
+    <!-- Financial Projections Slide -->
+    <div class="slide">
+      <div class="logo">
+        <div class="logo-icon">
+            <i class="fas fa-hands-helping"></i>
+        </div>
+        <span class="logo-text">VolunteerHub</span>
+      </div>
+      <div class="slide-header">
+        <h1 class="slide-title">Financial Projections</h1>
+        <p class="slide-subtitle">Path to profitability and growth</p>
+      </div>
+      <div class="slide-content">
+        <div class="content-grid">
+          <div class="card">
+            <h3 class="card-title"><i class="fas fa-chart-line"></i> Revenue Forecast</h3>
+            <div class="tech-icon">
+              <div class="financial-icon">
+                <div class="graph">
+                  <div class="bar" style="--h: 30px;"></div>
+                  <div class="bar" style="--h: 60px;"></div>
+                  <div class="bar" style="--h: 90px;"></div>
+                  <div class="bar" style="--h: 120px;"></div>
+                </div>
+              </div>
+            </div>
+            <ul class="card-content">
+              <li><span class="highlight">Year 1</span> - $500K ARR (1,000 paying organizations)</li>
+              <li><span class="highlight">Year 2</span> - $2.5M ARR (5,000 organizations + corporate clients)</li>
+              <li><span class="highlight">Year 3</span> - $7.5M ARR (15,000 organizations + expansion)</li>
+              <li><span class="highlight">Gross Margins</span> - 75%+ due to SaaS model</li>
+              <li><span class="highlight">Breakeven</span> - Month 18 at current projections</li>
+            </ul>
+          </div>
+          
+          <div class="card">
+            <h3 class="card-title"><i class="fas fa-money-bill-wave"></i> Funding Needs</h3>
+            <ul class="card-content">
+              <li><span class="highlight">Seed Round</span> - $2M for product development and initial growth</li>
+              <li><span class="highlight">Use of Funds</span> - 60% product, 25% marketing, 15% operations</li>
+              <li><span class="highlight">Series A Target</span> - $8M in 18 months for expansion</li>
+              <li><span class="highlight">Exit Strategy</span> - Acquisition by HR tech or nonprofit software company</li>
+              <li><span class="highlight">Potential Buyers</span> - Salesforce, Blackbaud, LinkedIn, Workday</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer">12</div>
     </div>
 
     <!-- Vision Slide 1 -->
@@ -1743,7 +1932,7 @@
           </div>
         </div>
       </div>
-      <div class="footer">11</div>
+      <div class="footer">13</div>
     </div>
 
     <!-- Vision Slide 2 -->
@@ -1800,7 +1989,60 @@
           </div>
         </div>
       </div>
-      <div class="footer">12</div>
+      <div class="footer">14</div>
+    </div>
+
+    <!-- Impact Metrics Slide -->
+    <div class="slide">
+      <div class="logo">
+        <div class="logo-icon">
+            <i class="fas fa-hands-helping"></i>
+        </div>
+        <span class="logo-text">VolunteerHub</span>
+      </div>
+      <div class="slide-header">
+        <h1 class="slide-title">Social Impact Metrics</h1>
+        <p class="slide-subtitle">Measuring our success beyond financial returns</p>
+      </div>
+      <div class="slide-content">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">5X</div>
+                <div class="stat-label">Increase in Volunteer Retention</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">3X</div>
+                <div class="stat-label">More Skills-Based Matches</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">10M+</div>
+                <div class="stat-label">Volunteer Hours Facilitated by 2027</div>
+            </div>
+        </div>
+        
+        <div class="content-grid">
+          <div class="card">
+            <h3 class="card-title"><i class="fas fa-heart"></i> Community Impact</h3>
+            <ul class="card-content">
+              <li><span class="highlight">2.5X more volunteers</span> matched with critical needs</li>
+              <li><span class="highlight">60% reduction</span> in time to fill volunteer positions</li>
+              <li><span class="highlight">85% satisfaction rate</span> among nonprofit partners</li>
+              <li><span class="highlight">90% satisfaction rate</span> among volunteers in pilot</li>
+            </ul>
+          </div>
+          
+          <div class="card">
+            <h3 class="card-title"><i class="fas fa-globe"></i> Broader Social Goals</h3>
+            <ul class="card-content">
+              <li>Democratize access to meaningful volunteer opportunities</li>
+              <li>Bridge the gap between skilled professionals and social needs</li>
+              <li>Create measurable impact tracking for all stakeholders</li>
+              <li>Build a culture of service and social responsibility</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer">15</div>
     </div>
 
     <!-- Investment Opportunity Slide -->
@@ -1855,7 +2097,7 @@
           </div>
         </div>
         
-        <div style="display: flex; gap: 1.5rem; margin-top: 2rem;">
+        <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
           <button class="cta-button" onclick="window.location.href='mailto:sarveshwar313@gmail.com'">
             <i class="fas fa-calendar-alt"></i> Schedule a Meeting
           </button>
@@ -1885,7 +2127,7 @@
       <a href="index.html" class="home-link">
         <i class="fas fa-arrow-left"></i> Return to Main Site
       </a>
-      <div class="footer">13</div>
+      <div class="footer">16</div>
     </div>
   </div>
 
@@ -1904,6 +2146,9 @@
     <div class="nav-dot" data-slide="10"></div>
     <div class="nav-dot" data-slide="11"></div>
     <div class="nav-dot" data-slide="12"></div>
+    <div class="nav-dot" data-slide="13"></div>
+    <div class="nav-dot" data-slide="14"></div>
+    <div class="nav-dot" data-slide="15"></div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
