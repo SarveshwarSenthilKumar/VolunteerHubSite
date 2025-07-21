@@ -558,33 +558,6 @@
             box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
         }
 
-        /* Testimonial icon */
-        .testimonial-icon {
-            width: 120px;
-            height: 120px;
-            position: relative;
-        }
-
-        .testimonial-icon .quote {
-            position: absolute;
-            width: 100px;
-            height: 80px;
-            border: 3px solid var(--primary);
-            border-radius: 10px;
-            top: 20px;
-            left: 10px;
-        }
-
-        .testimonial-icon .quote::before {
-            content: '"';
-            position: absolute;
-            font-size: 3rem;
-            color: var(--primary);
-            top: -10px;
-            left: 5px;
-            font-family: serif;
-        }
-
         /* Competition icon */
         .competition-icon {
             width: 120px;
@@ -990,107 +963,6 @@
             font-size: 1.1rem;
         }
 
-        /* Testimonials */
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .testimonial-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            backdrop-filter: blur(5px);
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
-            border-color: rgba(59, 130, 246, 0.3);
-        }
-
-        .testimonial-card::before {
-            content: '"';
-            position: absolute;
-            font-size: 5rem;
-            color: rgba(59, 130, 246, 0.2);
-            top: 10px;
-            left: 20px;
-            font-family: serif;
-            line-height: 1;
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .testimonial-author {
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        .testimonial-role {
-            font-size: 0.9rem;
-            color: var(--gray-light);
-        }
-
-        /* Comparison table */
-        .comparison-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            margin: 2rem 0;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            overflow: hidden;
-            backdrop-filter: blur(5px);
-            box-shadow: var(--shadow);
-        }
-
-        .comparison-table th,
-        .comparison-table td {
-            padding: 1.2rem 1.5rem;
-            text-align: left;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .comparison-table th {
-            background: rgba(37, 99, 235, 0.2);
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        .comparison-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .comparison-table tr:hover td {
-            background: rgba(255, 255, 255, 0.03);
-        }
-
-        .comparison-table .feature {
-            font-weight: 500;
-        }
-
-        .comparison-table .check {
-            color: var(--success);
-            text-align: center;
-        }
-
-        .comparison-table .cross {
-            color: var(--danger);
-            text-align: center;
-        }
-
         /* Roadmap */
         .roadmap-container {
             display: flex;
@@ -1227,10 +1099,6 @@
                 left: 0;
                 text-align: left;
             }
-
-            .testimonial-grid {
-                grid-template-columns: 1fr;
-            }
         }
 
         @media (max-width: 480px) {
@@ -1330,7 +1198,7 @@
                 <div class="stat-label">Don't Return After 1st Experience</div>
             </div>
         </div>
-        <button class="cta-button" onclick="location.href='#contact'">Invest in Social Impact</button>
+        <button class="cta-button" onclick="location.href='mailto:sarveshwar313@gmail.com'">Invest in Social Impact</button>
       </div>
       <div class="footer">Confidential - For Investor Review Only</div>
     </div>
@@ -1629,68 +1497,6 @@
       <div class="footer">6</div>
     </div>
 
-    <!-- Market Opportunity Slide 2 -->
-    <div class="slide">
-      <div class="logo">
-        <div class="logo-icon">
-            <i class="fas fa-hands-helping"></i>
-        </div>
-        <span class="logo-text">VolunteerHub</span>
-      </div>
-      <div class="slide-header">
-        <h1 class="slide-title">Revenue Model</h1>
-        <p class="slide-subtitle">Sustainable monetization with multiple growth vectors</p>
-      </div>
-      <div class="slide-content">
-        <div class="content-grid">
-          <div class="card">
-            <h3 class="card-title"><i class="fas fa-cubes"></i> Pricing Structure</h3>
-            <div class="tech-icon">
-              <div class="business-icon">
-                <div class="cube">
-                  <div class="face front">SaaS</div>
-                  <div class="face back">B2B</div>
-                  <div class="face right">B2C</div>
-                  <div class="face left">API</div>
-                  <div class="face top">Data</div>
-                  <div class="face bottom">Ads</div>
-                </div>
-              </div>
-            </div>
-            <ul class="card-content">
-              <li><span class="highlight">Nonprofit Plans</span> - $99-$499/month based on size and features</li>
-              <li><span class="highlight">Corporate Plans</span> - $10/employee/month for CSR programs</li>
-              <li><span class="highlight">Educational Plans</span> - $5/student/year for service learning</li>
-              <li><span class="highlight">Premium Volunteers</span> - $9.99/month for advanced features</li>
-              <li><span class="highlight">Enterprise API</span> - Custom pricing for integrations</li>
-            </ul>
-          </div>
-          
-          <div class="card">
-            <h3 class="card-title"><i class="fas fa-chart-line"></i> Revenue Streams</h3>
-            <div class="tech-icon">
-              <div class="financial-icon">
-                <div class="graph">
-                  <div class="bar" style="--h: 40px;"></div>
-                  <div class="bar" style="--h: 60px;"></div>
-                  <div class="bar" style="--h: 80px;"></div>
-                  <div class="bar" style="--h: 100px;"></div>
-                </div>
-              </div>
-            </div>
-            <ul class="card-content">
-              <li><span class="highlight">Subscription Revenue</span> - 70% of total (SaaS model)</li>
-              <li><span class="highlight">Transaction Fees</span> - 15% (premium placements, donations)</li>
-              <li><span class="highlight">Data Insights</span> - 10% (anonymized impact analytics)</li>
-              <li><span class="highlight">Professional Services</span> - 5% (implementation, training)</li>
-              <li><span class="highlight">Future Opportunities</span> - Certification programs, job matching</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="footer">7</div>
-    </div>
-
     <!-- Technology Slide -->
     <div class="slide">
       <div class="logo">
@@ -1739,166 +1545,7 @@
           </div>
         </div>
       </div>
-      <div class="footer">8</div>
-    </div>
-
-    <!-- Traction Slide 1 -->
-    <div class="slide">
-      <div class="logo">
-        <div class="logo-icon">
-            <i class="fas fa-hands-helping"></i>
-        </div>
-        <span class="logo-text">VolunteerHub</span>
-      </div>
-      <div class="slide-header">
-        <h1 class="slide-title">Traction & Validation</h1>
-        <p class="slide-subtitle">Strong early adoption and proof of concept</p>
-      </div>
-      <div class="slide-content">
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-number">320+</div>
-                <div class="stat-label">Organizations in Pipeline</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">22K</div>
-                <div class="stat-label">Waitlist Signups</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">94%</div>
-                <div class="stat-label">Match Satisfaction in Beta</div>
-            </div>
-        </div>
-        
-        <div class="content-grid">
-          <div class="card">
-            <h3 class="card-title"><i class="fas fa-check-circle"></i> Beta Results</h3>
-            <ul class="card-content">
-              <li><span class="highlight">94% satisfaction rate</span> with matches (vs. 62% industry average)</li>
-              <li><span class="highlight">3.2x increase</span> in volunteer retention compared to traditional methods</li>
-              <li><span class="highlight">78% reduction</span> in time spent matching volunteers to roles</li>
-              <li><span class="highlight">89% of organizations</span> reported improved volunteer quality</li>
-            </ul>
-          </div>
-          
-          <div class="card">
-            <h3 class="card-title"><i class="fas fa-handshake"></i> Partnerships</h3>
-            <ul class="card-content">
-              <li><span class="highlight">United Way</span> - Pilot program in 3 regions</li>
-              <li><span class="highlight">VolunteerMatch</span> - API integration partnership</li>
-              <li><span class="highlight">TechSoup</span> - Distribution to nonprofit network</li>
-              <li><span class="highlight">3 Fortune 500 companies</span> - Corporate volunteer programs</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="footer">9</div>
-    </div>
-
-    <!-- Traction Slide 2 -->
-    <div class="slide">
-      <div class="logo">
-        <div class="logo-icon">
-            <i class="fas fa-hands-helping"></i>
-        </div>
-        <span class="logo-text">VolunteerHub</span>
-      </div>
-      <div class="slide-header">
-        <h1 class="slide-title">Milestones Achieved</h1>
-        <p class="slide-subtitle">Our journey from concept to validated solution</p>
-      </div>
-      <div class="slide-content">
-        <div class="timeline">
-            <div class="timeline-item left">
-                <div class="timeline-content">
-                    <div class="timeline-date">Q1 2023</div>
-                    <p>Conducted market research with 150+ nonprofits and 500+ volunteers</p>
-                </div>
-            </div>
-            <div class="timeline-item right">
-                <div class="timeline-content">
-                    <div class="timeline-date">Q2 2023</div>
-                    <p>Developed prototype and secured $250K angel investment</p>
-                </div>
-            </div>
-            <div class="timeline-item left">
-                <div class="timeline-content">
-                    <div class="timeline-date">Q3 2023</div>
-                    <p>Launched private beta with 50 organizations and 1,000 volunteers</p>
-                </div>
-            </div>
-            <div class="timeline-item right">
-                <div class="timeline-content">
-                    <div class="timeline-date">Q4 2023</div>
-                    <p>Closed $750K pre-seed round led by Impact Ventures</p>
-                </div>
-            </div>
-            <div class="timeline-item left">
-                <div class="timeline-content">
-                    <div class="timeline-date">Q1 2024</div>
-                    <p>Expanded beta to 200 organizations and 5,000 volunteers</p>
-                </div>
-            </div>
-            <div class="timeline-item right">
-                <div class="timeline-content">
-                    <div class="timeline-date">Q2 2024</div>
-                    <p>Signed partnerships with United Way and VolunteerMatch</p>
-                </div>
-            </div>
-        </div>
-      </div>
-      <div class="footer">10</div>
-    </div>
-
-    <!-- Testimonials Slide -->
-    <div class="slide">
-      <div class="logo">
-        <div class="logo-icon">
-            <i class="fas fa-hands-helping"></i>
-        </div>
-        <span class="logo-text">VolunteerHub</span>
-      </div>
-      <div class="slide-header">
-        <h1 class="slide-title">User Testimonials</h1>
-        <p class="slide-subtitle">What our beta users are saying about VolunteerHub</p>
-      </div>
-      <div class="slide-content">
-        <div class="testimonial-grid">
-          <div class="testimonial-card">
-            <div class="tech-icon">
-              <div class="testimonial-icon">
-                <div class="quote"></div>
-              </div>
-            </div>
-            <p class="testimonial-text">VolunteerHub transformed how we engage volunteers. Our match quality improved dramatically and retention doubled within 3 months.</p>
-            <div class="testimonial-author">Sarah Johnson</div>
-            <div class="testimonial-role">Executive Director, Community Food Bank</div>
-          </div>
-          
-          <div class="testimonial-card">
-            <div class="tech-icon">
-              <div class="testimonial-icon">
-                <div class="quote"></div>
-              </div>
-            </div>
-            <p class="testimonial-text">Finally a platform that understands my skills and matches me with opportunities where I can truly make an impact. I've done more volunteering in 2 months than the previous 2 years.</p>
-            <div class="testimonial-author">Michael Chen</div>
-            <div class="testimonial-role">Software Engineer & Volunteer</div>
-          </div>
-          
-          <div class="testimonial-card">
-            <div class="tech-icon">
-              <div class="testimonial-icon">
-                <div class="quote"></div>
-              </div>
-            </div>
-            <p class="testimonial-text">Our employee volunteer program participation increased from 28% to 74% after implementing VolunteerHub. The matching is uncannily accurate.</p>
-            <div class="testimonial-author">David Rodriguez</div>
-            <div class="testimonial-role">CSR Director, Fortune 500 Company</div>
-          </div>
-        </div>
-      </div>
-      <div class="footer">11</div>
+      <div class="footer">7</div>
     </div>
 
     <!-- Business Model Slide -->
@@ -1916,23 +1563,22 @@
       <div class="slide-content">
         <div class="content-grid">
           <div class="card">
-            <h3 class="card-title"><i class="fas fa-tags"></i> Pricing Tiers</h3>
+            <h3 class="card-title"><i class="fas fa-tags"></i> Revenue Streams</h3>
             <div class="tech-icon">
               <div class="financial-icon">
                 <div class="graph">
-                  <div class="bar" style="--h: 40px;"></div>
-                  <div class="bar" style="--h: 60px;"></div>
-                  <div class="bar" style="--h: 80px;"></div>
+                  <div class="bar" style="--h: 50px;"></div>
                   <div class="bar" style="--h: 100px;"></div>
+                  <div class="bar" style="--h: 150px;"></div>
                 </div>
               </div>
             </div>
             <ul class="card-content">
-              <li><span class="highlight">Basic</span> - $99/month for small nonprofits (up to 50 volunteers)</li>
-              <li><span class="highlight">Professional</span> - $299/month with advanced matching and analytics</li>
-              <li><span class="highlight">Enterprise</span> - Custom pricing for large organizations</li>
-              <li><span class="highlight">Corporate</span> - $10/employee/month for CSR programs</li>
-              <li><span class="highlight">Educational</span> - $5/student/year for service learning</li>
+              <li><span class="highlight">Subscription Revenue</span> - 70% of total (SaaS model)</li>
+              <li><span class="highlight">Transaction Fees</span> - 15% (premium placements, donations)</li>
+              <li><span class="highlight">Data Insights</span> - 10% (anonymized impact analytics)</li>
+              <li><span class="highlight">Professional Services</span> - 5% (implementation, training)</li>
+              <li><span class="highlight">Future Opportunities</span> - Certification programs, job matching</li>
             </ul>
           </div>
           
@@ -1954,119 +1600,7 @@
           </div>
         </div>
       </div>
-      <div class="footer">12</div>
-    </div>
-
-    <!-- Financial Projections Slide 1 -->
-    <div class="slide">
-      <div class="logo">
-        <div class="logo-icon">
-            <i class="fas fa-hands-helping"></i>
-        </div>
-        <span class="logo-text">VolunteerHub</span>
-      </div>
-      <div class="slide-header">
-        <h1 class="slide-title">Financial Projections</h1>
-        <p class="slide-subtitle">Path to profitability with capital efficiency</p>
-      </div>
-      <div class="slide-content">
-        <div class="content-grid">
-          <div class="card">
-            <h3 class="card-title"><i class="fas fa-chart-bar"></i> Key Metrics</h3>
-            <div class="tech-icon">
-              <div class="financial-icon">
-                <div class="graph">
-                  <div class="bar" style="--h: 30px;"></div>
-                  <div class="bar" style="--h: 60px;"></div>
-                  <div class="bar" style="--h: 90px;"></div>
-                  <div class="bar" style="--h: 120px;"></div>
-                </div>
-              </div>
-            </div>
-            <ul class="card-content">
-              <li><span class="highlight">Year 1</span> - $1.2M ARR (1,000 orgs at $99/mo avg.)</li>
-              <li><span class="highlight">Year 2</span> - $5M ARR (4,000 orgs + corporate clients)</li>
-              <li><span class="highlight">Year 3</span> - $15M ARR (12,000 orgs + premium features)</li>
-              <li><span class="highlight">Gross margins</span> - 80% (cloud infrastructure + AI costs)</li>
-              <li><span class="highlight">Payback period</span> - 12 months (CAC of $600, LTV of $3,600)</li>
-            </ul>
-            <a href="#" class="budget-link">
-              <i class="fas fa-file-alt"></i> View Detailed Financial Model →
-            </a>
-          </div>
-          
-          <div class="card">
-            <h3 class="card-title"><i class="fas fa-piggy-bank"></i> Use of Funds</h3>
-            <div class="tech-icon">
-              <div class="business-icon">
-                <div class="cube">
-                  <div class="face front">Eng</div>
-                  <div class="face back">Sales</div>
-                  <div class="face right">AI</div>
-                  <div class="face left">Ops</div>
-                  <div class="face top">G&A</div>
-                  <div class="face bottom">Growth</div>
-                </div>
-              </div>
-            </div>
-            <ul class="card-content">
-              <li><span class="highlight">40% Engineering & Product</span> - Platform development and AI</li>
-              <li><span class="highlight">30% Sales & Marketing</span> - Customer acquisition and growth</li>
-              <li><span class="highlight">20% AI Research</span> - Matching algorithm improvements</li>
-              <li><span class="highlight">10% Operations</span> - Team and infrastructure</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="footer">13</div>
-    </div>
-
-    <!-- Financial Projections Slide 2 -->
-    <div class="slide">
-      <div class="logo">
-        <div class="logo-icon">
-            <i class="fas fa-hands-helping"></i>
-        </div>
-        <span class="logo-text">VolunteerHub</span>
-      </div>
-      <div class="slide-header">
-        <h1 class="slide-title">Investment Highlights</h1>
-        <p class="slide-subtitle">Why VolunteerHub represents a compelling opportunity</p>
-      </div>
-      <div class="slide-content">
-        <div class="content-grid">
-          <div class="card">
-            <h3 class="card-title"><i class="fas fa-lightbulb"></i> Market Potential</h3>
-            <ul class="card-content">
-              <li><span class="highlight">$2.6B addressable market</span> in volunteer management software</li>
-              <li><span class="highlight">1.5M nonprofits</span> in US needing better solutions</li>
-              <li><span class="highlight">92% of Fortune 500</span> have formal volunteer programs</li>
-              <li><span class="highlight">77M volunteers annually</span> creating $203B in economic value</li>
-            </ul>
-          </div>
-          
-          <div class="card">
-            <h3 class="card-title"><i class="fas fa-bolt"></i> Competitive Advantages</h3>
-            <ul class="card-content">
-              <li><span class="highlight">AI-powered matching</span> - Superior to manual or rules-based systems</li>
-              <li><span class="highlight">Behavioral science</span> - Reduces attrition through better fits</li>
-              <li><span class="highlight">Network effects</span> - More users improve matching quality</li>
-              <li><span class="highlight">Data moat</span> - Volunteer behavior data improves AI over time</li>
-            </ul>
-          </div>
-          
-          <div class="card">
-            <h3 class="card-title"><i class="fas fa-chart-line"></i> Financial Outlook</h3>
-            <ul class="card-content">
-              <li><span class="highlight">Recurring revenue</span> - SaaS model with high retention</li>
-              <li><span class="highlight">Capital efficiency</span> - $2M seed to $15M ARR in 3 years</li>
-              <li><span class="highlight">Multiple exit paths</span> - Strategic acquirers in HR, nonprofit tech</li>
-              <li><span class="highlight">Impact multiplier</span> - Every dollar invested creates $50 in social value</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="footer">14</div>
+      <div class="footer">8</div>
     </div>
 
     <!-- Team Slide 1 -->
@@ -2121,46 +1655,7 @@
           </div>
         </div>
       </div>
-      <div class="footer">15</div>
-    </div>
-
-    <!-- Team Slide 2 -->
-    <div class="slide">
-      <div class="logo">
-        <div class="logo-icon">
-            <i class="fas fa-hands-helping"></i>
-        </div>
-        <span class="logo-text">VolunteerHub</span>
-      </div>
-      <div class="slide-header">
-        <h1 class="slide-title">Advisors & Investors</h1>
-        <p class="slide-subtitle">Seasoned experts guiding our growth and strategy</p>
-      </div>
-      <div class="slide-content">
-        <div class="content-grid">
-          <div class="card">
-            <h3 class="card-title"><i class="fas fa-users"></i> Advisory Board</h3>
-            <ul class="card-content">
-              <li><span class="highlight">Jessica Chen</span> - Former ED of United Way (20 years nonprofit leadership)</li>
-              <li><span class="highlight">Dr. Raj Patel</span> - AI Researcher specializing in NLP at Stanford</li>
-              <li><span class="highlight">Michael Johnson</span> - Founder of VolunteerTech (acquired by Blackbaud)</li>
-              <li><span class="highlight">Sarah Williams</span> - Behavioral Psychologist focusing on volunteer motivation</li>
-              <li><span class="highlight">David Kim</span> - SaaS Growth Expert with 3 successful exits</li>
-            </ul>
-          </div>
-          
-          <div class="card">
-            <h3 class="card-title"><i class="fas fa-hand-holding-usd"></i> Early Investors</h3>
-            <ul class="card-content">
-              <li><span class="highlight">Impact Ventures</span> - Leading social impact VC firm</li>
-              <li><span class="highlight">TechStars Social Impact</span> - Pre-seed accelerator</li>
-              <li><span class="highlight">Angels</span> - Includes former LinkedIn and Salesforce executives</li>
-              <li><span class="highlight">Nonprofit Leaders</span> - 15 EDs from top organizations</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="footer">16</div>
+      <div class="footer">9</div>
     </div>
 
     <!-- Competition Slide 1 -->
@@ -2208,79 +1703,7 @@
           </div>
         </div>
       </div>
-      <div class="footer">17</div>
-    </div>
-
-    <!-- Competition Slide 2 -->
-    <div class="slide">
-      <div class="logo">
-        <div class="logo-icon">
-            <i class="fas fa-hands-helping"></i>
-        </div>
-        <span class="logo-text">VolunteerHub</span>
-      </div>
-      <div class="slide-header">
-        <h1 class="slide-title">Competitive Comparison</h1>
-        <p class="slide-subtitle">How we stack up against existing solutions</p>
-      </div>
-      <div class="slide-content">
-        <table class="comparison-table">
-          <thead>
-            <tr>
-              <th>Feature</th>
-              <th>VolunteerHub</th>
-              <th>VolunteerMatch</th>
-              <th>SignUpGenius</th>
-              <th>Galaxy Digital</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="feature">AI Matching</td>
-              <td class="check"><i class="fas fa-check"></i></td>
-              <td class="cross"><i class="fas fa-times"></i></td>
-              <td class="cross"><i class="fas fa-times"></i></td>
-              <td class="cross"><i class="fas fa-times"></i></td>
-            </tr>
-            <tr>
-              <td class="feature">Behavioral Matching</td>
-              <td class="check"><i class="fas fa-check"></i></td>
-              <td class="cross"><i class="fas fa-times"></i></td>
-              <td class="cross"><i class="fas fa-times"></i></td>
-              <td class="cross"><i class="fas fa-times"></i></td>
-            </tr>
-            <tr>
-              <td class="feature">Retention Tools</td>
-              <td class="check"><i class="fas fa-check"></i></td>
-              <td class="cross"><i class="fas fa-times"></i></td>
-              <td class="cross"><i class="fas fa-times"></i></td>
-              <td class="check"><i class="fas fa-check"></i></td>
-            </tr>
-            <tr>
-              <td class="feature">Impact Tracking</td>
-              <td class="check"><i class="fas fa-check"></i></td>
-              <td class="cross"><i class="fas fa-times"></i></td>
-              <td class="cross"><i class="fas fa-times"></i></td>
-              <td class="check"><i class="fas fa-check"></i></td>
-            </tr>
-            <tr>
-              <td class="feature">Corporate Solutions</td>
-              <td class="check"><i class="fas fa-check"></i></td>
-              <td class="check"><i class="fas fa-check"></i></td>
-              <td class="cross"><i class="fas fa-times"></i></td>
-              <td class="check"><i class="fas fa-check"></i></td>
-            </tr>
-            <tr>
-              <td class="feature">Pricing (Monthly)</td>
-              <td class="feature">$99-$499</td>
-              <td class="feature">$199-$999</td>
-              <td class="feature">$29-$149</td>
-              <td class="feature">$249-$1,499</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="footer">18</div>
+      <div class="footer">10</div>
     </div>
 
     <!-- Vision Slide 1 -->
@@ -2320,7 +1743,7 @@
           </div>
         </div>
       </div>
-      <div class="footer">19</div>
+      <div class="footer">11</div>
     </div>
 
     <!-- Vision Slide 2 -->
@@ -2377,7 +1800,7 @@
           </div>
         </div>
       </div>
-      <div class="footer">20</div>
+      <div class="footer">12</div>
     </div>
 
     <!-- Investment Opportunity Slide -->
@@ -2462,7 +1885,7 @@
       <a href="index.html" class="home-link">
         <i class="fas fa-arrow-left"></i> Return to Main Site
       </a>
-      <div class="footer">21</div>
+      <div class="footer">13</div>
     </div>
   </div>
 
@@ -2481,14 +1904,6 @@
     <div class="nav-dot" data-slide="10"></div>
     <div class="nav-dot" data-slide="11"></div>
     <div class="nav-dot" data-slide="12"></div>
-    <div class="nav-dot" data-slide="13"></div>
-    <div class="nav-dot" data-slide="14"></div>
-    <div class="nav-dot" data-slide="15"></div>
-    <div class="nav-dot" data-slide="16"></div>
-    <div class="nav-dot" data-slide="17"></div>
-    <div class="nav-dot" data-slide="18"></div>
-    <div class="nav-dot" data-slide="19"></div>
-    <div class="nav-dot" data-slide="20"></div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
@@ -2614,13 +2029,6 @@
       function prevSlide() {
         showSlide(currentSlide - 1);
       }
-      
-      // Auto-advance for demo purposes (disabled)
-      // setInterval(() => {
-      //   if (!document.hidden) {
-      //     nextSlide();
-      //   }
-      // }, 10000);
     });
   </script>
 
