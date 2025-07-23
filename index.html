@@ -1377,6 +1377,174 @@
             padding: 1.5rem;
         }
     }
+    /* Futuristic Final CTA Section */
+    .final-cta-section {
+        padding: 6rem 0;
+        background: linear-gradient(135deg, #0a0f1a 0%, #1a2035 100%);
+        position: relative;
+        overflow: hidden;
+        z-index: 20;
+        border-top: 1px solid rgba(59, 130, 246, 0.2);
+    }
+    
+    .final-cta-container {
+        position: relative;
+        z-index: 2;
+        max-width: 900px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    
+    .final-cta-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 
+            radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.15) 0%, transparent 30%),
+            radial-gradient(circle at 80% 70%, rgba(124, 58, 237, 0.15) 0%, transparent 30%);
+        z-index: 1;
+    }
+    
+    .final-cta-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(to right, #f8fafc, #c7d2fe);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -0.5px;
+    }
+    
+    .final-cta-subtitle {
+        color: var(--text-secondary);
+        font-size: 1.25rem;
+        max-width: 700px;
+        margin: 0 auto 3rem;
+        line-height: 1.7;
+    }
+    
+    .final-cta-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+    }
+    
+    .final-cta-primary {
+        background: var(--gradient-primary);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        padding: 1.25rem 2.5rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+    }
+    
+    .final-cta-primary::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 100%);
+        z-index: -1;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .final-cta-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px rgba(37, 99, 235, 0.5);
+    }
+    
+    .final-cta-primary:hover::before {
+        opacity: 1;
+    }
+    
+    .final-cta-secondary {
+        background: rgba(255, 255, 255, 0.05);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 12px;
+        padding: 1.25rem 2.5rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        backdrop-filter: blur(5px);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .final-cta-secondary::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 100%);
+        z-index: -1;
+    }
+    
+    .final-cta-secondary:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.3);
+        transform: translateY(-3px);
+    }
+    
+    .final-cta-particles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        opacity: 0.3;
+    }
+    
+    .final-cta-particle {
+        position: absolute;
+        background: var(--accent-primary);
+        border-radius: 50%;
+        opacity: 0;
+    }
+    
+    @media (max-width: 768px) {
+        .final-cta-title {
+            font-size: 2rem;
+        }
+        
+        .final-cta-subtitle {
+            font-size: 1.1rem;
+        }
+        
+        .final-cta-buttons {
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .final-cta-primary,
+        .final-cta-secondary {
+            width: 100%;
+            justify-content: center;
+        }
+    }
     </style>
 </head>
 <body>
@@ -1848,68 +2016,25 @@
                 </div>
             </section>
             
-            <!-- Contact Section -->
-            <section class="contact-section">
+            <!-- Futuristic Final CTA Section -->
+            <section class="final-cta-section">
+                <div class="final-cta-bg"></div>
+                <div class="final-cta-particles" id="finalCtaParticles"></div>
                 <div class="container">
-                    <div class="contact-container">
-                        <div class="contact-info">
-                            <div>
-                                <h3 class="contact-title">Get In Touch</h3>
-                                <p class="contact-text">
-                                    Have questions about VolunteerHub? Want to schedule a demo for your organization? 
-                                    Reach out to us - we'd love to hear from you!
-                                </p>
-                            </div>
-                            
-                            <div class="contact-methods">
-                                <div class="contact-method">
-                                    <div class="contact-icon">
-                                        <i class="fas fa-envelope"></i>
-                                    </div>
-                                    <div class="contact-details">
-                                        <h4>Email Us</h4>
-                                        <p>info@volunteerhub.com</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="contact-method">
-                                    <div class="contact-icon">
-                                        <i class="fas fa-phone-alt"></i>
-                                    </div>
-                                    <div class="contact-details">
-                                        <h4>Call Us</h4>
-                                        <p>+1 (555) 123-4567</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="contact-method">
-                                    <div class="contact-icon">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                    </div>
-                                    <div class="contact-details">
-                                        <h4>Visit Us</h4>
-                                        <p>123 Volunteer Way, San Francisco, CA</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-form">
-                            <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);">Send Us a Message</h3>
-                            <div class="form-group">
-                                <label for="name">Your Name</label>
-                                <input type="text" id="name" placeholder="Enter your name">
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email Address</label>
-                                <input type="email" id="email" placeholder="Enter your email">
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Your Message</label>
-                                <textarea id="message" placeholder="How can we help you?"></textarea>
-                            </div>
-                            <button type="submit" class="form-submit">
-                                <i class="fas fa-paper-plane"></i> Send Message
+                    <div class="final-cta-container">
+                        <h2 class="final-cta-title">Ready to Transform Volunteering?</h2>
+                        <p class="final-cta-subtitle">
+                            Whether you're looking to join our waitlist, schedule a demo, or just learn more about how VolunteerHub can help your organization, we'd love to connect with you.
+                        </p>
+                        <div class="final-cta-buttons">
+                            <button class="final-cta-primary">
+                                <i class="fas fa-rocket"></i> Join Waitlist Now
+                            </button>
+                            <button class="final-cta-secondary">
+                                <i class="fas fa-calendar-alt"></i> Schedule a Demo
+                            </button>
+                            <button class="final-cta-secondary">
+                                <i class="fas fa-envelope"></i> Contact Our Team
                             </button>
                         </div>
                     </div>
@@ -2156,6 +2281,78 @@
         document.querySelectorAll('.differentiator-card').forEach(item => {
             observer.observe(item);
         });
+        function createParticles() {
+            const container = document.getElementById('finalCtaParticles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'final-cta-particle';
+                
+                // Random properties
+                const size = Math.random() * 5 + 2;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const delay = Math.random() * 5;
+                const duration = Math.random() * 10 + 10;
+                const opacity = Math.random() * 0.4 + 0.1;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.opacity = opacity;
+                
+                container.appendChild(particle);
+            }
+            
+            // Add animation styles dynamically
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes floatParticle {
+                    0% {
+                        transform: translateY(0) translateX(0);
+                        opacity: 0;
+                    }
+                    10% {
+                        opacity: ${Math.random() * 0.4 + 0.1};
+                    }
+                    90% {
+                        opacity: ${Math.random() * 0.4 + 0.1};
+                    }
+                    100% {
+                        transform: translateY(${Math.random() * 100 - 50}px) translateX(${Math.random() * 100 - 50}px);
+                        opacity: 0;
+                    }
+                }
+                
+                .final-cta-particle {
+                    animation: floatParticle linear infinite;
+                    will-change: transform;
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            
+            // Add click handlers for the new buttons
+            document.querySelector('.final-cta-primary').addEventListener('click', function() {
+                document.getElementById('waitlistModal').classList.add('show');
+            });
+            
+            document.querySelectorAll('.final-cta-secondary').forEach(button => {
+                button.addEventListener('click', function() {
+                    // In a real implementation, this would open a contact form or calendar link
+                    alert('Thank you for your interest! Please email us at sarveshwar313@gmail.com to schedule a demo or speak with our team.');
+                });
+            });
+        });
+
     </script>
 </body>
 </html>
