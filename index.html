@@ -1281,6 +1281,102 @@
     .delay-3 {
         animation-delay: 0.6s;
     }
+
+    /* Differentiators Section Styles */
+    .differentiators-section {
+        padding: var(--section-spacing) 0;
+        background: var(--bg-primary);
+        position: relative;
+        z-index: 20;
+    }
+    
+    .differentiators-container {
+        background: var(--bg-secondary);
+        border-radius: 16px;
+        padding: 4rem;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .differentiators-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at 70% 30%, rgba(37, 99, 235, 0.08) 0%, transparent 50%);
+        z-index: 0;
+    }
+    
+    .differentiators-content {
+        position: relative;
+        z-index: 1;
+    }
+    
+    .differentiators-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+    
+    .differentiator-card {
+        background: var(--bg-tertiary);
+        border-radius: 12px;
+        padding: 2rem;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .differentiator-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        border-color: rgba(59, 130, 246, 0.3);
+    }
+    
+    .differentiator-icon {
+        width: 60px;
+        height: 60px;
+        background: var(--gradient-primary);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        color: white;
+        font-size: 1.5rem;
+        transition: transform 0.3s ease;
+    }
+    
+    .differentiator-card:hover .differentiator-icon {
+        transform: scale(1.1) rotate(5deg);
+    }
+    
+    .differentiator-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+    }
+    
+    .differentiator-desc {
+        color: var(--text-secondary);
+        line-height: 1.7;
+        font-size: 1rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .differentiators-container {
+            padding: 2rem;
+        }
+        
+        .differentiator-card {
+            padding: 1.5rem;
+        }
+    }
     </style>
 </head>
 <body>
@@ -1617,6 +1713,84 @@
                                 </div>
                                 <h3>Tech Volunteering</h3>
                                 <p>Use your technical skills to help nonprofits with their digital needs.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Differentiators Section -->
+            <section class="differentiators-section">
+                <div class="container">
+                    <div class="differentiators-container">
+                        <div class="differentiators-content">
+                            <div class="section-header">
+                                <h2 class="section-title">What Sets VolunteerHub Apart</h2>
+                                <p class="section-subtitle">
+                                    While there are many platforms connecting volunteers with opportunities, we've reimagined the experience from the ground up
+                                </p>
+                            </div>
+                            
+                            <div class="differentiators-grid">
+                                <div class="differentiator-card animate">
+                                    <div class="differentiator-icon">
+                                        <i class="fas fa-robot"></i>
+                                    </div>
+                                    <h3 class="differentiator-title">True AI Matching</h3>
+                                    <p class="differentiator-desc">
+                                        Our proprietary matching algorithm goes beyond simple keyword matching to understand your skills, interests, and availability at a deeper level, creating connections that are meaningful for both volunteers and organizations.
+                                    </p>
+                                </div>
+                                
+                                <div class="differentiator-card animate delay-1">
+                                    <div class="differentiator-icon">
+                                        <i class="fas fa-project-diagram"></i>
+                                    </div>
+                                    <h3 class="differentiator-title">Holistic Impact Tracking</h3>
+                                    <p class="differentiator-desc">
+                                        We measure and visualize not just hours served, but the actual impact of your contributions, helping you understand the real difference you're making in your community.
+                                    </p>
+                                </div>
+                                
+                                <div class="differentiator-card animate delay-2">
+                                    <div class="differentiator-icon">
+                                        <i class="fas fa-network-wired"></i>
+                                    </div>
+                                    <h3 class="differentiator-title">Community-Centric Design</h3>
+                                    <p class="differentiator-desc">
+                                        Our platform fosters ongoing relationships between volunteers and organizations, creating sustainable engagement rather than one-time transactions.
+                                    </p>
+                                </div>
+                                
+                                <div class="differentiator-card animate">
+                                    <div class="differentiator-icon">
+                                        <i class="fas fa-mobile-alt"></i>
+                                    </div>
+                                    <h3 class="differentiator-title">Seamless Mobile Experience</h3>
+                                    <p class="differentiator-desc">
+                                        Built mobile-first with intuitive gestures and offline capabilities, our app makes volunteering accessible whenever inspiration strikes.
+                                    </p>
+                                </div>
+                                
+                                <div class="differentiator-card animate delay-1">
+                                    <div class="differentiator-icon">
+                                        <i class="fas fa-shield-alt"></i>
+                                    </div>
+                                    <h3 class="differentiator-title">Enterprise-Grade Security</h3>
+                                    <p class="differentiator-desc">
+                                        We prioritize your data privacy with military-grade encryption and transparent data practices, setting a new standard for trust in volunteer platforms.
+                                    </p>
+                                </div>
+                                
+                                <div class="differentiator-card animate delay-2">
+                                    <div class="differentiator-icon">
+                                        <i class="fas fa-lightbulb"></i>
+                                    </div>
+                                    <h3 class="differentiator-title">Continuous Innovation</h3>
+                                    <p class="differentiator-desc">
+                                        Our platform evolves weekly based on user feedback and emerging needs, ensuring you always have access to the most advanced volunteering tools available.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1977,6 +2151,10 @@
             } else {
                 alert('Please fill in all fields.');
             }
+        });
+
+        document.querySelectorAll('.differentiator-card').forEach(item => {
+            observer.observe(item);
         });
     </script>
 </body>
