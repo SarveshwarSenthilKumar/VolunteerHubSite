@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VolunteerHub | Connecting Communities Through Service</title>
+    <title>VolunteerHub | AI-Powered Volunteer Matching Platform</title>
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/905/905901.png" type="image/png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -452,8 +452,8 @@
         font-size: 1rem;
     }
     
-    /* Value Proposition Section */
-    .value-section {
+    /* AI Email Section */
+    .ai-email-section {
         background: var(--gradient-secondary);
         border-radius: 24px;
         padding: 4rem;
@@ -464,7 +464,7 @@
         box-shadow: 0 10px 30px rgba(6, 182, 212, 0.3);
     }
     
-    .value-section::before {
+    .ai-email-section::before {
         content: '';
         position: absolute;
         top: -50%;
@@ -476,24 +476,24 @@
         z-index: 0;
     }
     
-    .value-content {
+    .ai-email-content {
         position: relative;
         z-index: 1;
     }
     
-    .value-icon {
+    .ai-email-icon {
         font-size: 3rem;
         margin-bottom: 1.5rem;
     }
     
-    .value-title {
+    .ai-email-title {
         font-size: 2rem;
         font-weight: 800;
         margin-bottom: 1rem;
         color: white;
     }
     
-    .value-subtitle {
+    .ai-email-subtitle {
         font-size: 1.15rem;
         color: rgba(255, 255, 255, 0.9);
         margin-bottom: 2rem;
@@ -575,8 +575,8 @@
         text-align: center;
     }
     
-    /* Community Preview Section */
-    .community-preview {
+    /* Map Preview Section */
+    .map-preview {
         height: 600px;
         background: var(--bg-secondary);
         border-radius: 16px;
@@ -586,7 +586,7 @@
         border: 1px solid rgba(255, 255, 255, 0.1);
     }
     
-    .community-overlay {
+    .map-overlay {
         position: absolute;
         bottom: 0;
         left: 0;
@@ -596,14 +596,14 @@
         z-index: 10;
     }
     
-    .community-title {
+    .map-title {
         font-size: 2rem;
         font-weight: 700;
         margin-bottom: 1rem;
         color: white;
     }
     
-    .community-desc {
+    .map-desc {
         color: var(--text-secondary);
         max-width: 600px;
         line-height: 1.7;
@@ -660,64 +660,94 @@
         line-height: 1.7;
     }
     
-    /* Future Tech Section */
-    .future-tech-section {
+    /* Creators Section */
+    .creators-section {
         padding: var(--section-spacing) 0;
         background: var(--bg-secondary);
         position: relative;
         z-index: 20;
     }
     
-    .future-tech-grid {
+    .creators-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 3rem;
         margin-top: 3rem;
     }
     
-    .future-tech-card {
+    .creator-card {
         background: var(--bg-tertiary);
         border-radius: 16px;
         padding: 2.5rem;
+        text-align: center;
         transition: all 0.3s ease;
         border: 1px solid rgba(255, 255, 255, 0.05);
-        position: relative;
-        overflow: hidden;
     }
     
-    .future-tech-card:hover {
+    .creator-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     }
     
-    .future-tech-icon {
-        font-size: 2.5rem;
-        color: var(--accent-primary);
-        margin-bottom: 1.5rem;
+    .creator-image {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 0 auto 1.5rem;
+        border: 3px solid var(--accent-primary);
     }
     
-    .future-tech-title {
+    .creator-name {
         font-size: 1.5rem;
         font-weight: 700;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
         color: var(--text-primary);
     }
     
-    .future-tech-desc {
+    .creator-title {
+        color: var(--accent-secondary);
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+    }
+    
+    .creator-links {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+    
+    .creator-link {
+        width: 40px;
+        height: 40px;
+        background: var(--bg-secondary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         color: var(--text-secondary);
-        line-height: 1.7;
-        font-size: 1rem;
+        transition: all 0.3s ease;
+        font-size: 1.2rem;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .creator-link:hover {
+        background: var(--accent-primary);
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
     }
 
-    /* Impact Stories Section */
-    .impact-section {
+    /* Opportunities Section Styles */
+    .opportunities-section {
         padding: var(--section-spacing) 0;
         background-color: var(--bg-primary);
         position: relative;
         z-index: 20;
     }
     
-    .impact-showcase {
+    .opportunities-showcase {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 3rem;
@@ -725,24 +755,24 @@
         margin-top: 3rem;
     }
     
-    .impact-image img {
+    .opportunities-image img {
         width: 100%;
         border-radius: 16px;
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         transition: transform 0.3s ease;
     }
     
-    .impact-image img:hover {
+    .opportunities-image img:hover {
         transform: scale(1.02);
     }
     
-    .impact-content {
-        display: flex;
-        flex-direction: column;
+    .opportunities-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: 1.5rem;
     }
     
-    .impact-card {
+    .opportunity-card {
         background: var(--bg-secondary);
         border-radius: 12px;
         padding: 1.5rem;
@@ -750,13 +780,13 @@
         border: 1px solid rgba(255, 255, 255, 0.05);
     }
     
-    .impact-card:hover {
+    .opportunity-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         border-color: rgba(59, 130, 246, 0.3);
     }
     
-    .impact-icon {
+    .opportunity-icon {
         width: 40px;
         height: 40px;
         background: var(--gradient-primary);
@@ -769,109 +799,16 @@
         font-size: 1.2rem;
     }
     
-    .impact-card h3 {
+    .opportunity-card h3 {
         font-size: 1.2rem;
         margin-bottom: 0.5rem;
         color: var(--text-primary);
     }
     
-    .impact-card p {
+    .opportunity-card p {
         color: var(--text-secondary);
         font-size: 0.95rem;
         line-height: 1.6;
-    }
-    
-    /* Ecosystem Section */
-    .ecosystem-section {
-        padding: 4rem 0;
-        background: var(--bg-primary);
-    }
-    
-    .ecosystem-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 2rem;
-        align-items: center;
-        justify-items: center;
-    }
-    
-    .ecosystem-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        text-align: center;
-    }
-    
-    .ecosystem-icon {
-        width: 80px;
-        height: 80px;
-        background: var(--gradient-primary);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 2rem;
-        margin-bottom: 1rem;
-    }
-    
-    .ecosystem-name {
-        font-weight: 600;
-        color: var(--text-primary);
-    }
-    
-    /* FAQ Section */
-    .faq-section {
-        padding: var(--section-spacing) 0;
-    }
-    
-    .faq-container {
-        max-width: 800px;
-        margin: 0 auto;
-    }
-    
-    .faq-item {
-        background: var(--bg-secondary);
-        border-radius: 12px;
-        margin-bottom: 1rem;
-        overflow: hidden;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-    
-    .faq-question {
-        padding: 1.5rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        cursor: pointer;
-        font-weight: 600;
-        transition: background 0.3s ease;
-    }
-    
-    .faq-question:hover {
-        background: rgba(255, 255, 255, 0.03);
-    }
-    
-    .faq-answer {
-        padding: 0 1.5rem;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease, padding 0.3s ease;
-        color: var(--text-secondary);
-    }
-    
-    .faq-item.active .faq-answer {
-        padding: 0 1.5rem 1.5rem;
-        max-height: 300px;
-    }
-    
-    .faq-toggle {
-        transition: transform 0.3s ease;
-    }
-    
-    .faq-item.active .faq-toggle {
-        transform: rotate(180deg);
     }
     
     /* Simplified Footer */
@@ -988,20 +925,16 @@
             grid-template-columns: repeat(2, 1fr);
         }
         
-        .community-preview {
+        .map-preview {
             height: 500px;
         }
 
-        .impact-showcase {
+        .opportunities-showcase {
             grid-template-columns: 1fr;
         }
         
-        .impact-image {
+        .opportunities-image {
             order: 2;
-        }
-        
-        .future-tech-grid {
-            grid-template-columns: 1fr;
         }
     }
     
@@ -1058,19 +991,19 @@
             padding: 2rem;
         }
         
-        .value-section {
+        .ai-email-section {
             padding: 3rem 1.5rem;
         }
         
-        .value-title {
+        .ai-email-title {
             font-size: 1.8rem;
         }
         
-        .community-preview {
+        .map-preview {
             height: 400px;
         }
         
-        .community-title {
+        .map-title {
             font-size: 1.5rem;
         }
         
@@ -1087,7 +1020,11 @@
             flex-wrap: wrap;
         }
 
-        .impact-content {
+        .opportunities-content {
+            grid-template-columns: 1fr;
+        }
+
+        .creators-grid {
             grid-template-columns: 1fr;
         }
         
@@ -1152,7 +1089,7 @@
             font-size: 1.8rem;
         }
         
-        .community-preview {
+        .map-preview {
             height: 300px;
         }
     }
@@ -1183,25 +1120,25 @@
 <body>
     <!-- Waitlist Modal -->
     <div id="waitlistModal" class="waitlist-modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h2 style="margin-bottom: 0.5rem;">Join Our Waitlist</h2>
-            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
-                Be among the first to experience VolunteerHub when we launch. By joining our waitlist, you'll get:
-            </p>
-            <ul style="color: var(--text-secondary); margin-bottom: 1.5rem; padding-left: 1.25rem; line-height: 1.6;">
-                <li>Early access to our beta platform</li>
-                <li>Exclusive updates on new features</li>
-                <li>Priority invitations to volunteer opportunities</li>
-                <li>A special thank-you gift when we launch</li>
-            </ul>
-            <iframe class="modal-iframe" 
-                    src="https://docs.google.com/forms/d/e/1FAIpQLSdA-dP4UX97PjDZKCl1fjtQdcgYLilonJ5zb8yX_Qy_xTk1Gw/viewform?embedded=true&theme=0x0A0F1A&color=%232563EB&font=INTER" 
-                    loading="lazy">
-            Loading...
-            </iframe>
-        </div>
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2 style="margin-bottom: 0.5rem;">Join Our Waitlist</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+            Be among the first to experience VolunteerHub when we launch. By joining our waitlist, you'll get:
+        </p>
+        <ul style="color: var(--text-secondary); margin-bottom: 1.5rem; padding-left: 1.25rem; line-height: 1.6;">
+            <li>Early access to our beta platform</li>
+            <li>Exclusive updates on new features</li>
+            <li>Priority invitations to volunteer opportunities</li>
+            <li>A special thank-you gift when we launch</li>
+        </ul>
+        <iframe class="modal-iframe" 
+                src="https://docs.google.com/forms/d/e/1FAIpQLSdA-dP4UX97PjDZKCl1fjtQdcgYLilonJ5zb8yX_Qy_xTk1Gw/viewform?embedded=true&theme=0x0A0F1A&color=%232563EB&font=INTER" 
+                loading="lazy">
+        Loading...
+        </iframe>
     </div>
+</div>
 
     <div class="container">
         <nav>
@@ -1212,10 +1149,10 @@
                 <span>VolunteerHub</span>
             </a>
             <div class="nav-links">
-                <a href="#features">Our Approach</a>
+                <a href="#features">Features</a>
                 <a href="#technology">Technology</a>
-                <a href="#community">Community</a>
-                <a href="#impact">Impact</a>
+                <a href="#map">Live Map</a>
+                <a href="#ai">AI Tools</a>
             </div>
             <button class="nav-cta" style="margin-right: 2rem;">Join Waitlist</button>
         </nav>
@@ -1227,9 +1164,9 @@
         <div class="container">
             <div class="hero-content">
                 <span class="hero-tag">COMING SOON</span>
-                <h1 class="hero-title">Connecting Passion With Purpose</h1>
+                <h1 class="hero-title">The Future of Volunteer Engagement</h1>
                 <p class="hero-subtitle">
-                    VolunteerHub is revolutionizing how people connect with volunteer opportunities through AI-powered matching, blockchain verification, and a community-first approach inspired by the most engaging platforms today.
+                    VolunteerHub combines artificial intelligence with community expertise to create perfect matches between volunteers and organizations. Our platform is transforming how people discover meaningful opportunities to give back.
                 </p>
                 <div class="hero-cta-container">
                     <button class="primary-cta">
@@ -1249,7 +1186,7 @@
             <div class="stats-grid">
                 <div class="stat-card animate">
                     <div class="stat-number">X,XXX+</div>
-                    <div class="stat-label">Communities Served</div>
+                    <div class="stat-label">Active Opportunities</div>
                 </div>
                 <div class="stat-card animate delay-1">
                     <div class="stat-number">XXX+</div>
@@ -1257,7 +1194,7 @@
                 </div>
                 <div class="stat-card animate delay-2">
                     <div class="stat-number">XXX,XXX+</div>
-                    <div class="stat-label">Hours Volunteered</div>
+                    <div class="stat-label">Volunteers Connected</div>
                 </div>
             </div>
         </div>
@@ -1269,368 +1206,142 @@
             <!-- Features Section -->
             <section class="section" id="features">
                 <div class="section-header">
-                    <h2 class="section-title">Our Unique Approach</h2>
+                    <h2 class="section-title">How VolunteerHub Works</h2>
                     <p class="section-subtitle">
-                        We're reimagining how people connect with volunteer opportunities through thoughtful design and community-focused solutions.
+                        Our platform leverages cutting-edge technology to create the most sophisticated volunteer matching system available today.
                     </p>
                 </div>
                 
                 <div class="features-grid">
                     <div class="feature-card animate">
                         <div class="feature-icon">
-                            <i class="fas fa-heart"></i>
+                            <i class="fas fa-brain"></i>
                         </div>
-                        <h3 class="feature-title">AI-Powered Matching</h3>
+                        <h3 class="feature-title">AI Resume Matching</h3>
                         <p class="feature-desc">
-                            Our advanced algorithms analyze your skills, interests, and availability to match you with perfect volunteer opportunities, creating more meaningful engagements.
+                            Upload your resume and get hyper-personalized opportunity recommendations powered by OpenAI GPT-3.5-turbo. Our AI analyzes your skills and experience to find perfect matches.
                         </p>
                     </div>
                     
                     <div class="feature-card animate delay-1">
                         <div class="feature-icon">
-                            <i class="fas fa-users"></i>
+                            <i class="fas fa-map-marked-alt"></i>
                         </div>
-                        <h3 class="feature-title">Community Building</h3>
+                        <h3 class="feature-title">Live Opportunity Map</h3>
                         <p class="feature-desc">
-                            VolunteerHub isn't just about finding opportunities—it's about connecting with like-minded individuals who share your commitment to making a difference.
+                            Visualize volunteer needs with real-time, interactive heatmaps. See demand indicators, popular causes, and urgent opportunities in your area with dynamic pins.
                         </p>
                     </div>
                     
                     <div class="feature-card animate delay-2">
                         <div class="feature-icon">
-                            <i class="fas fa-chart-line"></i>
+                            <i class="fas fa-mobile-alt"></i>
                         </div>
-                        <h3 class="feature-title">Impact Measurement</h3>
+                        <h3 class="feature-title">Swipe-to-Apply</h3>
                         <p class="feature-desc">
-                            Track the real difference you're making with clear metrics that show how your time and skills contribute to meaningful change in your community.
+                            Our intuitive mobile interface lets you browse opportunities with simple gestures. Swipe right to save, left to pass, and up to get more details.
                         </p>
                     </div>
                     
                     <div class="feature-card animate">
                         <div class="feature-icon">
-                            <i class="fas fa-calendar-check"></i>
+                            <i class="fas fa-comments"></i>
                         </div>
-                        <h3 class="feature-title">Flexible Commitment</h3>
+                        <h3 class="feature-title">Natural Language Search</h3>
                         <p class="feature-desc">
-                            Whether you have an hour or want an ongoing role, we help you find opportunities that fit your schedule and availability.
+                            Describe what you're looking for in your own words. Our NLP engine understands phrases like "weekend environmental projects near me" or "helping kids with math."
                         </p>
                     </div>
                     
                     <div class="feature-card animate delay-1">
                         <div class="feature-icon">
-                            <i class="fas fa-certificate"></i>
+                            <i class="fas fa-trophy"></i>
                         </div>
-                        <h3 class="feature-title">Blockchain Verification</h3>
+                        <h3 class="feature-title">Gamified Experience</h3>
                         <p class="feature-desc">
-                            Earn verifiable credentials for your volunteer work that you can share with employers, schools, or on social media to showcase your impact.
+                            Earn badges, complete challenges, and track your volunteer streak. Our gamification system makes giving back fun and rewarding.
                         </p>
                     </div>
                     
                     <div class="feature-card animate delay-2">
                         <div class="feature-icon">
-                            <i class="fas fa-lightbulb"></i>
+                            <i class="fas fa-chart-pie"></i>
                         </div>
-                        <h3 class="feature-title">Gamification</h3>
+                        <h3 class="feature-title">Impact Analytics</h3>
                         <p class="feature-desc">
-                            Earn badges, level up, and join challenges that make volunteering more engaging and rewarding, inspired by the most addictive platforms.
+                            Track your personal volunteering metrics and see the tangible difference you're making. Organizations get detailed reports on volunteer engagement.
                         </p>
                     </div>
                 </div>
             </section>
             
-            <!-- Value Proposition Section -->
-            <section>
-                <div class="value-section">
-                    <div class="value-content">
-                        <div class="value-icon">✨</div>
-                        <h3 class="value-title">Why VolunteerHub Stands Out</h3>
-                        <p class="value-subtitle">
-                            Unlike traditional volunteer platforms, we combine cutting-edge technology with human-centered design to create deep, meaningful connections between volunteers and organizations. Our AI matching, blockchain verification, and community features lead to higher satisfaction rates, longer-term engagements, and greater community impact.
+            <!-- AI Email Section -->
+            <section id="ai">
+                <div class="ai-email-section">
+                    <div class="ai-email-content">
+                        <div class="ai-email-icon">🤖</div>
+                        <h3 class="ai-email-title">AI Email Generator</h3>
+                        <p class="ai-email-subtitle">
+                            Instantly generate personalized, professional emails to connect with organizations. Save time and make a great impression with our AI-powered tool.
                         </p>
                     </div>
                 </div>
             </section>
             
-            <!-- Community Preview Section -->
-            <section id="community">
-                <div class="community-preview">
+            <!-- Map Preview Section -->
+            <section id="map">
+                <div class="map-preview">
                     <div id="vanta-net"></div>
-                    <div class="community-overlay">
-                        <h3 class="community-title">Building Stronger Communities Together</h3>
-                        <p class="community-desc">
-                            VolunteerHub connects people across neighborhoods, cities, and causes to create networks of support and collaboration. See how we're bringing communities together through shared purpose.
+                    <div class="map-overlay">
+                        <h3 class="map-title">Interactive Opportunity Map</h3>
+                        <p class="map-desc">
+                            Explore volunteer needs in your community with our real-time geospatial visualization. The map auto-focuses on your location and shows opportunities as dynamic pins with smart summaries.
                         </p>
                     </div>
                 </div>
             </section>
             
-            <!-- Technology Section -->
+            <!-- Technology Stack Section -->
             <section class="section" id="technology">
                 <div class="tech-stack">
                     <div class="tech-stack-content">
-                        <h3 class="tech-title">Built With Modern Technology</h3>
+                        <h3 class="tech-title">Powered By Advanced Technology</h3>
                         <div class="tech-grid">
                             <div class="tech-item animate">
                                 <div class="tech-icon">
-                                    <i class="fas fa-robot"></i>
+                                    <i class="fas fa-brain"></i>
                                 </div>
-                                <div class="tech-name">AI Matching</div>
+                                <div class="tech-name">Machine Learning</div>
                             </div>
                             <div class="tech-item animate delay-1">
                                 <div class="tech-icon">
-                                    <i class="fas fa-link"></i>
+                                    <i class="fas fa-language"></i>
                                 </div>
-                                <div class="tech-name">Blockchain</div>
+                                <div class="tech-name">Natural Language Processing</div>
                             </div>
                             <div class="tech-item animate delay-2">
                                 <div class="tech-icon">
-                                    <i class="fas fa-mobile-alt"></i>
+                                    <i class="fas fa-map"></i>
                                 </div>
-                                <div class="tech-name">Mobile First</div>
+                                <div class="tech-name">Geospatial AI</div>
                             </div>
                             <div class="tech-item animate">
                                 <div class="tech-icon">
                                     <i class="fas fa-cloud"></i>
                                 </div>
-                                <div class="tech-name">Cloud Native</div>
+                                <div class="tech-name">Cloud Computing</div>
                             </div>
                             <div class="tech-item animate delay-1">
                                 <div class="tech-icon">
-                                    <i class="fas fa-database"></i>
+                                    <i class="fas fa-mobile-alt"></i>
                                 </div>
-                                <div class="tech-name">Big Data</div>
+                                <div class="tech-name">Cross-Platform</div>
                             </div>
                             <div class="tech-item animate delay-2">
                                 <div class="tech-icon">
-                                    <i class="fas fa-gamepad"></i>
+                                    <i class="fas fa-shield-alt"></i>
                                 </div>
-                                <div class="tech-name">Gamification</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Future Tech Section -->
-            <section class="future-tech-section">
-                <div class="container">
-                    <div class="section-header">
-                        <h2 class="section-title">The Future of Volunteering</h2>
-                        <p class="section-subtitle">
-                            We're leveraging cutting-edge technologies to revolutionize how people engage with their communities
-                        </p>
-                    </div>
-                    
-                    <div class="future-tech-grid">
-                        <div class="future-tech-card animate">
-                            <div class="future-tech-icon">
-                                <i class="fas fa-brain"></i>
-                            </div>
-                            <h3 class="future-tech-title">AI-Powered Matching</h3>
-                            <p class="future-tech-desc">
-                                Our machine learning algorithms analyze your skills, interests, and availability to match you with the perfect volunteer opportunities, creating more meaningful engagements.
-                            </p>
-                        </div>
-                        
-                        <div class="future-tech-card animate delay-1">
-                            <div class="future-tech-icon">
-                                <i class="fas fa-link"></i>
-                            </div>
-                            <h3 class="future-tech-title">Blockchain Verification</h3>
-                            <p class="future-tech-desc">
-                                Earn verifiable credentials for your volunteer work that are tamper-proof and can be shared with employers, schools, or on social media to showcase your impact.
-                            </p>
-                        </div>
-                        
-                        <div class="future-tech-card animate delay-2">
-                            <div class="future-tech-icon">
-                                <i class="fas fa-gamepad"></i>
-                            </div>
-                            <h3 class="future-tech-title">Gamification</h3>
-                            <p class="future-tech-desc">
-                                Inspired by the most engaging platforms, we've built a system of badges, levels, and challenges that make volunteering more rewarding and fun.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Impact Stories Section -->
-            <section class="impact-section" id="impact">
-                <div class="container">
-                    <div class="section-header">
-                        <h2 class="section-title">The Impact We Enable</h2>
-                        <p class="section-subtitle">
-                            Real stories of connection and transformation made possible through volunteering
-                        </p>
-                    </div>
-                    
-                    <div class="impact-showcase">
-                        <div class="impact-image">
-                            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" 
-                                 alt="Volunteers working together" loading="lazy">
-                        </div>
-                        
-                        <div class="impact-content">
-                            <div class="impact-card">
-                                <div class="impact-icon">
-                                    <i class="fas fa-tree"></i>
-                                </div>
-                                <h3>Environmental Restoration</h3>
-                                <p>Local communities coming together to restore parks and natural spaces, creating lasting change for future generations.</p>
-                            </div>
-                            
-                            <div class="impact-card">
-                                <div class="impact-icon">
-                                    <i class="fas fa-book"></i>
-                                </div>
-                                <h3>Education Access</h3>
-                                <p>Volunteers providing tutoring and mentorship to students in underserved areas, helping bridge educational gaps.</p>
-                            </div>
-                            
-                            <div class="impact-card">
-                                <div class="impact-icon">
-                                    <i class="fas fa-home"></i>
-                                </div>
-                                <h3>Housing Initiatives</h3>
-                                <p>Skilled volunteers contributing to housing projects that provide shelter and stability for families in need.</p>
-                            </div>
-                            
-                            <div class="impact-card">
-                                <div class="impact-icon">
-                                    <i class="fas fa-heartbeat"></i>
-                                </div>
-                                <h3>Health & Wellness</h3>
-                                <p>Medical professionals and community members working together to improve health outcomes for vulnerable populations.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Ecosystem Section -->
-            <section class="ecosystem-section">
-                <div class="container">
-                    <div class="section-header">
-                        <h2 class="section-title">Our Volunteer Ecosystem</h2>
-                        <p class="section-subtitle">
-                            VolunteerHub connects all parts of the volunteering experience into one seamless platform
-                        </p>
-                    </div>
-                    
-                    <div class="ecosystem-grid">
-                        <div class="ecosystem-item">
-                            <div class="ecosystem-icon">
-                                <i class="fas fa-user-friends"></i>
-                            </div>
-                            <div class="ecosystem-name">Volunteers</div>
-                        </div>
-                        <div class="ecosystem-item">
-                            <div class="ecosystem-icon">
-                                <i class="fas fa-building"></i>
-                            </div>
-                            <div class="ecosystem-name">Nonprofits</div>
-                        </div>
-                        <div class="ecosystem-item">
-                            <div class="ecosystem-icon">
-                                <i class="fas fa-graduation-cap"></i>
-                            </div>
-                            <div class="ecosystem-name">Schools</div>
-                        </div>
-                        <div class="ecosystem-item">
-                            <div class="ecosystem-icon">
-                                <i class="fas fa-briefcase"></i>
-                            </div>
-                            <div class="ecosystem-name">Businesses</div>
-                        </div>
-                        <div class="ecosystem-item">
-                            <div class="ecosystem-icon">
-                                <i class="fas fa-city"></i>
-                            </div>
-                            <div class="ecosystem-name">Communities</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- FAQ Section -->
-            <section class="faq-section">
-                <div class="container">
-                    <div class="section-header">
-                        <h2 class="section-title">Frequently Asked Questions</h2>
-                        <p class="section-subtitle">
-                            Get answers to common questions about VolunteerHub
-                        </p>
-                    </div>
-                    
-                    <div class="faq-container">
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>How is VolunteerHub different from other volunteer platforms?</span>
-                                <i class="fas fa-chevron-down faq-toggle"></i>
-                            </div>
-                            <div class="faq-answer">
-                                <p>VolunteerHub combines AI matching, blockchain verification, and community features to create deeper, more meaningful connections between volunteers and organizations. Our approach goes beyond simple listings to ensure matches are based on shared values, skills alignment, and mutual goals.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>When will VolunteerHub be available?</span>
-                                <i class="fas fa-chevron-down faq-toggle"></i>
-                            </div>
-                            <div class="faq-answer">
-                                <p>We're currently in development with plans to launch later this year. Join our waitlist to get updates on our progress and early access opportunities.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>How does the AI matching work?</span>
-                                <i class="fas fa-chevron-down faq-toggle"></i>
-                            </div>
-                            <div class="faq-answer">
-                                <p>Our AI analyzes your skills, interests, availability, and past volunteer experiences to recommend the best opportunities for you. The more you use VolunteerHub, the better our recommendations become.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>What are blockchain credentials?</span>
-                                <i class="fas fa-chevron-down faq-toggle"></i>
-                            </div>
-                            <div class="faq-answer">
-                                <p>These are tamper-proof digital certificates that verify your volunteer hours and achievements. You can share them with employers, schools, or on social media to showcase your community involvement.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>How can my organization partner with VolunteerHub?</span>
-                                <i class="fas fa-chevron-down faq-toggle"></i>
-                            </div>
-                            <div class="faq-answer">
-                                <p>We're actively seeking partnerships with nonprofits and community organizations. Contact us through the waitlist form to express interest in becoming a partner.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>What devices will VolunteerHub work on?</span>
-                                <i class="fas fa-chevron-down faq-toggle"></i>
-                            </div>
-                            <div class="faq-answer">
-                                <p>VolunteerHub will be available as a responsive web application and native mobile apps for both iOS and Android devices.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>How does the gamification system work?</span>
-                                <i class="fas fa-chevron-down faq-toggle"></i>
-                            </div>
-                            <div class="faq-answer">
-                                <p>You'll earn points, badges, and level up as you complete volunteer hours, participate in challenges, and engage with the community. These achievements can unlock special opportunities and recognition.</p>
+                                <div class="tech-name">Enterprise Security</div>
                             </div>
                         </div>
                     </div>
@@ -1641,9 +1352,9 @@
             <section class="section">
                 <div class="cta-section">
                     <div class="cta-content">
-                        <h2 class="cta-title">Be Part of the VolunteerHub Movement</h2>
+                        <h2 class="cta-title">Ready to Revolutionize Volunteering?</h2>
                         <p class="cta-subtitle">
-                            Join our growing community of volunteers and organizations committed to making a difference. Together, we can build stronger communities through service.
+                            Join our exclusive waitlist to be among the first to experience VolunteerHub when we launch. Help us build the future of community engagement.
                         </p>
                         <button class="primary-cta">
                             <i class="fas fa-envelope"></i> Join Waitlist Now
@@ -1652,49 +1363,102 @@
                 </div>
             </section>
 
-            <!-- Creators Section -->
-            <section class="future-tech-section">
+            <!-- Opportunities Section -->
+            <section class="opportunities-section">
                 <div class="container">
                     <div class="section-header">
-                        <h2 class="section-title">Meet The Founders</h2>
+                        <h2 class="section-title">Explore Opportunities</h2>
                         <p class="section-subtitle">
-                            The passionate team behind VolunteerHub
+                            Discover meaningful ways to make a difference in your community
                         </p>
                     </div>
                     
-                    <div class="future-tech-grid">
-                        <div class="future-tech-card animate">
-                            <img src="https://media.licdn.com/dms/image/v2/D5603AQH-AxEj1SuCZg/profile-displayphoto-shrink_200_200/B56ZWnIS8KGQAY-/0/1742265725301?e=1757548800&v=beta&t=_WEZcwG_hMoccu7gt1jqC4VVdLyPpGlaoGnj-uy8OdM" alt="Sarveshwar Senthil Kumar" class="creator-image" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin: 0 auto 1.5rem; display: block; border: 3px solid var(--accent-primary);">
-                            <h3 class="future-tech-title" style="text-align: center;">Sarveshwar Senthil Kumar</h3>
-                            <p class="future-tech-desc" style="text-align: center; margin-bottom: 1.5rem;">Co-Founder & Lead Developer</p>
-                            <p class="future-tech-desc">
-                                Passionate about using technology to create social impact and connect communities. Sarveshwar brings technical expertise and a vision for how technology can facilitate human connection.
+                    <div class="opportunities-showcase">
+                        <div class="opportunities-image">
+                            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" 
+                                 alt="Volunteers working together" loading="lazy">
+                        </div>
+                        
+                        <div class="opportunities-content">
+                            <div class="opportunity-card">
+                                <div class="opportunity-icon">
+                                    <i class="fas fa-tree"></i>
+                                </div>
+                                <h3>Environmental Conservation</h3>
+                                <p>Join tree planting initiatives, beach cleanups, and sustainability projects.</p>
+                            </div>
+                            
+                            <div class="opportunity-card">
+                                <div class="opportunity-icon">
+                                    <i class="fas fa-child"></i>
+                                </div>
+                                <h3>Youth Mentorship</h3>
+                                <p>Guide and inspire the next generation through education programs.</p>
+                            </div>
+                            
+                            <div class="opportunity-card">
+                                <div class="opportunity-icon">
+                                    <i class="fas fa-utensils"></i>
+                                </div>
+                                <h3>Food Distribution</h3>
+                                <p>Help fight hunger by serving meals at local shelters and food banks.</p>
+                            </div>
+                            
+                            <div class="opportunity-card">
+                                <div class="opportunity-icon">
+                                    <i class="fas fa-laptop-medical"></i>
+                                </div>
+                                <h3>Tech Volunteering</h3>
+                                <p>Use your technical skills to help nonprofits with their digital needs.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Creators Section -->
+            <section class="creators-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Meet The Creators</h2>
+                        <p class="section-subtitle">
+                            The minds behind VolunteerHub's innovative platform
+                        </p>
+                    </div>
+                    
+                    <div class="creators-grid">
+                        <div class="creator-card animate">
+                            <img src="https://media.licdn.com/dms/image/v2/D5603AQH-AxEj1SuCZg/profile-displayphoto-shrink_200_200/B56ZWnIS8KGQAY-/0/1742265725301?e=1757548800&v=beta&t=_WEZcwG_hMoccu7gt1jqC4VVdLyPpGlaoGnj-uy8OdM" alt="Sarv" class="creator-image">
+                            <h3 class="creator-name">Sarveshwar Senthil Kumar</h3>
+                            <p class="creator-title">Co-Founder & Lead Developer</p>
+                            <p class="feature-desc">
+                                Passionate about using technology to create social impact and connect communities.
                             </p>
-                            <div class="creator-links" style="display: flex; justify-content: center; gap: 1rem; margin-top: 1.5rem;">
-                                <a href="https://www.linkedin.com/in/sarveshwarsenthilkumar/" class="creator-link" target="_blank" style="color: var(--text-primary); font-size: 1.2rem;">
+                            <div class="creator-links">
+                                <a href="https://www.linkedin.com/in/sarveshwarsenthilkumar/" class="creator-link" target="_blank">
                                     <i class="fab fa-linkedin-in"></i>
                                 </a>
-                                <a href="https://github.com/SarveshwarSenthilKumar" class="creator-link" target="_blank" style="color: var(--text-primary); font-size: 1.2rem;">
+                                <a href="https://github.com/SarveshwarSenthilKumar" class="creator-link" target="_blank">
                                     <i class="fab fa-github"></i>
                                 </a>
-                                <a href="https://sarveshwarsenthilkumar.github.io" class="creator-link" target="_blank" style="color: var(--text-primary); font-size: 1.2rem;">
+                                <a href="https://sarveshwarsenthilkumar.github.io" class="creator-link" target="_blank">
                                     <i class="fas fa-globe"></i>
                                 </a>
                             </div>
                         </div>
                         
-                        <div class="future-tech-card animate delay-1">
-                            <img src="https://media.licdn.com/dms/image/v2/D4E03AQEdCbboBqwjIA/profile-displayphoto-scale_100_100/B4EZfn6RtdG4Ac-/0/1751942503751?e=1757548800&v=beta&t=L89QjdxuHbjHFvISJJqEbXzeyONxrCUO66JKH-yrHl0" alt="Devansh Goyal" class="creator-image" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin: 0 auto 1.5rem; display: block; border: 3px solid var(--accent-primary);">
-                            <h3 class="future-tech-title" style="text-align: center;">Devansh Goyal</h3>
-                            <p class="future-tech-desc" style="text-align: center; margin-bottom: 1.5rem;">Co-Founder & Technical Lead</p>
-                            <p class="future-tech-desc">
-                                Dedicated to building scalable solutions that empower communities through technology. Devansh focuses on creating systems that are both powerful and accessible to all users.
+                        <div class="creator-card animate delay-1">
+                            <img src="https://media.licdn.com/dms/image/v2/D4E03AQEdCbboBqwjIA/profile-displayphoto-scale_100_100/B4EZfn6RtdG4Ac-/0/1751942503751?e=1757548800&v=beta&t=L89QjdxuHbjHFvISJJqEbXzeyONxrCUO66JKH-yrHl0" alt="Devansh" class="creator-image">
+                            <h3 class="creator-name">Devansh Goyal</h3>
+                            <p class="creator-title">Co-Founder & Technical Lead</p>
+                            <p class="feature-desc">
+                                Dedicated to building scalable solutions that empower communities through technology.
                             </p>
-                            <div class="creator-links" style="display: flex; justify-content: center; gap: 1rem; margin-top: 1.5rem;">
-                                <a href="https://www.linkedin.com/in/devanshg07/" class="creator-link" target="_blank" style="color: var(--text-primary); font-size: 1.2rem;">
+                            <div class="creator-links">
+                                <a href="https://www.linkedin.com/in/devanshg07/" class="creator-link" target="_blank">
                                     <i class="fab fa-linkedin-in"></i>
                                 </a>
-                                <a href="https://github.com/devanshg07" class="creator-link" target="_blank" style="color: var(--text-primary); font-size: 1.2rem;">
+                                <a href="https://github.com/devanshg07" class="creator-link" target="_blank">
                                     <i class="fab fa-github"></i>
                                 </a>
                             </div>
@@ -1717,10 +1481,10 @@
                 </a>
                 
                 <div class="footer-links">
-                    <a href="#features" class="footer-link">Our Approach</a>
+                    <a href="#features" class="footer-link">Features</a>
                     <a href="#technology" class="footer-link">Technology</a>
-                    <a href="#community" class="footer-link">Community</a>
-                    <a href="#impact" class="footer-link">Impact</a>
+                    <a href="#map" class="footer-link">Live Map</a>
+                    <a href="#ai" class="footer-link">AI Tools</a>
                     <a href="#" class="footer-link waitlist-link">Join Waitlist</a>
                 </div>
                 
@@ -1786,7 +1550,7 @@
             size: 1.00
         });
         
-        // Initialize Vanta.js net for community section
+        // Initialize Vanta.js net for map section
         VANTA.NET({
             el: "#vanta-net",
             mouseControls: true,
@@ -1828,7 +1592,7 @@
             });
         }, observerOptions);
         
-        document.querySelectorAll('.feature-card, .tech-item, .stat-card, .future-tech-card').forEach(item => {
+        document.querySelectorAll('.feature-card, .tech-item, .stat-card, .creator-card').forEach(item => {
             observer.observe(item);
         });
         
@@ -1844,16 +1608,7 @@
             }
         });
 
-        // FAQ functionality
-        const faqItems = document.querySelectorAll('.faq-item');
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            question.addEventListener('click', () => {
-                item.classList.toggle('active');
-            });
-        });
-
-        // Demo Button Notification
+                // Demo Button Notification
         const demoButton = document.querySelector('.secondary-cta');
         const notification = document.createElement('div');
         notification.className = 'demo-notification';
