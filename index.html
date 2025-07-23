@@ -452,8 +452,8 @@
         font-size: 1rem;
     }
     
-    /* AI Email Section */
-    .ai-email-section {
+    /* AI Tools Section */
+    .ai-tools-section {
         background: var(--gradient-secondary);
         border-radius: 24px;
         padding: 4rem;
@@ -464,7 +464,7 @@
         box-shadow: 0 10px 30px rgba(6, 182, 212, 0.3);
     }
     
-    .ai-email-section::before {
+    .ai-tools-section::before {
         content: '';
         position: absolute;
         top: -50%;
@@ -476,30 +476,49 @@
         z-index: 0;
     }
     
-    .ai-email-content {
+    .ai-tools-content {
         position: relative;
         z-index: 1;
     }
     
-    .ai-email-icon {
-        font-size: 3rem;
-        margin-bottom: 1.5rem;
+    .ai-tools-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
     }
     
-    .ai-email-title {
-        font-size: 2rem;
-        font-weight: 800;
+    .ai-tool-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        padding: 2rem;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .ai-tool-card:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .ai-tool-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        color: white;
+    }
+    
+    .ai-tool-title {
+        font-size: 1.5rem;
+        font-weight: 700;
         margin-bottom: 1rem;
         color: white;
     }
     
-    .ai-email-subtitle {
-        font-size: 1.15rem;
+    .ai-tool-desc {
         color: rgba(255, 255, 255, 0.9);
-        margin-bottom: 2rem;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
+        font-size: 1rem;
         line-height: 1.7;
     }
     
@@ -811,6 +830,141 @@
         line-height: 1.6;
     }
     
+    /* Contact Section */
+    .contact-section {
+        padding: var(--section-spacing) 0;
+        background: var(--bg-primary);
+        position: relative;
+        z-index: 20;
+    }
+    
+    .contact-container {
+        background: var(--bg-secondary);
+        border-radius: 16px;
+        padding: 4rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .contact-title {
+        font-size: 2.25rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        background: linear-gradient(to right, #f8fafc, #c7d2fe);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    
+    .contact-text {
+        color: var(--text-secondary);
+        line-height: 1.7;
+        font-size: 1.1rem;
+    }
+    
+    .contact-methods {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .contact-method {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .contact-icon {
+        width: 50px;
+        height: 50px;
+        background: var(--gradient-primary);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.2rem;
+    }
+    
+    .contact-details h4 {
+        font-size: 1.2rem;
+        margin-bottom: 0.25rem;
+        color: var(--text-primary);
+    }
+    
+    .contact-details p {
+        color: var(--text-secondary);
+        font-size: 1rem;
+    }
+    
+    .contact-form {
+        background: var(--bg-tertiary);
+        border-radius: 12px;
+        padding: 2.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .form-group label {
+        color: var(--text-primary);
+        font-weight: 500;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        background: var(--bg-secondary);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        padding: 0.8rem 1rem;
+        color: var(--text-primary);
+        font-family: 'Inter', sans-serif;
+        transition: all 0.3s ease;
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: var(--accent-primary);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    }
+    
+    .form-group textarea {
+        min-height: 120px;
+        resize: vertical;
+    }
+    
+    .form-submit {
+        background: var(--gradient-primary);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 1rem;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 0.5rem;
+    }
+    
+    .form-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+    }
+    
     /* Simplified Footer */
     footer {
         background: var(--bg-primary);
@@ -888,6 +1042,10 @@
         
         .section-title {
             font-size: 2.5rem;
+        }
+        
+        .contact-container {
+            grid-template-columns: 1fr;
         }
     }
     
@@ -991,11 +1149,11 @@
             padding: 2rem;
         }
         
-        .ai-email-section {
+        .ai-tools-section {
             padding: 3rem 1.5rem;
         }
         
-        .ai-email-title {
+        .ai-tools-title {
             font-size: 1.8rem;
         }
         
@@ -1031,6 +1189,10 @@
         .footer-links {
             flex-direction: column;
             gap: 1rem;
+        }
+        
+        .contact-container {
+            padding: 2rem;
         }
     }
     
@@ -1091,6 +1253,10 @@
         
         .map-preview {
             height: 300px;
+        }
+        
+        .contact-form {
+            padding: 1.5rem;
         }
     }
     
@@ -1275,15 +1441,56 @@
                 </div>
             </section>
             
-            <!-- AI Email Section -->
+            <!-- AI Tools Section -->
             <section id="ai">
-                <div class="ai-email-section">
-                    <div class="ai-email-content">
-                        <div class="ai-email-icon">🤖</div>
-                        <h3 class="ai-email-title">AI Email Generator</h3>
-                        <p class="ai-email-subtitle">
-                            Instantly generate personalized, professional emails to connect with organizations. Save time and make a great impression with our AI-powered tool.
+                <div class="ai-tools-section">
+                    <div class="ai-tools-content">
+                        <h3 class="section-title" style="color: white;">AI-Powered Volunteer Tools</h3>
+                        <p class="section-subtitle" style="color: rgba(255, 255, 255, 0.9);">
+                            Our platform includes revolutionary AI features designed to enhance your volunteering experience
                         </p>
+                        
+                        <div class="ai-tools-grid">
+                            <div class="ai-tool-card animate">
+                                <div class="ai-tool-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <h4 class="ai-tool-title">Smart Communication</h4>
+                                <p class="ai-tool-desc">
+                                    AI-assisted messaging tools help craft professional communications with organizations and fellow volunteers.
+                                </p>
+                            </div>
+                            
+                            <div class="ai-tool-card animate delay-1">
+                                <div class="ai-tool-icon">
+                                    <i class="fas fa-calendar-check"></i>
+                                </div>
+                                <h4 class="ai-tool-title">Schedule Optimization</h4>
+                                <p class="ai-tool-desc">
+                                    Our AI analyzes your calendar and preferences to suggest optimal volunteering times that fit your lifestyle.
+                                </p>
+                            </div>
+                            
+                            <div class="ai-tool-card animate delay-2">
+                                <div class="ai-tool-icon">
+                                    <i class="fas fa-route"></i>
+                                </div>
+                                <h4 class="ai-tool-title">Route Planning</h4>
+                                <p class="ai-tool-desc">
+                                    Get smart recommendations for the most efficient routes to volunteer locations based on real-time traffic.
+                                </p>
+                            </div>
+                            
+                            <div class="ai-tool-card animate">
+                                <div class="ai-tool-icon">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <h4 class="ai-tool-title">Skill Matching</h4>
+                                <p class="ai-tool-desc">
+                                    Advanced algorithms match your unique skills and interests with organizations that need exactly what you offer.
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -1466,6 +1673,74 @@
                     </div>
                 </div>
             </section>
+            
+            <!-- Contact Section -->
+            <section class="contact-section">
+                <div class="container">
+                    <div class="contact-container">
+                        <div class="contact-info">
+                            <div>
+                                <h3 class="contact-title">Get In Touch</h3>
+                                <p class="contact-text">
+                                    Have questions about VolunteerHub? Want to schedule a demo for your organization? 
+                                    Reach out to us - we'd love to hear from you!
+                                </p>
+                            </div>
+                            
+                            <div class="contact-methods">
+                                <div class="contact-method">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <h4>Email Us</h4>
+                                        <p>info@volunteerhub.com</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-method">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <h4>Call Us</h4>
+                                        <p>+1 (555) 123-4567</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-method">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <h4>Visit Us</h4>
+                                        <p>123 Volunteer Way, San Francisco, CA</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-form">
+                            <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);">Send Us a Message</h3>
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" placeholder="Enter your name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" placeholder="Enter your email">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Your Message</label>
+                                <textarea id="message" placeholder="How can we help you?"></textarea>
+                            </div>
+                            <button type="submit" class="form-submit">
+                                <i class="fas fa-paper-plane"></i> Send Message
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     </main>
     
@@ -1592,7 +1867,7 @@
             });
         }, observerOptions);
         
-        document.querySelectorAll('.feature-card, .tech-item, .stat-card, .creator-card').forEach(item => {
+        document.querySelectorAll('.feature-card, .tech-item, .stat-card, .creator-card, .ai-tool-card').forEach(item => {
             observer.observe(item);
         });
         
@@ -1608,7 +1883,7 @@
             }
         });
 
-                // Demo Button Notification
+        // Demo Button Notification
         const demoButton = document.querySelector('.secondary-cta');
         const notification = document.createElement('div');
         notification.className = 'demo-notification';
@@ -1683,6 +1958,25 @@
                 notification.classList.remove('show');
                 clearTimeout(timeout);
             }, { once: true });
+        });
+        
+        // Simple form submission handler
+        const contactForm = document.querySelector('.contact-form');
+        const formSubmit = contactForm.querySelector('.form-submit');
+        
+        formSubmit.addEventListener('click', (e) => {
+            e.preventDefault();
+            const name = contactForm.querySelector('#name').value;
+            const email = contactForm.querySelector('#email').value;
+            const message = contactForm.querySelector('#message').value;
+            
+            if (name && email && message) {
+                // In a real implementation, you would send this data to your server
+                alert('Thank you for your message! We will get back to you soon.');
+                contactForm.reset();
+            } else {
+                alert('Please fill in all fields.');
+            }
         });
     </script>
 </body>
